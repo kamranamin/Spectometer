@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{85043178-219F-4159-B527-1384E7061ABE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Spectometer</RootNamespace>
+    <AssemblyName>Spectometer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>chemistry.png.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EnScixLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\EnScixLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="FTD2XX_NET">
+      <HintPath>C:\Users\Develop Center\Downloads\DigitalDataLogger-master\DigitalDataLogger-master\libs\FTD2XX_NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business.cs" />
+    <Compile Include="CalibrationCurve.cs" />
+    <Compile Include="ChartData.cs" />
+    <Compile Include="Forms\FChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FChart.Designer.cs">
+      <DependentUpon>FChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FColorM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FColorM.Designer.cs">
+      <DependentUpon>FColorM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FRefractive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FRefractive.Designer.cs">
+      <DependentUpon>FRefractive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FSingleWaveLenght.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FSingleWaveLenght.Designer.cs">
+      <DependentUpon>FSingleWaveLenght.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPoint.cs" />
+    <Compile Include="UserControl\ColorDropDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControl\ColorPalette.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControl\ColorPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataAnalysis.cs" />
+    <Compile Include="Environment.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FAddNewExperiment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FAddNewExperiment.Designer.cs">
+      <DependentUpon>FAddNewExperiment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FCalibrationCruve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FCalibrationCruve.Designer.cs">
+      <DependentUpon>FCalibrationCruve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FDeviceInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FDeviceInfo.Designer.cs">
+      <DependentUpon>FDeviceInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FHardware.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FHardware.Designer.cs">
+      <DependentUpon>FHardware.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FNanoDrop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FNanoDrop.Designer.cs">
+      <DependentUpon>FNanoDrop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FSoftware.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FSoftware.Designer.cs">
+      <DependentUpon>FSoftware.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTimeSpectrum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FTimeSpectrum.Designer.cs">
+      <DependentUpon>FTimeSpectrum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\F_Base.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\F_Base.Designer.cs">
+      <DependentUpon>F_Base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hardware.cs" />
+    <Compile Include="HardwareFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HardwareFrm.Designer.cs">
+      <DependentUpon>HardwareFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface.cs" />
+    <Compile Include="NanoDropFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NanoDropFrm.Designer.cs">
+      <DependentUpon>NanoDropFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Packet.cs" />
+    <Compile Include="SoftwareFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoftwareFrm.Designer.cs">
+      <DependentUpon>SoftwareFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SofwaretProperties.cs" />
+    <Compile Include="Spectometer.cs">
+      <DependentUpon>New.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeSpectrumFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeSpectrumFrm.Designer.cs">
+      <DependentUpon>TimeSpectrumFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\FlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControl\FlatButton.Designer.cs">
+      <DependentUpon>FlatButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\SplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FAddNewExperiment.resx">
+      <DependentUpon>FAddNewExperiment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FCalibrationCruve.resx">
+      <DependentUpon>FCalibrationCruve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FChart.resx">
+      <DependentUpon>FChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FColorM.resx">
+      <DependentUpon>FColorM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FDeviceInfo.resx">
+      <DependentUpon>FDeviceInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FHardware.resx">
+      <DependentUpon>FHardware.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FNanoDrop.resx">
+      <DependentUpon>FNanoDrop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FRefractive.resx">
+      <DependentUpon>FRefractive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FSingleWaveLenght.resx">
+      <DependentUpon>FSingleWaveLenght.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FSoftware.resx">
+      <DependentUpon>FSoftware.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTimeSpectrum.resx">
+      <DependentUpon>FTimeSpectrum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\F_Base.resx">
+      <DependentUpon>F_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HardwareFrm.resx">
+      <DependentUpon>HardwareFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NanoDropFrm.resx">
+      <DependentUpon>NanoDropFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New.resx">
+      <DependentUpon>New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SoftwareFrm.resx">
+      <DependentUpon>SoftwareFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeSpectrumFrm.resx">
+      <DependentUpon>TimeSpectrumFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="chemistry.png.ico" />
+    <None Include="Resources\alert_icon.png" />
+    <None Include="Resources\ok.bmp" />
+    <None Include="Resources\expand.png" />
+    <None Include="Resources\arrow.png" />
+    <None Include="Resources\Garbage-Closed.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\Media-Play2.png" />
+    <None Include="Resources\rec %281%29.png" />
+    <None Include="Resources\rec.png" />
+    <None Include="Resources\Close_02.png" />
+    <None Include="Resources\Tiles2.png" />
+    <None Include="Resources\Minus2.png" />
+    <None Include="Resources\Minus.png" />
+    <None Include="Resources\Tiles.png" />
+    <None Include="Resources\Close_01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

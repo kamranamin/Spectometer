@@ -7,9 +7,11 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace Spectometer.Forms
+    
 {
     public partial class FAddNewExperiment : Spectometer.Forms.F_Base
     {
+        bool isFirst=false;
         public FAddNewExperiment()
         {
             InitializeComponent();
@@ -17,6 +19,7 @@ namespace Spectometer.Forms
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+           
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -28,7 +31,11 @@ namespace Spectometer.Forms
 
         private void FAddNewExperiment_Load(object sender, EventArgs e)
         {
-            txtExperimentName.Focus();
+            if (!isFirst)
+            comboBox1.SelectedIndex = 0;
+            isFirst = true;
+            
+         //   txtExperimentName.Focus();
         }
     }
 }

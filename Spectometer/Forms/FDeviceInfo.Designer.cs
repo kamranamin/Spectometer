@@ -43,12 +43,19 @@
             this.txtVer = new System.Windows.Forms.MaskedTextBox();
             this.maskTxtDate = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtGain = new System.Windows.Forms.TextBox();
+            this.txtOffset = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.Information.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // _lbl_form_text
             // 
-            this._lbl_form_text.Size = new System.Drawing.Size(521, 30);
+            this._lbl_form_text.Size = new System.Drawing.Size(679, 30);
             this._lbl_form_text.Text = "F_Base";
             // 
             // temp
@@ -148,7 +155,7 @@
             this.Information.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Information.Location = new System.Drawing.Point(12, 57);
             this.Information.Name = "Information";
-            this.Information.Size = new System.Drawing.Size(642, 285);
+            this.Information.Size = new System.Drawing.Size(465, 285);
             this.Information.TabIndex = 17;
             this.Information.TabStop = false;
             this.Information.Text = "Information";
@@ -187,20 +194,85 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Location = new System.Drawing.Point(346, 185);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(328, 188);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 44);
+            this.button1.Size = new System.Drawing.Size(112, 38);
             this.button1.TabIndex = 25;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnSave);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtGain);
+            this.groupBox1.Controls.Add(this.txtOffset);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Location = new System.Drawing.Point(496, 57);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(292, 249);
+            this.groupBox1.TabIndex = 61;
+            this.groupBox1.TabStop = false;
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(78, 179);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(120, 38);
+            this.btnSave.TabIndex = 58;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Silver;
+            this.label1.Location = new System.Drawing.Point(15, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 20);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Gain : ";
+            // 
+            // txtGain
+            // 
+            this.txtGain.Location = new System.Drawing.Point(97, 45);
+            this.txtGain.Name = "txtGain";
+            this.txtGain.Size = new System.Drawing.Size(118, 27);
+            this.txtGain.TabIndex = 32;
+            // 
+            // txtOffset
+            // 
+            this.txtOffset.Location = new System.Drawing.Point(96, 92);
+            this.txtOffset.Name = "txtOffset";
+            this.txtOffset.Size = new System.Drawing.Size(118, 27);
+            this.txtOffset.TabIndex = 44;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.Silver;
+            this.label16.Location = new System.Drawing.Point(15, 92);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(57, 20);
+            this.label16.TabIndex = 54;
+            this.label16.Text = "Offset :";
+            // 
             // FDeviceInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(679, 384);
+            this.ClientSize = new System.Drawing.Size(837, 385);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Information);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FDeviceInfo";
@@ -208,8 +280,11 @@
             this.Load += new System.EventHandler(this.FDeviceInfo_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FDeviceInfo_KeyDown);
             this.Controls.SetChildIndex(this.Information, 0);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Information.ResumeLayout(false);
             this.Information.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -230,5 +305,11 @@
         private System.Windows.Forms.MaskedTextBox txtRes;
         private System.Windows.Forms.MaskedTextBox txtSeialnumber;
         private System.Windows.Forms.MaskedTextBox txtVer;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox txtGain;
+        public System.Windows.Forms.TextBox txtOffset;
+        private System.Windows.Forms.Label label16;
     }
 }

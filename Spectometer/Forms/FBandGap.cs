@@ -14,8 +14,8 @@ namespace Spectometer.Forms
     public partial class FBandGap : F_Base
     {
         public bool IsRun;
-        public float [] Yvalues=new float[2090];
-        public float [] Xvalues=new float [2090];
+        public float [] Yvalues=new float[DeviceType.NumberOfIndex];
+        public float [] Xvalues=new float [DeviceType.NumberOfIndex];
         float   nval = 0f;
         SaveFileDialog saveExcel = new SaveFileDialog();
         public FBandGap()
@@ -59,13 +59,13 @@ namespace Spectometer.Forms
 
                 chart1.Series[0].Points.Clear();
                 float Thinkness = Convert.ToInt16(textBox1.Text);
-                float[] abso = new float[2090];
-                float[] hv = new float[2090];
-                double[] alphahv = new double[2090];
-                for (int i = 1; i < 2090; i++)
+                float[] abso = new float[DeviceType.NumberOfIndex];
+                float[] hv = new float[DeviceType.NumberOfIndex];
+                double[] alphahv = new double[DeviceType.NumberOfIndex];
+                for (int i = 1; i < DeviceType.NumberOfIndex; i++)
                 {
                     abso[i] = Yvalues[i] / Thinkness;
-                    hv[i] = 1240 / Xvalues[2090- i];
+                    hv[i] = 1240 / Xvalues[DeviceType.NumberOfIndex- i];
                     float result = abso[i] * hv[i];
                     alphahv[i] = Math.Pow(Convert.ToDouble(result), nval);
                     chart1.Series[0].Points.AddXY(hv[i], alphahv[i]);

@@ -22,13 +22,15 @@ namespace Spectometer.Forms
         SofwaretProperties softwarepro = new Spectometer.SofwaretProperties();
         private void FLamp_Load(object sender, EventArgs e)
         {
-            var filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SoftwareSetup.dat");
+            var filename = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "Spectrometer\\SoftwareSetup.dat");
 
             IFormatter formatter = new BinaryFormatter();
             FileStream serializationStream = new FileStream(filename, FileMode.Open, FileAccess.Read);
             softwarepro = formatter.Deserialize(serializationStream) as SofwaretProperties;
             chkTangestanLamp.Checked = softwarepro.Tngestan;
             chkUVLamp.Checked = softwarepro.Dutrium;
+            chNanoLed.Checked = softwarepro.NanoLed;
+
             serializationStream.Close();
             
         }
@@ -37,7 +39,8 @@ namespace Spectometer.Forms
         {
             softwarepro.Tngestan = chkTangestanLamp.Checked;
             softwarepro.Dutrium = chkUVLamp.Checked;
-            var filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SoftwareSetup.dat");
+            softwarepro.NanoLed = chNanoLed.Checked;
+            var filename = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "Spectrometer\\SoftwareSetup.dat");
 
             IFormatter formatter = new BinaryFormatter();
             FileStream serializationStream = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);

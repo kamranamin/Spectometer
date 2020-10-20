@@ -260,7 +260,7 @@ namespace Spectometer.Forms
                 //int num = r.Next(1, dataGridView1.Rows.Count);
                 if (dataGridView1.Rows.Count < 2)
                 {
-                    MessageBox.Show("Please input more than two values");
+                    MessageBox.Show(" input  must be more than two values");
                     return;
                 }
 

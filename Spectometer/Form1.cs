@@ -32,13 +32,14 @@ namespace Spectometer
     {
 
         private EnScixLibrary.EnScix ComportInterfacecs = new EnScixLibrary.EnScix();
-        int numPixel = 2090;
+        private EnScix EnScix = new EnScix();
+        int numPixel;
         private double prevXMax = 0;
         private double prevXMin = 0;
         private double prevYMax = 0;
         private double prevYMin = 0;
         private Point mDown = Point.Empty;
-
+       
         bool PortConnectionStatus = false;
         private byte[] SettingData = new byte[40];
         private float[] MainData, DataForShow;
@@ -49,10 +50,7 @@ namespace Spectometer
         private byte[] CounterValue = new byte[16];
         private bool isRun = false;
         double[] x;
-        float[][] AverageData = new float[][] {
-            new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a],
-            new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a], new float[0x82a]
-        };
+        float[][] AverageData;
         private Thread threadGetData;
         int NumberOfFrame = 1;
         float[] numScop;
@@ -94,8 +92,8 @@ namespace Spectometer
         FDeviceInfo deviceInfo = new FDeviceInfo();
         SpectometrMode Mode;
 
-        float[] darkData=new float[2090];
-        float[] refrenceData=new float[2090];
+        float[] darkData;
+        float[] refrenceData;
         string ExperimentName;
         bool tangestanIs = false;
         bool shuterIs = false;
@@ -107,6 +105,8 @@ namespace Spectometer
         private float _XmapC2 = 0f;
         private float _XmapC3 = 0f;
         private float _XmapI = 0f;
+        private float _XmapC4 = 0f;
+        private float _XmapC5 = 0f;
         private float _IrradianceX1 = 0f;
         private float _IrradianceX2 = 0f;
         private float _IrradianceY1 = 0f;
@@ -165,11 +165,12 @@ namespace Spectometer
         enum SpectometrMode { Scope, Transmittance, Absorbance, Irradiance, Raman, Reflectance, ND1, ND2, ND3, ND4, calc, Fluorescence };
         enum d { Nd1, Nd2, Nd3, Nd4 };
         d de;
-        public float[] dt=new float[2090];
-        float[] xvalue=new float[2090];
+        public float[] dt;
+        float[] xvalue;
 
         private void SaveEnvironment()
         {
+          
             try
             {
 
@@ -196,6 +197,8 @@ namespace Spectometer
             }
 
         }
+        bool _nanoLed;
+        bool _Durim;
         private void LoadSofwareProperties()
         {
             try
@@ -226,6 +229,8 @@ namespace Spectometer
                 _XmapC1 = SoftwarePr.XmapC1;
                 _XmapC2 = SoftwarePr.XmapC2;
                 _XmapC3 = SoftwarePr.XmapC3;
+                _XmapC4 = SoftwarePr.XmapC4;
+                _XmapC5 = SoftwarePr.XmapC5;
                 _XmapI = SoftwarePr.XmapI;
                 _YmapC1 = SoftwarePr.YmapC1;
                 _YmapC2 = SoftwarePr.YmapC2;
@@ -250,6 +255,9 @@ namespace Spectometer
                 _FluorescenceY1 = SoftwarePr.FluorescenceY1;
                 _FluorescenceY2 = SoftwarePr.FluorescenceY2;
                 _EnableBaseLine = SoftwarePr.EnableBaseLine;
+                _Durim = SoftwarePr.Dutrium;
+                _nanoLed = SoftwarePr.NanoLed;
+
                 serializationStream.Close();
 
 
@@ -281,9 +289,9 @@ namespace Spectometer
                 serializationStream.Close();
                 serializationStream.Dispose();
                 numricalAverage.Value =Convert.ToDecimal(this.Average);
-                numrSmosthing.Text = Convert.ToString(this.Smoothing);
+                numrSmosthing.Value  = Convert.ToDecimal(this.Smoothing);
                 numricalLampBrightnes.Value = this.LampBrightness;
-                numricIntegrationTime.Value = (this.IntegrationTime / 1000);
+                numricIntegrationTime.Value = IntegrationTime ;
                
 
             }
@@ -342,7 +350,7 @@ namespace Spectometer
             //   var ar= (SeriesChartType[]) Enum.GetValues(typeof(SeriesChartType)).;
 
 
-
+            
             cmbChartType.DataSource = ((SeriesChartType[])Enum.GetValues(typeof(SeriesChartType))).OrderBy(p => p.ToString()).ToArray(); ;
             //LoadSofwareProperties();
             //LoadEnvironment();
@@ -376,8 +384,7 @@ namespace Spectometer
             //}
             //var refFilename = Path.Combine(System.Environment.CurrentDirectory, "Reference.dat");
             //var darkFileName = Path.Combine(System.Environment.CurrentDirectory, "Dark.dat");
-            refrenceData = dtAnalys.ReadSavedPacket("Reference.dat");
-            darkData = dtAnalys.ReadSavedPacket("Dark.dat");
+
 
 
 
@@ -385,6 +392,7 @@ namespace Spectometer
 
 
         }
+        bool DarkRefreceInvalid;
         FBandGap bandgapFrm = new FBandGap();
         private void BandGapTimet_Tick(object sender, EventArgs e)
 
@@ -586,6 +594,7 @@ namespace Spectometer
 
 
                 darkData = dtAnalys.ReadSavedPacket(filename);
+                DarkRefreceInvalid = true;
             }
             else
             {
@@ -636,15 +645,21 @@ namespace Spectometer
                 shuterIs = false;
             }
         }
-
+        int cmbselct = 0;
         private void _btn_opn_Click(object sender, EventArgs e)
         {
 
            // txtSeriesTiltle.Text = "WorkSpace1";
 
-            this.newExperiment.txtExperimentName.Text = "Spec" + Convert.ToString((int)(this.chart1.Series.Count + 1));
+         
 
+            newExperiment.comboBox1.SelectedItem= newExperiment.comboBox1.Items.IndexOf(cmbselct).ToString();
+            newExperiment.comboBox1.Enabled = false;
+            ScopSeriesCount++;
+            this.newExperiment.txtExperimentName.Text = "Spec" + Convert.ToString((int)ScopSeriesCount);
             this.newExperiment.ShowDialog();
+         
+          
             this.newExperiment.Focus();
 
             if (newExperiment.DialogResult == DialogResult.OK)
@@ -652,6 +667,7 @@ namespace Spectometer
 
                 IsRunStart = true;
                 string text = this.newExperiment.txtExperimentName.Text;
+                
                 if (this.chart1.Series.IsUniqueName(text))
                 {
                     this.ExperimentName = text;
@@ -667,6 +683,8 @@ namespace Spectometer
                             break;
                     }
                 }
+                if (!btnDelete.Enabled)
+                    btnDelete.Enabled = true;
                 this.chart1.Legends["Legend1"].Title = txtSeriesTiltle.Text;
                 chart1.Series[ExperimentName].ChartType = (SeriesChartType)cmbChartType.SelectedItem;
                 chart1.Series[ExperimentName].BorderWidth = trackBar1.Value;
@@ -859,6 +877,7 @@ namespace Spectometer
             strArray2[0] = "Error";
             string[] strArray = strArray2;
             ComportInterfacecs.SettingDataReadyToRead += new EventHandler(SettingDataReceivedEvent);
+            //ComportInterfacecs.sensorType = 521;
             strArray = this.ComportInterfacecs.FindConnectedDevices();
             if (strArray[0] == "Error")
             {
@@ -875,23 +894,38 @@ namespace Spectometer
                 btnStart.Enabled = true;
 
 
-
+               
                 ComportInterfacecs.DataReadyToRead += new EventHandler(DataReceivedEvent);
+                SerialPortService.PortsChanged += SerialPortService_PortsChanged;
+                ComportInterfacecs.ADCProgramInitialValue((byte)SoftwarePr.Gain, Convert.ToInt16(SoftwarePr.Offset));
 
                 ComportInterfacecs.GetChipTemperature();
                 System.Threading.Thread.Sleep(100);
 
-                ComportInterfacecs.ADCProgramInitialValue(0, 0);
                 // ComportInterfacecs.DeuteriumLightSourceControl(false );
                 PortConnectionStatus = true;
 
                 ComportInterfacecs.StatusComport();
                 IsConected = true;
                 connectToDeviceToolStripMenuItem.Enabled = false;
-
+               
             }
 
         }
+
+        private void SerialPortService_PortsChanged(object sender, PortsChangedArgs e)
+        {
+            isRun = false;
+            btnStart.Image = Properties.Resources.Media_Play2;
+            btnStart.Text = "Start";
+            ComportInterfacecs.StopReadingImageSensor();
+            ComportInterfacecs.DiscardBufferPort();
+            ComportInterfacecs.StopRead = true;
+            chTimeSeries.Checked = false;
+
+            //  MessageBox.Show(e.EventType.ToString());
+        }
+
         private void Conecting()
         {
             Conect();
@@ -912,19 +946,19 @@ namespace Spectometer
         {
             try
             {
-                Conecting();
-                this.Hide();
-                progressBar1.Visible = false;
-                SplashScreen sp = new SplashScreen();
-                sp.ShowDialog();
-                this.Show();
-                SplashScreen sp1 = new SplashScreen();
-                sp1.ShowDialog(); progressBar1.Visible = false;
-              
-                chart1.MouseWheel += new MouseEventHandler(this.ChartMOuseWhell);
-
                 LoadEnvironment();
                 LoadSofwareProperties();
+                Conecting();
+             
+                progressBar1.Visible = false;
+                SplashScreen sp1 = new SplashScreen();
+                sp1.ShowDialog(); progressBar1.Visible = false;
+                this.Show();
+                cmbChartType.SelectedIndex = cmbChartType.FindStringExact("Line");
+
+                chart1.MouseWheel += new MouseEventHandler(this.ChartMOuseWhell);
+
+             
 
 
 
@@ -943,7 +977,9 @@ namespace Spectometer
 
                 this.chart1.ChartAreas["ChartArea1"].AxisY.Minimum = _ScopeY1; ;
                 this.chart1.ChartAreas["ChartArea1"].AxisY.Maximum = _ScopeY2; ;
-                this.chart1.ChartAreas["ChartArea1"].AxisY.Interval = 10000.0;
+                this.chart1.ChartAreas["ChartArea1"].AxisY.Interval = 1000;
+
+           
                 chart1.ChartAreas[0].AxisY.LabelStyle.Format = "{0}";
 
                 chart1.ChartAreas[0].AxisX.LabelStyle.Format = "{0}";
@@ -978,7 +1014,8 @@ namespace Spectometer
                 chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.FromArgb(192, 192, 192);
                 chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.FromArgb(192, 192, 192);
                 // chart1.Series[ExperimentName].Color =  colorPicker1.Value;
-                cmbChartType.SelectedIndex = cmbChartType.FindStringExact("Line");
+              
+                
               //  ComportInterfacecs.PeriodicImageSensorRead(this.IntegrationTime);
               //  isRun = true;
               //  btnStart.Image = Properties.Resources.stop;
@@ -986,6 +1023,7 @@ namespace Spectometer
                 chart1.ChartAreas[0].InnerPlotPosition.Auto = true;
             
                 HideColorBar();
+             
 
             }catch (Exception ex)
             {
@@ -996,6 +1034,7 @@ namespace Spectometer
            
 
         }
+
         private void HideColorBar()
         {
             try
@@ -1143,7 +1182,7 @@ namespace Spectometer
             try
 
             {
-
+              
 
                 MainData = ((ComportDataReceiveEventArgs)arg).GetReceivedData();
                 base.Invoke(new EventHandler(ShowData));
@@ -1198,41 +1237,94 @@ namespace Spectometer
                 {
                     this.NumberOfFrame = 1;
                 }
-                Array.Copy(this.MainData, this.AverageData[this.NumberOfFrame - 1], numPixel);
+                float[] extendedData = new float[numPixel];
+                if (numPixel == 580)
+                {
+                   
+                    for (int i = 0; i < 580; i++)
+                    {
+                       
+                        extendedData[i] = MainData[i/2];
+                        extendedData[i+1] = (MainData[i/2] + MainData[(i / 2 )+1])/2 ;
+                        i++;
+
+                    }
+                    Array.Copy(extendedData, this.AverageData[this.NumberOfFrame - 1], numPixel);
+                }
+                else
+                {
+                    Array.Copy(this.MainData, this.AverageData[this.NumberOfFrame - 1], numPixel);
+                }
                 float[] numArray = (from k in Enumerable.Range(0, this.AverageData[this.NumberOfFrame - 1].Length) select this.AverageData.Sum<float[]>((Func<float[], float>)(a => a[k]))).ToArray<float>();
 
-
-
-                for (int j = 0; j < numPixel; j++)
+                int startFrom=0;
+              if (numPixel==580)
                 {
+                     double C92E;
+            for (int i = 0; i < 580; i++)
+            {
+                C92E = i / 2 + 1;          // 340 t0 850nm
 
-                    numArray[j] /= (float)num;
-                    xvalue[j] = Convert.ToSingle((_XmapC3 * Math.Pow(j, 3)) + (_XmapC2 * (Math.Pow(j, 2)) + (_XmapC1 * j)) + _XmapI);
-
-                    if (SoftwarePr.XvalCM)
-                    {
-
-
-                        if (j < 10)
-                            xvalue[j] = 0;
-                        else
-                            xvalue[j] = 10000000 / xvalue[j];
-                        if (float.IsInfinity(xvalue[j]) || float.IsNaN(xvalue[j]))
-                            xvalue[j] = xvalue[j-1];
+                        xvalue[i] = Convert.ToSingle(_XmapI)
+                            + Convert.ToSingle(_XmapC1 * (float)C92E)
+                           + Convert.ToSingle(_XmapC2 * Math.Pow((float)C92E, 2))
+                           + Convert.ToSingle(_XmapC3 * Math.Pow((float)C92E, 3)) + Convert.ToSingle(_XmapC4 * Math.Pow((float)C92E, 4)) + Convert.ToSingle(_XmapC5 * Math.Pow((float)C92E, 5));
 
 
-                   }
-                    for (int m = 0; m < 10; m++)
-                        xvalue[m] = xvalue[10];
-                    if(SoftwarePr.XvalCM)
-                    {
-                        chart1.ChartAreas[0].AxisX.Interval=50000;
-                        chart1.ChartAreas[0].AxisX.Maximum = 1000000;
+
+  
+                        //     (SpectCoeffiecientB3) * (Math.Pow(C92E, 3)) + (SpectCoeffiecientB4) * (Math.Pow(C92E, 4)) + (SpectCoeffiecientB5) * (Math.Pow(C92E, 5)));
+
+                        C92E = i / 2 + 1.5;
+                i = i + 1;
+
+                        xvalue[i] = Convert.ToSingle(_XmapI)
+                           + Convert.ToSingle(_XmapC1 * (float)C92E)
+                          + Convert.ToSingle(_XmapC2 * Math.Pow((float)C92E, 2))
+                          + Convert.ToSingle(_XmapC3 * Math.Pow((float)C92E, 3)) + Convert.ToSingle(_XmapC4 * Math.Pow((float)C92E, 4)) + Convert.ToSingle(_XmapC5 * Math.Pow((float)C92E, 5));
+                        // XAxisExtend[i] = (SpectCoeffiecientA0 + SpectCoeffiecientB1 * C92E + (SpectCoeffiecientB2) * (Math.Pow(C92E, 2)) +
+                        //  (SpectCoeffiecientB3) * (Math.Pow(C92E, 3)) + (SpectCoeffiecientB4) * (Math.Pow(C92E, 4)) + (SpectCoeffiecientB5) * (Math.Pow(C92E, 5)));
                     }
 
-
                 }
-               
+              
+              else
+                {
+                    for (int j = 0; j < numPixel; j++)
+                    {
+                        startFrom++;
+                        numArray[j] /= (float)num;
+
+                        xvalue[j] = Convert.ToSingle(_XmapC5 * Math.Pow(startFrom, 5)) + Convert.ToSingle(_XmapC4 * Math.Pow(startFrom, 4))
+                            + Convert.ToSingle((_XmapC3 * Math.Pow(startFrom, 3)) + (_XmapC2 * Math.Pow(startFrom, 2) + (_XmapC1 * startFrom)) + Convert.ToSingle(3.165694139E+02));
+
+
+
+
+                        if (SoftwarePr.XvalCM)
+                        {
+
+
+                            if (j < 10)
+                                xvalue[j] = 0;
+                            else
+                                xvalue[j] = 10000000 / xvalue[j];
+                            if (float.IsInfinity(xvalue[j]) || float.IsNaN(xvalue[j]))
+                                xvalue[j] = xvalue[j - 1];
+
+
+                        }
+                        for (int m = 0; m < 10; m++)
+                            xvalue[m] = xvalue[10];
+                        if (SoftwarePr.XvalCM)
+                        {
+                            chart1.ChartAreas[0].AxisX.Interval = 50000;
+                            chart1.ChartAreas[0].AxisX.Maximum = 1000000;
+                        }
+
+
+                    }
+                }
 
                 //for (int d = Smoothing; d < numPixel; d++)
                 //{
@@ -1361,7 +1453,7 @@ namespace Spectometer
 
                     }
 
-                    DataForShow = (dtAnalys.Transmittance(numScop, darkData, refrenceData));
+                    DataForShow = dtAnalys.Transmittance(numScop, darkData, refrenceData);
                     numSmoothing = dtAnalys.SmoothingS(DataForShow, Smoothing);
                     dt = numSmoothing;
 
@@ -1438,7 +1530,8 @@ namespace Spectometer
 
                     if (darkData.Length != numPixel || refDt.Length != numPixel)
                     {
-
+                        label9.Text = "Refernce data or Dark data Not valid.Try aagin";
+                        return;
                     }
                     numScop = dtAnalys.SmoothingS(numSmoothing, Smoothing);
                     dt = numScop;
@@ -1495,7 +1588,7 @@ namespace Spectometer
                 if (Mode == SpectometrMode.ND1 || Mode == SpectometrMode.ND2 || Mode == SpectometrMode.ND3 || Mode == SpectometrMode.ND4)
                 {
 
-                    chart1.Series[ExperimentName].Points.DataBindXY(xvalue, ND1(xvalue));
+                   // chart1.Series[ExperimentName].Points.DataBindXY(xvalue, ND1(xvalue));
                     label8.Text = Mode.ToString();
 
                 }
@@ -1684,20 +1777,21 @@ namespace Spectometer
 
             //   float[] abs =  dtAnalys.Absorbance(DataForShow , darkData, refrenceData);
 
-            for (int i = 2; i < 2089; i++)
+            for (int i = 2; i < numPixel-1; i++)
             {
-                double deltaX = (xval[i + 1] - xval[i - 1]);
-                Nd1[i] = ((numSmoothing[i + 1] - numSmoothing[i - 1]) / (2 * deltaX));
+                double deltaX = xval[i + 1] - xval[i - 1];
+                Nd1[i] = (numSmoothing[i + 1] - numSmoothing[i - 1]) / (2 * deltaX);
 
 
+                
 
+                Nd2[i] = (Nd1[i + 1] - Nd1[i - 1]) / Math.Pow(deltaX, 2);
 
-                Nd2[i] = (Nd1[i + 1] - Nd1[i - 1]) / (Math.Pow(deltaX, 2));
+                Nd3[i] = (Nd2[i + 1] - Nd2[i - 1]) / (xval[i + 1] - xval[i - 1]);
 
-                Nd3[i] = ((Nd2[i + 1] - Nd2[i - 1]) / (xval[i + 1] - xval[i - 1]));
-
-                Nd4[i] = ((Nd3[i + 1] - Nd3[i - 1]) / (xval[i + 1] - xval[i - 1]));
-
+                Nd4[i] = (Nd3[i + 1] - Nd3[i - 1]) / (xval[i + 1] - xval[i - 1]);
+             
+                  
 
 
             }
@@ -1709,6 +1803,11 @@ namespace Spectometer
                 Nd = Nd3;
             if (de == d.Nd4)
                 Nd = Nd4;
+            for (int m = 0; m < Nd.Length; m++)
+            {
+                if (double.IsNaN(Nd[m]) || double.IsInfinity(Nd[m]))
+                    Nd[m] = 0;
+            }
 
             return Nd;
 
@@ -1765,9 +1864,9 @@ namespace Spectometer
             // deCounter.lblRes.Text = "";
             fSetting.lblDeuterium.Text = "";
 
-            double n1 = ((CounterValue[0] + (CounterValue[1] * 256) + (CounterValue[2] * (2 * 256)) + (CounterValue[3] * (256 * 3))) * 0.2);
-            double n2 = ((CounterValue[4] + (CounterValue[5] * 256) + (CounterValue[6] * (2 * 256)) + (CounterValue[7] * (256 * 3))) * 0.2);
-            double n3 = ((CounterValue[8] + (CounterValue[9] * 256) + (CounterValue[10] * (2 * 256)) + (CounterValue[11] * (256 * 3)) * 0.2));
+            double n1 = (CounterValue[0] + (CounterValue[1] * 256) + (CounterValue[2] * (2 * 256)) + (CounterValue[3] * (256 * 3))) * 0.2;
+            double n2 = (CounterValue[4] + (CounterValue[5] * 256) + (CounterValue[6] * (2 * 256)) + (CounterValue[7] * (256 * 3))) * 0.2;
+            double n3 = (CounterValue[8] + (CounterValue[9] * 256) + (CounterValue[10] * (2 * 256)) + CounterValue[11] * (256 * 3)) * 0.2;
 
             TimeSpan time = TimeSpan.FromSeconds(n1);
             TimeSpan time2 = TimeSpan.FromSeconds(n2);
@@ -1835,10 +1934,11 @@ namespace Spectometer
             //this.deviceInfo.temp.Text = this.deviceInfo.temp.Text + Convert.ToChar(this.ReadSerialnumber[26]);
             //this.deviceInfo.temp.Text = this.deviceInfo.temp.Text + Convert.ToChar(this.ReadSerialnumber[27]);
         }
-        float[] s = new float[2090];
+        float[] s;
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            s = new float[numPixel];
             #region new Board
             //    try
             //    {
@@ -1940,6 +2040,8 @@ namespace Spectometer
 
             if (isRun == false)
                 {
+                    if ((chart1.Series.Count == 1 && !chart1.Series.IsUniqueName("UV-IR")) || chart1.Series.Count == 0)
+                        return;
                     ComportInterfacecs.PeriodicImageSensorRead(this.IntegrationTime);
                     isRun = true;
                     btnStart.Image = Properties.Resources.stop;
@@ -2019,14 +2121,14 @@ namespace Spectometer
                             X = X + (A[m - 1] * X2[m - 1] * dt1[m]);
                             Y = Y + (A[m - 1] * Y2[m - 1] * dt1[m]);
                             Z = Z + (A[m - 1] * Z2[m - 1] * dt1[m]);
-                            Kcolor += (A[m - 1] * Y2[m - 1]);
+                            Kcolor += A[m - 1] * Y2[m - 1];
                         }
                         else
                         {
                             X = X + (A[m] * X2[m] * dt1[m]);
                             Y = Y + (A[m] * Y2[m] * dt1[m]);
                             Z = Z + (A[m] * Z2[m] * dt1[m]);
-                            Kcolor += (A[m] * Y2[m]);
+                            Kcolor += A[m] * Y2[m];
                         }
 
 
@@ -2047,7 +2149,7 @@ namespace Spectometer
                         X = X + (A[k] * X10[k] * dt1[k]);
                         Y = Y + (A[k] * Y10[k] * dt1[k]);
                         Z = Z + (A[k] * Z10[k] * dt1[k]);
-                        Kcolor += (A[k] * Y10[k]);
+                        Kcolor += A[k] * Y10[k];
                         k = k + 1;
                     }
                     Kcolor = 100 / Kcolor;
@@ -2066,7 +2168,7 @@ namespace Spectometer
                         X = X + (D65[k] * X10[k] * dt[k]);
                         Y = Y + (D65[k] * Y10[k] * dt[k]);
                         Z = Z + (D65[k] * Z10[k] * dt[k]);
-                        Kcolor += (D65[k] * Y10[k]);
+                        Kcolor += D65[k] * Y10[k];
                         k = k + 1;
                     }
                     Kcolor = 100 / Kcolor;
@@ -2098,14 +2200,14 @@ namespace Spectometer
                             X = X + (A[m - 1] * X2[m - 1] * dt1[m]);
                             Y = Y + (A[m - 1] * Y2[m - 1] * dt1[m]);
                             Z = Z + (A[m - 1] * Z2[m - 1] * dt1[m]);
-                            Kcolor += (D65[m - 1] * Y2[m - 1]);
+                            Kcolor += D65[m - 1] * Y2[m - 1];
                         }
                         else
                         {
                             X = X + (D65[m] * X2[m] * dt1[m]);
                             Y = Y + (D65[m] * Y2[m] * dt1[m]);
                             Z = Z + (D65[m] * Z2[m] * dt1[m]);
-                            Kcolor += (D65[m] * Y2[m]);
+                            Kcolor += D65[m] * Y2[m];
                         }
 
 
@@ -2198,7 +2300,7 @@ namespace Spectometer
 
         private double DeltaE76(double l1, double a1, double b1, double l2, double a2, double b2)
         {
-            return Math.Sqrt(Math.Pow((l1 - l2), 2) + Math.Pow((a1 - a2), 2) + Math.Pow((b1 - b2), 2));
+            return Math.Sqrt(Math.Pow(l1 - l2, 2) + Math.Pow(a1 - a2, 2) + Math.Pow(b1 - b2, 2));
         }
 
         private int findMin()
@@ -2221,7 +2323,7 @@ namespace Spectometer
             int pos1 = 0;
             for (int i = 0; i < xvalue.Length; i++)
             {
-                if ((int)xvalue[i] == chart1.ChartAreas[0].AxisX.Maximum)
+                if ((int)xvalue[i] == chart1.ChartAreas[0].AxisX.Maximum-1)
                 {
                     pos1 = i;
                     break;
@@ -2258,11 +2360,16 @@ namespace Spectometer
 
             //DllInterface.LineScanCamera_StopCameraCapture(lineScanCameraIndex);
 
-
+            
             if (PortConnectionStatus)
             {
                 ComportInterfacecs.TungstenLightSourceControl(true);
                 ComportInterfacecs.ShutterSourceControl(false);
+                ComportInterfacecs.NanoLED5LightSourceControl(false);
+                ComportInterfacecs.NanoLED6LightSourceControl(false);
+                ComportInterfacecs.NanoLED1LightSourceControl(false);
+                ComportInterfacecs.NanoAllLightSourceControl(false);
+
 
                 //  ComportInterfacecs.TungstenLightSourceControl(true);
 
@@ -2278,6 +2385,7 @@ namespace Spectometer
             {
                 foreach (Series series in chart1.Series)
                 {
+                    if (series.Name!=chart1.Series["UV-IR"].Name)
                     series.ChartType = (SeriesChartType)cmbChartType.SelectedItem;
                 }
 
@@ -2299,7 +2407,7 @@ namespace Spectometer
         {
             chart1.Titles.Clear();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             title1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             title1.Text = txtSeriesTiltle.Text;
             chart1.Titles.Add(title1);
@@ -2479,7 +2587,7 @@ namespace Spectometer
                 return;
             }
 
-            if ((Mode == SpectometrMode.Scope || Mode == SpectometrMode.Irradiance))
+            if (Mode == SpectometrMode.Scope || Mode == SpectometrMode.Irradiance)
             {
                 var a = @"Reference.dat";
               
@@ -2495,6 +2603,7 @@ namespace Spectometer
                 message("Reference Saved", true);
 
                 refrenceData = dtAnalys.ReadSavedPacket("Reference.dat");
+                DarkRefreceInvalid = true;
             }
             else
             {
@@ -2529,7 +2638,7 @@ namespace Spectometer
             this.chart1.ChartAreas["ChartArea1"].AxisX.Interval = 50;
             this.chart1.ChartAreas["ChartArea1"].AxisY.Minimum = _ScopeY1;
             this.chart1.ChartAreas["ChartArea1"].AxisY.Maximum = _ScopeY2;
-            this.chart1.ChartAreas["ChartArea1"].AxisY.Interval = 10000;
+            this.chart1.ChartAreas["ChartArea1"].AxisY.Interval = 1000;
             chart1.ChartAreas[0].AxisY.LabelStyle.Format = "{0}";
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "{0}";
             //  this.chart1.Series[this.ExperimentName].Points.AddXY((double)0.0, (double)0.0);
@@ -2546,7 +2655,7 @@ namespace Spectometer
 
         private void btnAbsorbance_Click(object sender, EventArgs e)
         {
-            if (darkData.Length != numPixel || refrenceData.Length != numPixel)
+            if (!DarkRefreceInvalid)
             {
                 label9.Text = "Dark Data or Reference Data Invalid";
                 return;
@@ -2598,7 +2707,7 @@ namespace Spectometer
 
         private void btnTransmittance_Click(object sender, EventArgs e)
         {
-            if (darkData.Length != numPixel || refrenceData.Length != numPixel)
+            if (!DarkRefreceInvalid)
             {
                 label9.Text = "Dark Data or Reference Data Invalid";
                 return;
@@ -2638,7 +2747,7 @@ namespace Spectometer
 
         private void btnIrradiance_Click(object sender, EventArgs e)
         {
-            if (darkData.Length != numPixel || refrenceData.Length != numPixel)
+            if (!DarkRefreceInvalid)
             {
                 label9.Text = "Dark Data or Reference Data Invalid";
                 return;
@@ -2673,12 +2782,34 @@ namespace Spectometer
             label8.Text = Mode.ToString();
             HideColorBar();
         }
-
+        bool IsDeleteEnd = false;
         private void btnDelete_Click(object sender, EventArgs e)
         {
+           
+            
             if (chart1.Series.Count > 0)
             {
+                if ((chart1.Series.Count == 1 && !chart1.Series.IsUniqueName("UV-IR")) || chart1.Series.Count == 0)
+                {
+                    isRun = false;
+                    btnStart.Image = Properties.Resources.Media_Play2;
+                    btnStart.Text = "Start";
+                    ComportInterfacecs.StopReadingImageSensor();
+                    ComportInterfacecs.DiscardBufferPort();
+                    ComportInterfacecs.StopRead = true;
+                    btnDelete.Enabled = false;
+                    chTimeSeries.Checked = false;
+                    IsDeleteEnd = true;
+                    return;
+                }
+                //if (cmbSeriesName.Items.Count <= 0)
+                //{
+                //    btnStart.PerformClick();
+                //    btnDelete.Enabled = false;
+                //    IsDeleteEnd = true;
 
+                //    return;
+                //}
                 if (cmbSeriesName.SelectedItem == "1nd Derivations")
                     ndDerivationsToolStripMenuItem2.Checked = false;
                 if (cmbSeriesName.SelectedItem == "2nd Derivations")
@@ -2687,7 +2818,8 @@ namespace Spectometer
                     ndDerivationsToolStripMenuItem4.Checked = false;
                 if (cmbSeriesName.SelectedItem == "4nd Derivations")
                     ndDerivationsToolStripMenuItem5.Checked = false;
-
+              
+                
                 Series seriesDelete = chart1.Series[cmbSeriesName.Text];
                 chart1.Series.Remove(seriesDelete);
                 cmbSeriesName.Items.Remove(cmbSeriesName.SelectedItem);
@@ -2696,6 +2828,7 @@ namespace Spectometer
 
 
                 foreach (Series s in chart1.Series)
+                    if (s.Name!="UV-IR")
                     cmbSeriesName.Items.Add(s.Name);
 
                 if (cmbSeriesName.Items.Count > 0)
@@ -2708,16 +2841,7 @@ namespace Spectometer
                     else
                         ExperimentName = cmbSeriesName.Items[cmbSeriesName.Items.Count - 1].ToString();
                 }
-                if (chart1.Series.Count == 0)
-                {
-                    isRun = false;
-                    btnStart.Image = Properties.Resources.Media_Play2;
-                    btnStart.Text = "Start";
-                    //ComportInterfacecs.StopReadingImageSensor();
-                    //ComportInterfacecs.DiscardBufferPort();
-                    //ComportInterfacecs.StopRead = true;
-                    chTimeSeries.Checked = false;
-                }
+               
             }
 
         }
@@ -2725,6 +2849,35 @@ namespace Spectometer
         private void btnlamp_Click(object sender, EventArgs e)
         {
             LoadSofwareProperties();
+            if (numPixel ==580)
+            {
+                if (!tangestanIs)
+                {
+                    if (SoftwarePr.NanoLed)
+                    {
+                        ComportInterfacecs.NanoLED5LightSourceControl(true);
+                        ComportInterfacecs.NanoLED6LightSourceControl(true);
+                    }
+                if (SoftwarePr.Dutrium)
+                        ComportInterfacecs.NanoAllLightSourceControl(true);
+
+                    btnlamp.Image = Properties.Resources.rec;
+                    tangestanIs = true;
+                    return;
+                }
+                else
+                {
+
+                    //  ComportInterfacecs.DeuteriumLightSourceControl(false);
+                    ComportInterfacecs.NanoLED5LightSourceControl(false);
+                    ComportInterfacecs.NanoLED6LightSourceControl(false);
+                    ComportInterfacecs.NanoAllLightSourceControl(false);
+                    btnlamp.Image = Properties.Resources.rec__1_;
+                    tangestanIs = false;
+                    return;
+                   
+                }
+            }
             if (!tangestanIs)
             {
 
@@ -2798,7 +2951,10 @@ namespace Spectometer
                 cmbSeriesName.Items.Clear();
                 cmbSeriesName.Text = "";
                 foreach (Series s in chart1.Series)
-                    cmbSeriesName.Items.Add(s.Name);
+                {
+                    if (s.Name != "UV-IR")
+                        cmbSeriesName.Items.Add(s.Name);
+                }
                 cmbSeriesName.SelectedItem = cmbSeriesName.Items[cmbSeriesName.Items.Count - 1];
                 string ext = Path.GetExtension(openFileDialog1.FileName);
                 if (ext == ".spec")
@@ -2919,18 +3075,18 @@ namespace Spectometer
             if (number > 26 && number <= 52)
             {
 
-                Char c = (Char)((96) + (number - 26));
+                Char c = Convert.ToChar(96 + (number - 26)) ;
                 result = "a" + c.ToString();
             }
             else if (number > 52)
             {
 
-                Char c = (Char)((96) + (number - 52));
+                Char c = (Char) (96 + (number - 52));
                 result = "b" + c.ToString();
             }
             else
             {
-                Char c = (Char)((96) + (number));
+                Char c = (Char)(96 + number);
                 result = c.ToString();
             }
             return result;
@@ -2986,7 +3142,7 @@ namespace Spectometer
                         }
 
                         progressBar1.Minimum = 0;
-                        progressBar1.Maximum = (int)(c / step) + export.checkBoxComboBox1.Items.Count;
+                        progressBar1.Maximum = (int)(c / step) + export.checkBoxComboBox1.Items.Count+1;
                         progressBar1.Value = 0;
                         xlWorkSheet.Cells[1] = "Wavelength";
 
@@ -3007,13 +3163,15 @@ namespace Spectometer
                                 //  wait = true;
 
 
-                                for (int j = findMin(); j < findMax(); j = j + step)
+                                for (int j = 0; j < numPixel; j = j + step)
                                 {
+                                    if (progressBar1.Value == progressBar1.Maximum)
+                                        progressBar1.Maximum += 1;
                                     progressBar1.Value++;
 
                                     if (firstCol)
-                                        xlWorkSheet.Cells[i, 1] = (item.Points[j].XValue.ToString("N0"));
-                                    var y = (item.Points[j].YValues[0]);
+                                        xlWorkSheet.Cells[i, 1] = item.Points[j].XValue.ToString("N0");
+                                    var y = item.Points[j].YValues[0];
                                     xlWorkSheet.Cells[i, SeresNmae] = y.ToString("N" + export.cmbpoint.SelectedItem.ToString());
 
 
@@ -3028,7 +3186,7 @@ namespace Spectometer
                                 firstCol = false;
                                 Microsoft.Office.Interop.Excel.Series series1 = ser.NewSeries();
                                 series1.Name = item.Name;
-                                string colY = Number2String((SeresNmae)) + "2" + ":" + Number2String((SeresNmae)) + i.ToString();
+                                string colY = Number2String(SeresNmae) + "2" + ":" + Number2String(SeresNmae) + i.ToString();
                                 string colX = "A2:A" + i.ToString();
                                 series1.Values = xlWorkSheet.get_Range(colY);
                                 series1.XValues = xlWorkSheet.get_Range(colX);
@@ -3108,7 +3266,7 @@ namespace Spectometer
 
             if (export.ShowDialog() == DialogResult.OK)
             {
-                for (int i = 0; i < chart1.Series.Count; i++)
+                for (int i = 0; i < chart1.Series.Count-1; i++)
                 {
                     if (export.checkBoxComboBox1.CheckBoxItems[i].Checked)
                         count++;
@@ -3183,7 +3341,7 @@ namespace Spectometer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (darkData.Length != numPixel || refrenceData.Length != numPixel)
+            if (!DarkRefreceInvalid)
             {
                 label9.Text = "Dark Data or Reference Data Invalid";
                 return;
@@ -3311,8 +3469,8 @@ namespace Spectometer
         private bool IsPanninig = false;
         private void btnReset_Click(object sender, EventArgs e)
         {
-            span *= 2;  // zoom in 2x each time
-            spany *= 2;
+            span *= 1.5;  // zoom in 2x each time
+            spany *= 1.5; 
             Axis ax = chart1.ChartAreas[0].AxisX;
             Axis ay = chart1.ChartAreas[0].AxisY;
             ax.ScaleView.Zoom(nextDPoint.X - span, nextDPoint.X + span);
@@ -3827,8 +3985,8 @@ namespace Spectometer
                 // stopeatchTimeseries.Start();
                 timeSeriesInterval = Convert.ToInt32(txtTimeInterval.Text);
                 timeSeriesDouration = Convert.ToInt32(txtDouration.Text);
-                timeSeries.Interval = (int)(TimeSpan.FromSeconds(timeSeriesInterval).TotalMilliseconds);
-                timeSeriesD.Interval = (int)(TimeSpan.FromMinutes(timeSeriesDouration).TotalMilliseconds);
+                timeSeries.Interval = (int)TimeSpan.FromSeconds(timeSeriesInterval).TotalMilliseconds;
+                timeSeriesD.Interval = (int)TimeSpan.FromMinutes(timeSeriesDouration).TotalMilliseconds;
                 timeSeries.Enabled = true;
                 timeSeriesD.Enabled = true;
 
@@ -3911,7 +4069,7 @@ namespace Spectometer
                 Thread.Sleep(Convert.ToInt32(txtTimeInterval.Text) * 1000);
 
 
-            } while (sw.ElapsedMilliseconds <= (timeSeriesDouration) * 60 * 1000);
+            } while (sw.ElapsedMilliseconds <= timeSeriesDouration * 60 * 1000);
             if (InvokeRequired)
             {
                 this.Invoke(new MethodInvoker(delegate { chTimeSeries.Checked = false; }));
@@ -4102,23 +4260,23 @@ namespace Spectometer
                             for (int i = 0; i < numPixel; i++)
                             {
 
-                                math[i] = (chart1.Series[fMath.cmb1cmb1.Text].Points[i].YValues[0]) + (chart1.Series[fMath.comboBox2.Text].Points[i].YValues[0]);
+                                math[i] = chart1.Series[fMath.cmb1cmb1.Text].Points[i].YValues[0] + chart1.Series[fMath.comboBox2.Text].Points[i].YValues[0];
 
                             }
                         }
-                        else if ((fMath.comboBox1.Text == "-"))
+                        else if (fMath.comboBox1.Text == "-")
                         {
                             for (int i = 0; i < numPixel; i++)
                             {
-                                math[i] = (chart1.Series[fMath.cmb1cmb1.Text].Points[i].YValues[0]) - (chart1.Series[fMath.comboBox2.Text].Points[i].YValues[0]);
+                                math[i] = chart1.Series[fMath.cmb1cmb1.Text].Points[i].YValues[0] - chart1.Series[fMath.comboBox2.Text].Points[i].YValues[0];
 
                             }
                         }
-                        else if ((fMath.comboBox1.Text == "*"))
+                        else if (fMath.comboBox1.Text == "*")
                         {
                             for (int i = 0; i < numPixel; i++)
                             {
-                                math[i] = (chart1.Series[fMath.cmb1cmb1.Text].Points[i].YValues[0]) * (chart1.Series[fMath.comboBox2.Text].Points[i].YValues[0]);
+                                math[i] = chart1.Series[fMath.cmb1cmb1.Text].Points[i].YValues[0] * chart1.Series[fMath.comboBox2.Text].Points[i].YValues[0];
                                 if (math[i] > (double)SoftwarePr.ScopeY2)
                                 {
                                     message("Overflow", false);
@@ -4129,11 +4287,11 @@ namespace Spectometer
 
                             }
                         }
-                        else if ((fMath.comboBox1.Text == "/"))
+                        else if (fMath.comboBox1.Text == "/")
                         {
                             for (int i = 0; i < numPixel; i++)
                             {
-                                math[i] = (chart1.Series[fMath.cmb1cmb1.Text].Points[i].YValues[0]) / (chart1.Series[fMath.comboBox2.Text].Points[i].YValues[0]);
+                                math[i] = chart1.Series[fMath.cmb1cmb1.Text].Points[i].YValues[0] / chart1.Series[fMath.comboBox2.Text].Points[i].YValues[0];
 
                             }
                         }
@@ -4189,7 +4347,7 @@ namespace Spectometer
 
         private void button3_Click_2(object sender, EventArgs e)
         {
-            if (darkData.Length != numPixel || refrenceData.Length != numPixel)
+            if (!DarkRefreceInvalid)
             {
                 label9.Text = "Dark Data or Reference Data Invalid";
                 return;
@@ -4336,6 +4494,7 @@ namespace Spectometer
                 clipboardSave = "Wave Length" + "\t";
                 for (int i = 0; i < chart1.Series.Count; i++)
                 {
+                    if (chart1.Series[i].Name!="UV-IR")
                     clipboardSave += chart1.Series[i].Name + "\t";
                 }
                 clipboardSave += System.Environment.NewLine;
@@ -4344,11 +4503,19 @@ namespace Spectometer
                     clipboardSave = clipboardSave + chart1.Series[0].Points[k].XValue.ToString() + "\t ";
                     for (int m = 0; m < chart1.Series.Count; m++)
                     {
-                        if (!string.IsNullOrEmpty(chart1.Series[m].Points[k].YValues.FirstOrDefault().ToString()))
-                            clipboardSave = clipboardSave + chart1.Series[m].Points[k].YValues.FirstOrDefault() + "\t ";
+                        if (chart1.Series[m].Name != "UV-IR")
+                        {
+                            if (!string.IsNullOrEmpty(chart1.Series[m].Points[k].YValues.FirstOrDefault().ToString()))
+                                clipboardSave = clipboardSave + chart1.Series[m].Points[k].YValues.FirstOrDefault() + "\t ";
+                            else
+                                clipboardSave = clipboardSave + "\t ";
+
+
+                           
+                        }
                         else
                             clipboardSave = clipboardSave + "\t ";
-
+                      
                     }
                     clipboardSave += System.Environment.NewLine;
                 }
@@ -4420,7 +4587,7 @@ namespace Spectometer
 
             try
             {
-                this.IntegrationTime = Convert.ToUInt32(numricIntegrationTime.Text) * 1000;
+                this.IntegrationTime = Convert.ToUInt32(numricIntegrationTime.Value) ;
                 if (isRun == true)
                 {
                     ComportInterfacecs.PeriodicImageSensorRead(this.IntegrationTime);
@@ -4437,11 +4604,14 @@ namespace Spectometer
 
         private void numricalAverage_ValueChanged(object sender, EventArgs e)
         {
-
+            
             this.NumberOfFrame = Convert.ToInt32(this.numricalAverage.Value);
-            for (int i = this.NumberOfFrame; i < 26; i++)
+            if (isRun)
             {
-                Array.Clear(this.AverageData[i], 0, numPixel);
+                for (int i = this.NumberOfFrame; i < 26; i++)
+                {
+                    Array.Clear(this.AverageData[i], 0, numPixel);
+                }
             }
 
 
@@ -4572,30 +4742,87 @@ namespace Spectometer
         {
             System.Diagnostics.Process.Start("help2.html");
         }
-
+        int ScopSeriesCount = 0;
         private void newSpectrumToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // txtSeriesTiltle.Text = "WorkSpace1";
+            // txtSeriesTiltle.Text = "WorkSpace1";
+            IsDeleteEnd = false;
             if (chart1.Series.Count > 0)
             {
+
                 DialogResult result = MessageBox.Show("Do you want to delete all series?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    while (chart1.Series.Count > 0) btnDelete_Click(sender, e);
+
+                    while (chart1.Series.Count > 0 && !IsDeleteEnd ) btnDelete_Click(sender, e);
 
                 }
 
             }
-            this.newExperiment.txtExperimentName.Text = "Spec" + Convert.ToString((int)(this.chart1.Series.Count + 1));
-
+            ScopSeriesCount++;
+           this.newExperiment.txtExperimentName.Text = "Spec" + Convert.ToString((int)ScopSeriesCount);
+           
             this.newExperiment.ShowDialog();
             this.newExperiment.Focus();
+            if (!btnDelete.Enabled)
+                btnDelete.Enabled = true;
 
             if (newExperiment.DialogResult == DialogResult.OK)
             {
 
                 IsRunStart = true;
                 string text = this.newExperiment.txtExperimentName.Text;
+
+                if (newExperiment.comboBox1.SelectedIndex == 0)
+                {
+                    ComportInterfacecs.deviceSensorType(0);
+                    DeviceType.NumberOfIndex = 2090;
+                    cmbselct = 0;
+                    btnShutter.Enabled = false;
+                    btnlamp.Enabled = false;
+                    numricalLampBrightnes.Enabled = false;
+                }
+                else if (newExperiment.comboBox1.SelectedIndex == 1)
+                {
+                    ComportInterfacecs.deviceSensorType(1);
+                    DeviceType.NumberOfIndex = 3070;
+                    cmbselct = 1;
+                }
+                else if (newExperiment.comboBox1.SelectedIndex == 2)
+                {
+                    ComportInterfacecs.deviceSensorType(2);
+                    DeviceType.NumberOfIndex = 3700;
+                    cmbselct = 2;
+                }
+                else if (newExperiment.comboBox1.SelectedIndex == 3)
+                {
+                    ComportInterfacecs.deviceSensorType(3);
+                    DeviceType.NumberOfIndex = 580;
+                    cmbselct = 3;
+                    btnShutter.Enabled = false;
+                    numricalLampBrightnes.Enabled = false;
+                }
+                numPixel = DeviceType.NumberOfIndex;
+                 darkData=new float[numPixel];
+                 refrenceData=new float[numPixel];
+                   dt=new float[numPixel];
+                   xvalue=new float[numPixel];
+                MainData = new float[numPixel];
+                 AverageData = new float[][] {
+            new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel],
+            new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel], new float[numPixel]
+
+        };
+
+                if (dtAnalys.ReadSavedPacket("Reference.dat").Length != DeviceType.NumberOfIndex)
+                    DarkRefreceInvalid = false;
+                else
+                {
+                    refrenceData = dtAnalys.ReadSavedPacket("Reference.dat");
+                    darkData = dtAnalys.ReadSavedPacket("Dark.dat");
+                    DarkRefreceInvalid = true;
+                }
+
                 if (this.chart1.Series.IsUniqueName(text))
                 {
                     this.ExperimentName = text;
@@ -4733,12 +4960,12 @@ namespace Spectometer
                                     //update graph on last line
                                     if (DllInterface.LineScanCamera_GetImageFrame_ByArray(lineScanCameraIndex, rawBuf, exBuf, 0, 0) == 1/*OK*/)
                                     {
-                                        int pixCount = (cameraImgWidth);
+                                        int pixCount = cameraImgWidth;
                                         float[] maindata = new float[pixCount];
                                         for (int q = 0; q < pixCount; q++)
                                         {
                                             int k = 2 * 1 * q;
-                                            maindata[q] = *((ushort*)(&rawBuf[k]));
+                                            maindata[q] = *(ushort*)&rawBuf[k];
 
                                         }
                                         MainData = maindata;
@@ -4791,7 +5018,7 @@ namespace Spectometer
                                         {
 
                                             numArray[j] /= (float)num;
-                                            xvalue[j] = Convert.ToSingle((_XmapC3 * Math.Pow(j, 3)) + (_XmapC2 * (Math.Pow(j, 2)) + (_XmapC1 * j)) + _XmapI);
+                                            xvalue[j] = Convert.ToSingle((_XmapC3 * Math.Pow(j, 3)) + (_XmapC2 * Math.Pow(j, 2) + (_XmapC1 * j)) + _XmapI);
 
 
                                         }
@@ -4924,7 +5151,7 @@ namespace Spectometer
 
                                             }
 
-                                            DataForShow = (dtAnalys.Transmittance(numScop, darkData, refrenceData));
+                                            DataForShow = dtAnalys.Transmittance(numScop, darkData, refrenceData);
                                             numSmoothing = dtAnalys.SmoothingS(DataForShow, Smoothing);
                                             dt = numSmoothing;
 
@@ -5228,12 +5455,12 @@ namespace Spectometer
                             //update graph on last line
                             if (DllInterface.LineScanCamera_GetImageFrame_ByArray(lineScanCameraIndex, rawBuf, exBuf, 0, 0) == 1/*OK*/)
                             {
-                                int pixCount = (cameraImgWidth);
+                                int pixCount = cameraImgWidth;
                                 float[] maindata = new float[pixCount];
                                 for (int q = 0; q < pixCount; q++)
                                 {
                                     int k = 2 * 1 * q;
-                                    maindata[q] = *((ushort*)(&rawBuf[k]));
+                                    maindata[q] = *(ushort*)&rawBuf[k];
 
                                 }
                                 MainData = maindata;
@@ -5301,7 +5528,7 @@ namespace Spectometer
                 {
 
                     numArray[j] /= (float)num;
-                    xvalue[j] = Convert.ToSingle((_XmapC3 * Math.Pow(j, 3)) + (_XmapC2 * (Math.Pow(j, 2)) + (_XmapC1 * j)) + _XmapI);
+                    xvalue[j] = Convert.ToSingle((_XmapC3 * Math.Pow(j, 3)) + (_XmapC2 * Math.Pow(j, 2) + (_XmapC1 * j)) + _XmapI);
 
 
                 }
@@ -5433,7 +5660,7 @@ namespace Spectometer
 
                     }
 
-                    DataForShow = (dtAnalys.Transmittance(numScop, darkData, refrenceData));
+                    DataForShow = dtAnalys.Transmittance(numScop, darkData, refrenceData);
                     numSmoothing = dtAnalys.SmoothingS(DataForShow, Smoothing);
                     dt = numSmoothing;
 
@@ -5706,6 +5933,28 @@ namespace Spectometer
             Conecting();
         }
 
+        private void Chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShutter_EnabledChanged(object sender, EventArgs e)
+        {
+            btnShutter.ForeColor = Color.Gray;
+        }
+
+        private void btnShutter_Paint(object sender, PaintEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            btn.Text = string.Empty;
+
+            TextFormatFlags flags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.WordBreak;   // center the text
+
+            Point p = new Point(e.ClipRectangle.Width + 10, e.ClipRectangle.Height / 2);
+            TextRenderer.DrawText(e.Graphics, "Shutter", btn.Font, p, btn.ForeColor, flags);
+        }
+
         private void numricalLampBrightnes_KeyUp(object sender, KeyEventArgs e)
         {
             numericUpDown1_ValueChanged(sender, e);
@@ -5772,7 +6021,7 @@ namespace Spectometer
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (darkData.Length != numPixel || refrenceData.Length != numPixel)
+            if (!DarkRefreceInvalid)
             {
                 label9.Text = "Dark Data or Reference Data Invalid";
                 return;
@@ -5842,8 +6091,11 @@ namespace Spectometer
 
         private void btnlamp_EnabledChanged(object sender, EventArgs e)
         {
-            btnlamp.ForeColor = Color.Red;
-            //  btnlamp  .BackColor = Color.AliceBlue;
+            if (DeviceType.NumberOfIndex == 2090)
+                btnlamp.ForeColor = Color.Gray;
+            else
+                btnlamp.ForeColor = Color.Red;
+          
         }
 
         private void btnlamp_Paint(object sender, PaintEventArgs e)
@@ -5899,13 +6151,13 @@ namespace Spectometer
             {
 
                 ciedata1.A[f] = Convert.ToSingle(xlRange.Cells[i, 2].Value2);
-                ciedata1.D65[f] = (float)(xlRange.Cells[i, 3].Value2);
-                ciedata1.X2[f] = (float)(xlRange.Cells[i, 4].Value2);
-                ciedata1.Y2[f] = (float)(xlRange.Cells[i, 5].Value2);
-                ciedata1.Z2[f] = (float)(xlRange.Cells[i, 6].Value2);
-                ciedata1.X10[f] = (float)(xlRange.Cells[i, 7].Value2);
-                ciedata1.Y10[f] = (float)(xlRange.Cells[i, 8].Value2);
-                ciedata1.Z10[f] = (float)(xlRange.Cells[i, 9].Value2);
+                ciedata1.D65[f] = (float)xlRange.Cells[i, 3].Value2;
+                ciedata1.X2[f] = (float)xlRange.Cells[i, 4].Value2;
+                ciedata1.Y2[f] = (float)xlRange.Cells[i, 5].Value2;
+                ciedata1.Z2[f] = (float)xlRange.Cells[i, 6].Value2;
+                ciedata1.X10[f] = (float)xlRange.Cells[i, 7].Value2;
+                ciedata1.Y10[f] = (float)xlRange.Cells[i, 8].Value2;
+                ciedata1.Z10[f] = (float)xlRange.Cells[i, 9].Value2;
                 f++;
 
             }
@@ -5950,11 +6202,11 @@ namespace Spectometer
             for (int i = 2; i <= rowCount - 1; i++)
             {
 
-                tstColor.blue[f] = (float)(xlRange.Cells[i, 1].Value2);
+                tstColor.blue[f] = (float)xlRange.Cells[i, 1].Value2;
 
-                tstColor.green[f] = (float)(xlRange.Cells[i, 2].Value2);
-                tstColor.pirole[f] = (float)(xlRange.Cells[i, 3].Value2);
-                tstColor.red[f] = (float)(xlRange.Cells[i, 4].Value2);
+                tstColor.green[f] = (float)xlRange.Cells[i, 2].Value2;
+                tstColor.pirole[f] = (float)xlRange.Cells[i, 3].Value2;
+                tstColor.red[f] = (float)xlRange.Cells[i, 4].Value2;
 
                 f++;
 

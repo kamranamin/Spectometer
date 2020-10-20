@@ -33,6 +33,7 @@
             this.chkTangestanLamp = new System.Windows.Forms.CheckBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.chNanoLed = new System.Windows.Forms.CheckBox();
             this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,12 +44,13 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.chNanoLed);
             this.groupBox10.Controls.Add(this.chkUVLamp);
             this.groupBox10.Controls.Add(this.chkTangestanLamp);
             this.groupBox10.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.groupBox10.Location = new System.Drawing.Point(22, 59);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(200, 90);
+            this.groupBox10.Size = new System.Drawing.Size(200, 126);
             this.groupBox10.TabIndex = 43;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Lamp";
@@ -82,7 +84,7 @@
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(136, 176);
+            this.btnCancel.Location = new System.Drawing.Point(137, 191);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(85, 31);
             this.btnCancel.TabIndex = 45;
@@ -97,13 +99,24 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(26, 176);
+            this.btnSave.Location = new System.Drawing.Point(27, 191);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(84, 31);
             this.btnSave.TabIndex = 44;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // chNanoLed
+            // 
+            this.chNanoLed.AutoSize = true;
+            this.chNanoLed.ForeColor = System.Drawing.Color.White;
+            this.chNanoLed.Location = new System.Drawing.Point(12, 85);
+            this.chNanoLed.Name = "chNanoLed";
+            this.chNanoLed.Size = new System.Drawing.Size(94, 24);
+            this.chNanoLed.TabIndex = 2;
+            this.chNanoLed.Text = "Nano Led";
+            this.chNanoLed.UseVisualStyleBackColor = true;
             // 
             // FLamp
             // 
@@ -133,5 +146,6 @@
         private System.Windows.Forms.CheckBox chkTangestanLamp;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.CheckBox chNanoLed;
     }
 }

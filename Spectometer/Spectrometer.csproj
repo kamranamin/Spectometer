@@ -86,9 +86,9 @@
     <Reference Include="Colourful">
       <HintPath>C:\Users\Develop Center\Documents\Visual Studio 2015\Projects\colorspace\colorspace\bin\Debug\Colourful.dll</HintPath>
     </Reference>
-    <Reference Include="EnScixLibrary, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="EnScixLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\EnScixLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\Users\Spectrom\Documents\EnScixLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -121,6 +121,7 @@
     <Compile Include="ChartData.cs" />
     <Compile Include="CieData.cs" />
     <Compile Include="ColorMeasurment.cs" />
+    <Compile Include="DeviceType.cs" />
     <Compile Include="DllInterface.cs" />
     <Compile Include="Forms\DeviceCounter.cs">
       <SubType>Form</SubType>
@@ -337,6 +338,9 @@
     <Compile Include="UserControl\SelectionWrappers\ListSelectionWrapper.cs" />
     <Compile Include="UserControl\SelectionWrappers\ObjectSelectionWrapper.cs" />
     <Compile Include="WaveToRbg.cs" />
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Resources\UV-IR.png" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

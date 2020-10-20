@@ -788,7 +788,7 @@ namespace Spectometer.Forms
         SaveFileDialog saveExcel = new SaveFileDialog();
         private String Number2String(int number)
         {
-            Char c = (Char)((97) + (number - 1));
+            Char c = (Char)(97 + (number - 1));
             return c.ToString();
         }
         private void label5_Click(object sender, EventArgs e)

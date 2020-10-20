@@ -36,6 +36,8 @@ namespace Spectometer.Forms
             txtXmapC1.Text = softwarepro.XmapC1.ToString();
             txtXmapC2.Text = softwarepro.XmapC2.ToString();
             txtXmapC3.Text = softwarepro.XmapC3.ToString();
+            txtXmapC4.Text = softwarepro.XmapC4.ToString();
+            txtXmapC5.Text = softwarepro.XmapC5.ToString();
             txtXmapI.Text = softwarepro.XmapI.ToString();
             txtYmapC1.Text = softwarepro.YmapC1.ToString();
             txtYmapC2.Text = softwarepro.YmapC2.ToString();
@@ -58,7 +60,10 @@ namespace Spectometer.Forms
                 softwarepro.XmapC1 = Convert.ToSingle(txtXmapC1.Text);
                 softwarepro.XmapC2 = Convert.ToSingle(txtXmapC2.Text);
                 softwarepro.XmapC3 = Convert.ToSingle(txtXmapC3.Text);
-                softwarepro.XmapI = Convert.ToSingle(txtXmapI.Text);
+                softwarepro.XmapC4 = Convert.ToSingle(txtXmapC4.Text);
+                 softwarepro.XmapC5 = Convert.ToSingle(txtXmapC5.Text);
+
+                 softwarepro.XmapI = Convert.ToSingle(txtXmapI.Text);
                 softwarepro.YmapC1 = Convert.ToSingle(txtYmapC1.Text);
                 softwarepro.YmapC2 = Convert.ToSingle(txtYmapC2.Text);
                 softwarepro.YmapC3 = Convert.ToSingle(txtYmapC3.Text);
@@ -67,6 +72,7 @@ namespace Spectometer.Forms
                 softwarepro.YmapC6 = Convert.ToSingle(txtYmapC6.Text);
                 softwarepro.YmapC7 = Convert.ToSingle(txtYmapC7.Text);
                 softwarepro.YmapC8 = Convert.ToSingle(txtYmapC8.Text);
+
                 softwarepro.EnableBaseLine = chEnableBaselINE.Checked;
                 softwarepro.BaseLine = Convert.ToInt16(txtBaseLine.Text);
             IFormatter formatter = new BinaryFormatter();

@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this._pnl_up_border = new System.Windows.Forms.Panel();
             this._pnl_down_border = new System.Windows.Forms.Panel();
             this._pnl_right_border = new System.Windows.Forms.Panel();
@@ -75,7 +75,6 @@
             this.btnDark = new System.Windows.Forms.Button();
             this.btnRefrence = new System.Windows.Forms.Button();
             this._pnl_split4 = new System.Windows.Forms.Panel();
-            this.btnStart = new Spectometer.UserControl.SplitButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this._pnl_toolbox1 = new System.Windows.Forms.Panel();
@@ -133,6 +132,7 @@
             this.hardwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deviceInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deviceCounterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectToDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scopeModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.absorbanceModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -174,7 +174,6 @@
             this.chHide = new System.Windows.Forms.CheckBox();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
-            this.colorPicker1 = new Spectometer.ColorPicker();
             this.panel10 = new System.Windows.Forms.Panel();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label13 = new System.Windows.Forms.Label();
@@ -215,7 +214,8 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tmrGetData = new System.Windows.Forms.Timer(this.components);
             this.tmrRendering = new System.Windows.Forms.Timer(this.components);
-            this.connectToDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorPicker1 = new Spectometer.ColorPicker();
+            this.btnStart = new Spectometer.UserControl.SplitButton();
             this._pnl_form_tools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._pb_form_icon)).BeginInit();
             this._pnl_menu.SuspendLayout();
@@ -620,7 +620,9 @@
             this.btnShutter.Text = "Shutter";
             this.btnShutter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnShutter.UseVisualStyleBackColor = true;
+            this.btnShutter.EnabledChanged += new System.EventHandler(this.btnShutter_EnabledChanged);
             this.btnShutter.Click += new System.EventHandler(this.btnShutter_Click);
+            this.btnShutter.Paint += new System.Windows.Forms.PaintEventHandler(this.btnShutter_Paint);
             // 
             // _pnl_toolbox2
             // 
@@ -647,7 +649,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel2.Controls.Add(this.numrSmosthing);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(645, 0);
+            this.panel2.Location = new System.Drawing.Point(673, 0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(4, 7, 4, 4);
             this.panel2.Size = new System.Drawing.Size(49, 32);
@@ -678,7 +680,7 @@
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Left;
             this.label4.ForeColor = System.Drawing.Color.Silver;
-            this.label4.Location = new System.Drawing.Point(550, 0);
+            this.label4.Location = new System.Drawing.Point(578, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 32);
             this.label4.TabIndex = 24;
@@ -690,7 +692,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel1.Controls.Add(this.numricalAverage);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(493, 0);
+            this.panel1.Location = new System.Drawing.Point(521, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(4, 7, 4, 4);
             this.panel1.Size = new System.Drawing.Size(57, 32);
@@ -729,7 +731,7 @@
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Left;
             this.label3.ForeColor = System.Drawing.Color.Silver;
-            this.label3.Location = new System.Drawing.Point(417, 0);
+            this.label3.Location = new System.Drawing.Point(445, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 32);
             this.label3.TabIndex = 22;
@@ -744,7 +746,7 @@
             this._pnl_txt1.Location = new System.Drawing.Point(359, 0);
             this._pnl_txt1.Name = "_pnl_txt1";
             this._pnl_txt1.Padding = new System.Windows.Forms.Padding(4, 7, 4, 4);
-            this._pnl_txt1.Size = new System.Drawing.Size(58, 32);
+            this._pnl_txt1.Size = new System.Drawing.Size(86, 32);
             this._pnl_txt1.TabIndex = 21;
             // 
             // numricIntegrationTime
@@ -753,7 +755,7 @@
             this.numricIntegrationTime.ForeColor = System.Drawing.Color.White;
             this.numricIntegrationTime.Location = new System.Drawing.Point(1, 3);
             this.numricIntegrationTime.Maximum = new decimal(new int[] {
-            1000,
+            100000,
             0,
             0,
             0});
@@ -763,7 +765,7 @@
             0,
             0});
             this.numricIntegrationTime.Name = "numricIntegrationTime";
-            this.numricIntegrationTime.Size = new System.Drawing.Size(51, 27);
+            this.numricIntegrationTime.Size = new System.Drawing.Size(78, 27);
             this.numricIntegrationTime.TabIndex = 32;
             this.numricIntegrationTime.Value = new decimal(new int[] {
             10,
@@ -843,31 +845,6 @@
             this._pnl_split4.Name = "_pnl_split4";
             this._pnl_split4.Size = new System.Drawing.Size(1, 32);
             this._pnl_split4.TabIndex = 18;
-            // 
-            // btnStart
-            // 
-            this.btnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnStart.Dialog = null;
-            this.btnStart.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnStart.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnStart.FlatAppearance.BorderSize = 0;
-            this.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.HideArrow = false;
-            this.btnStart.Image = global::Spectometer.Properties.Resources.Media_Play2;
-            this.btnStart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStart.Location = new System.Drawing.Point(0, 0);
-            this.btnStart.Menu = this.contextMenuStrip1;
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(80, 32);
-            this.btnStart.Style = Spectometer.UserControl.Styles.Custom;
-            this.btnStart.TabIndex = 3;
-            this.btnStart.Text = "Start";
-            this.btnStart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStart.UseVisualStyleBackColor = false;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // contextMenuStrip1
             // 
@@ -1531,9 +1508,11 @@
             // 
             // hardwareToolStripMenuItem
             // 
+            this.hardwareToolStripMenuItem.Enabled = false;
             this.hardwareToolStripMenuItem.Name = "hardwareToolStripMenuItem";
             this.hardwareToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hardwareToolStripMenuItem.Text = "&Hardware";
+            this.hardwareToolStripMenuItem.Visible = false;
             this.hardwareToolStripMenuItem.Click += new System.EventHandler(this.hardwareToolStripMenuItem_Click);
             // 
             // deviceInformationToolStripMenuItem
@@ -1549,6 +1528,13 @@
             this.deviceCounterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deviceCounterToolStripMenuItem.Text = "&Device Counter";
             this.deviceCounterToolStripMenuItem.Click += new System.EventHandler(this.deviceCounterToolStripMenuItem_Click);
+            // 
+            // connectToDeviceToolStripMenuItem
+            // 
+            this.connectToDeviceToolStripMenuItem.Name = "connectToDeviceToolStripMenuItem";
+            this.connectToDeviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.connectToDeviceToolStripMenuItem.Text = "Connect To Device";
+            this.connectToDeviceToolStripMenuItem.Click += new System.EventHandler(this.connectToDeviceToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -1915,16 +1901,6 @@
             this.label14.Size = new System.Drawing.Size(54, 20);
             this.label14.TabIndex = 2;
             this.label14.Text = "Color :";
-            // 
-            // colorPicker1
-            // 
-            this.colorPicker1.Location = new System.Drawing.Point(65, 7);
-            this.colorPicker1.Name = "colorPicker1";
-            this.colorPicker1.Size = new System.Drawing.Size(119, 23);
-            this.colorPicker1.TabIndex = 3;
-            this.colorPicker1.Text = "colorPicker1";
-            this.colorPicker1.Value = System.Drawing.Color.Blue;
-            this.colorPicker1.Click += new Spectometer.ColorPicker.ColorPaletteEventHandler(this.colorPicker1_Click);
             // 
             // panel10
             // 
@@ -2311,21 +2287,22 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
             this.chart1.Size = new System.Drawing.Size(872, 483);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "                                                                   ";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            title2.Name = "Title1";
-            this.chart1.Titles.Add(title2);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            title1.Name = "Title1";
+            this.chart1.Titles.Add(title1);
+            this.chart1.Click += new System.EventHandler(this.Chart1_Click);
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
             this.chart1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseDown);
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -2338,12 +2315,40 @@
             // 
             this.tmrRendering.Tick += new System.EventHandler(this.tmrRendering_Tick);
             // 
-            // connectToDeviceToolStripMenuItem
+            // colorPicker1
             // 
-            this.connectToDeviceToolStripMenuItem.Name = "connectToDeviceToolStripMenuItem";
-            this.connectToDeviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.connectToDeviceToolStripMenuItem.Text = "Connect To Device";
-            this.connectToDeviceToolStripMenuItem.Click += new System.EventHandler(this.connectToDeviceToolStripMenuItem_Click);
+            this.colorPicker1.Location = new System.Drawing.Point(65, 7);
+            this.colorPicker1.Name = "colorPicker1";
+            this.colorPicker1.Size = new System.Drawing.Size(119, 23);
+            this.colorPicker1.TabIndex = 3;
+            this.colorPicker1.Text = "colorPicker1";
+            this.colorPicker1.Value = System.Drawing.Color.Blue;
+            this.colorPicker1.Click += new Spectometer.ColorPicker.ColorPaletteEventHandler(this.colorPicker1_Click);
+            // 
+            // btnStart
+            // 
+            this.btnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnStart.Dialog = null;
+            this.btnStart.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnStart.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnStart.FlatAppearance.BorderSize = 0;
+            this.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.ForeColor = System.Drawing.Color.White;
+            this.btnStart.HideArrow = false;
+            this.btnStart.Image = global::Spectometer.Properties.Resources.Media_Play2;
+            this.btnStart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStart.Location = new System.Drawing.Point(0, 0);
+            this.btnStart.Menu = this.contextMenuStrip1;
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(80, 32);
+            this.btnStart.Style = Spectometer.UserControl.Styles.Custom;
+            this.btnStart.TabIndex = 3;
+            this.btnStart.Text = "Start";
+            this.btnStart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStart.UseVisualStyleBackColor = false;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // Form1
             // 

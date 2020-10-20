@@ -19,6 +19,8 @@ namespace Spectometer
         private float _XmapC2 = 0f;
         private float _XmapC3 = 0f;
         private float _XmapI = 0f;
+        private float _XmapC4 = 0f;
+        private float _XmapC5 = 0f;
         private float _IrradianceX1 = 0f;
         private float _IrradianceX2 = 0f;
         private float _IrradianceY1 = 0f;
@@ -55,6 +57,11 @@ namespace Spectometer
         private bool _nm;
         private bool _cm;
         private bool _hideColorBar;
+        private bool _NanoLed;
+        private int _gain;
+        private int _Offset;
+        public int Gain { get { return _gain; } set { _gain = value; } }
+        public int Offset { get {return _Offset; } set { _Offset = value; } }
         public bool EnableBaseLine { get { return _enablebaseline; } set { _enablebaseline = value; } }
         public int FluorescenceX1 { get { return _FluorescenceX1; }set { _FluorescenceX1 = value; } }
         public int FluorescenceX2 { get { return _FluorescenceX2; } set { _FluorescenceX2 = value; } }
@@ -62,6 +69,7 @@ namespace Spectometer
         public int FluorescenceY2 { get { return _FluorescenceY2; } set { _FluorescenceY2 = value; } }
         public bool Tngestan { get { return _tangestan; }set { _tangestan = value; } }
         public bool Dutrium { get { return _Dutrium; }set { _Dutrium = value; } }
+        public bool NanoLed { get { return _NanoLed; } set { _NanoLed = value; } }
       
         public bool HideColorbar
         {
@@ -176,6 +184,28 @@ namespace Spectometer
             set
             {
                 _XmapC2 = value;
+            }
+        }
+        public float XmapC4
+        {
+            get
+            {
+                return _XmapC4;
+            }
+            set
+            {
+                _XmapC4 = value;
+            }
+        }
+        public float XmapC5
+        {
+            get
+            {
+                return _XmapC5;
+            }
+            set
+            {
+                _XmapC5 = value;
             }
         }
         public float XmapC3

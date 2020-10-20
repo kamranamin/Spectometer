@@ -52,10 +52,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtYmapC4 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtXmapC5 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtXmapC4 = new System.Windows.Forms.TextBox();
             this.txtXmapI = new System.Windows.Forms.TextBox();
             this.txtXmapC1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtXmapC3 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -78,7 +82,7 @@
             this.groupBox9.Controls.Add(this.txtBaseLine);
             this.groupBox9.Controls.Add(this.label33);
             this.groupBox9.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.groupBox9.Location = new System.Drawing.Point(22, 243);
+            this.groupBox9.Location = new System.Drawing.Point(22, 311);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(190, 90);
             this.groupBox9.TabIndex = 44;
@@ -92,7 +96,7 @@
             this.chEnableBaselINE.Location = new System.Drawing.Point(15, 56);
             this.chEnableBaselINE.Name = "chEnableBaselINE";
             this.chEnableBaselINE.Size = new System.Drawing.Size(74, 24);
-            this.chEnableBaselINE.TabIndex = 2;
+            this.chEnableBaselINE.TabIndex = 16;
             this.chEnableBaselINE.Text = "Enable";
             this.chEnableBaselINE.UseVisualStyleBackColor = true;
             // 
@@ -101,7 +105,7 @@
             this.txtBaseLine.Location = new System.Drawing.Point(85, 23);
             this.txtBaseLine.Name = "txtBaseLine";
             this.txtBaseLine.Size = new System.Drawing.Size(77, 27);
-            this.txtBaseLine.TabIndex = 1;
+            this.txtBaseLine.TabIndex = 16;
             // 
             // label33
             // 
@@ -146,14 +150,14 @@
             this.txtYmapI.Location = new System.Drawing.Point(62, 324);
             this.txtYmapI.Name = "txtYmapI";
             this.txtYmapI.Size = new System.Drawing.Size(100, 27);
-            this.txtYmapI.TabIndex = 23;
+            this.txtYmapI.TabIndex = 15;
             // 
             // txtYmapC5
             // 
             this.txtYmapC5.Location = new System.Drawing.Point(62, 170);
             this.txtYmapC5.Name = "txtYmapC5";
             this.txtYmapC5.Size = new System.Drawing.Size(100, 27);
-            this.txtYmapC5.TabIndex = 25;
+            this.txtYmapC5.TabIndex = 11;
             // 
             // label9
             // 
@@ -170,14 +174,14 @@
             this.txtYmapC1.Location = new System.Drawing.Point(62, 26);
             this.txtYmapC1.Name = "txtYmapC1";
             this.txtYmapC1.Size = new System.Drawing.Size(100, 27);
-            this.txtYmapC1.TabIndex = 9;
+            this.txtYmapC1.TabIndex = 7;
             // 
             // txtYmapC8
             // 
-            this.txtYmapC8.Location = new System.Drawing.Point(62, 287);
+            this.txtYmapC8.Location = new System.Drawing.Point(62, 288);
             this.txtYmapC8.Name = "txtYmapC8";
             this.txtYmapC8.Size = new System.Drawing.Size(100, 27);
-            this.txtYmapC8.TabIndex = 21;
+            this.txtYmapC8.TabIndex = 14;
             // 
             // label12
             // 
@@ -214,7 +218,7 @@
             this.txtYmapC7.Location = new System.Drawing.Point(62, 250);
             this.txtYmapC7.Name = "txtYmapC7";
             this.txtYmapC7.Size = new System.Drawing.Size(100, 27);
-            this.txtYmapC7.TabIndex = 19;
+            this.txtYmapC7.TabIndex = 13;
             // 
             // label7
             // 
@@ -241,14 +245,14 @@
             this.txtYmapC2.Location = new System.Drawing.Point(62, 62);
             this.txtYmapC2.Name = "txtYmapC2";
             this.txtYmapC2.Size = new System.Drawing.Size(100, 27);
-            this.txtYmapC2.TabIndex = 11;
+            this.txtYmapC2.TabIndex = 8;
             // 
             // txtYmapC6
             // 
             this.txtYmapC6.Location = new System.Drawing.Point(62, 213);
             this.txtYmapC6.Name = "txtYmapC6";
             this.txtYmapC6.Size = new System.Drawing.Size(100, 27);
-            this.txtYmapC6.TabIndex = 17;
+            this.txtYmapC6.TabIndex = 12;
             // 
             // C5
             // 
@@ -275,7 +279,7 @@
             this.txtYmapC3.Location = new System.Drawing.Point(62, 98);
             this.txtYmapC3.Name = "txtYmapC3";
             this.txtYmapC3.Size = new System.Drawing.Size(100, 27);
-            this.txtYmapC3.TabIndex = 13;
+            this.txtYmapC3.TabIndex = 9;
             // 
             // label5
             // 
@@ -292,14 +296,18 @@
             this.txtYmapC4.Location = new System.Drawing.Point(62, 134);
             this.txtYmapC4.Name = "txtYmapC4";
             this.txtYmapC4.Size = new System.Drawing.Size(100, 27);
-            this.txtYmapC4.TabIndex = 15;
+            this.txtYmapC4.TabIndex = 10;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtXmapC5);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.txtXmapC4);
             this.groupBox1.Controls.Add(this.txtXmapI);
             this.groupBox1.Controls.Add(this.txtXmapC1);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtXmapC3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
@@ -307,17 +315,51 @@
             this.groupBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox1.Location = new System.Drawing.Point(22, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(190, 187);
+            this.groupBox1.Size = new System.Drawing.Size(190, 255);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "X Map";
             // 
+            // txtXmapC5
+            // 
+            this.txtXmapC5.Location = new System.Drawing.Point(62, 174);
+            this.txtXmapC5.Name = "txtXmapC5";
+            this.txtXmapC5.Size = new System.Drawing.Size(100, 27);
+            this.txtXmapC5.TabIndex = 5;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(12, 139);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 20);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "C4 :";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(12, 176);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(34, 20);
+            this.label14.TabIndex = 10;
+            this.label14.Text = "C5 :";
+            // 
+            // txtXmapC4
+            // 
+            this.txtXmapC4.Location = new System.Drawing.Point(62, 137);
+            this.txtXmapC4.Name = "txtXmapC4";
+            this.txtXmapC4.Size = new System.Drawing.Size(100, 27);
+            this.txtXmapC4.TabIndex = 4;
+            // 
             // txtXmapI
             // 
-            this.txtXmapI.Location = new System.Drawing.Point(62, 137);
+            this.txtXmapI.Location = new System.Drawing.Point(62, 211);
             this.txtXmapI.Name = "txtXmapI";
             this.txtXmapI.Size = new System.Drawing.Size(100, 27);
-            this.txtXmapI.TabIndex = 7;
+            this.txtXmapI.TabIndex = 6;
             this.txtXmapI.Leave += new System.EventHandler(this.txtXmapI_Leave);
             // 
             // txtXmapC1
@@ -327,16 +369,6 @@
             this.txtXmapC1.Size = new System.Drawing.Size(100, 27);
             this.txtXmapC1.TabIndex = 1;
             this.txtXmapC1.MouseLeave += new System.EventHandler(this.txtXmapC1_MouseLeave);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(21, 137);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 20);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "I  :";
             // 
             // label1
             // 
@@ -348,12 +380,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "C1 :";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(21, 213);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 20);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "I  :";
+            // 
             // txtXmapC3
             // 
             this.txtXmapC3.Location = new System.Drawing.Point(62, 100);
             this.txtXmapC3.Name = "txtXmapC3";
             this.txtXmapC3.Size = new System.Drawing.Size(100, 27);
-            this.txtXmapC3.TabIndex = 5;
+            this.txtXmapC3.TabIndex = 3;
             this.txtXmapC3.Leave += new System.EventHandler(this.txtXmapC3_Leave);
             // 
             // label2
@@ -381,7 +423,7 @@
             this.txtXmapC2.Location = new System.Drawing.Point(62, 63);
             this.txtXmapC2.Name = "txtXmapC2";
             this.txtXmapC2.Size = new System.Drawing.Size(100, 27);
-            this.txtXmapC2.TabIndex = 3;
+            this.txtXmapC2.TabIndex = 2;
             this.txtXmapC2.Leave += new System.EventHandler(this.txtXmapC2_Leave);
             // 
             // btnCancel
@@ -391,7 +433,7 @@
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(135, 393);
+            this.btnCancel.Location = new System.Drawing.Point(126, 413);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(98, 26);
             this.btnCancel.TabIndex = 46;
@@ -406,7 +448,7 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(22, 393);
+            this.btnSave.Location = new System.Drawing.Point(13, 413);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 26);
             this.btnSave.TabIndex = 45;
@@ -419,7 +461,7 @@
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 524);
+            this.ClientSize = new System.Drawing.Size(463, 468);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox9);
@@ -480,5 +522,9 @@
         private System.Windows.Forms.TextBox txtXmapC2;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtXmapC5;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtXmapC4;
     }
 }

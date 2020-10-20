@@ -86,7 +86,7 @@
             // 
             // _lbl_form_text
             // 
-            this._lbl_form_text.Size = new System.Drawing.Size(1297, 30);
+            this._lbl_form_text.Size = new System.Drawing.Size(1228, 30);
             this._lbl_form_text.Text = "F_Base";
             // 
             // menuStrip1
@@ -99,7 +99,7 @@
             this.saveToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(1, 31);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1453, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1384, 40);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -131,10 +131,10 @@
             // 
             this.panel7.Controls.Add(this.dataGridView1);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(1049, 71);
+            this.panel7.Location = new System.Drawing.Point(980, 71);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(5);
-            this.panel7.Size = new System.Drawing.Size(405, 714);
+            this.panel7.Size = new System.Drawing.Size(405, 683);
             this.panel7.TabIndex = 9;
             // 
             // dataGridView1
@@ -174,7 +174,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 40;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(395, 704);
+            this.dataGridView1.Size = new System.Drawing.Size(395, 673);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -293,10 +293,10 @@
             // 
             this._pnl_status_out.Controls.Add(this._pnl_status);
             this._pnl_status_out.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._pnl_status_out.Location = new System.Drawing.Point(1, 785);
+            this._pnl_status_out.Location = new System.Drawing.Point(1, 754);
             this._pnl_status_out.Name = "_pnl_status_out";
             this._pnl_status_out.Padding = new System.Windows.Forms.Padding(1);
-            this._pnl_status_out.Size = new System.Drawing.Size(1453, 33);
+            this._pnl_status_out.Size = new System.Drawing.Size(1384, 33);
             this._pnl_status_out.TabIndex = 20;
             // 
             // _pnl_status
@@ -309,7 +309,7 @@
             this._pnl_status.Location = new System.Drawing.Point(1, 0);
             this._pnl_status.Name = "_pnl_status";
             this._pnl_status.Padding = new System.Windows.Forms.Padding(3);
-            this._pnl_status.Size = new System.Drawing.Size(1451, 32);
+            this._pnl_status.Size = new System.Drawing.Size(1382, 32);
             this._pnl_status.TabIndex = 21;
             // 
             // panel9
@@ -482,7 +482,7 @@
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Location = new System.Drawing.Point(30, 246);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(953, 517);
+            this.groupBox2.Size = new System.Drawing.Size(884, 486);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             // 
@@ -495,7 +495,7 @@
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(3, 23);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(947, 491);
+            this.chart1.Size = new System.Drawing.Size(878, 460);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
@@ -503,7 +503,7 @@
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.ClientSize = new System.Drawing.Size(1455, 819);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAdd);

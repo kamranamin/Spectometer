@@ -13,8 +13,9 @@ namespace Spectometer
 {
     class DataAnalysis
     {
+       
 
-        public int numPixel = 2090;
+        //public int numPixel = DeviceType.NumberOfIndex;
         public  void exportToExcel(float  [] m , string fileName)
         {
 
@@ -34,7 +35,7 @@ namespace Spectometer
                 int colIndex = 0;
                 int rowIndex = 1;
 
-               for (int i=1;i<numPixel;i++)
+               for (int i=1;i < DeviceType.NumberOfIndex;i++)
                 { 
                   
                     osheet.Cells[i , rowIndex] = m[i];
@@ -88,8 +89,8 @@ namespace Spectometer
                  
 
                 Packet graph = new Packet();
-                graph.packet = new float[numPixel];
-                for (int i = 0; i < numPixel; i++)
+                graph.packet = new float[DeviceType.NumberOfIndex];
+                for (int i = 0; i < DeviceType.NumberOfIndex; i++)
                 {
                     graph.packet[i] = Packet[i];
                 }
@@ -192,16 +193,17 @@ namespace Spectometer
         public float[] B;
         public float []Irradians(float []data, float[] drak, float[] refrence,float []Xvalue)
         {
-            B = new float[numPixel];
-            float[] Irr = new float[numPixel];
+
+            B = new float[DeviceType.NumberOfIndex];
+            float[] Irr = new float[DeviceType.NumberOfIndex];
          
             double   k = 1.38 * Math.Pow(10, -23);
             float  T = 3100;
             double c2 = Math.Pow(3 * Math.Pow(10, 8), 2);
           
-            double h = (6.266 * (Math.Pow(10, -34)));
+            double h = 6.266 * Math.Pow(10, -34);
             double Btop = 2 * h * c2;
-            double[] ee = new double[numPixel];
+            double[] ee = new double[DeviceType.NumberOfIndex];
             for (int i = 0; i < Xvalue.Length ; i++)
             {
                 double landa = Math.Pow(Xvalue[i] * Math.Pow(10, -9), 5);
@@ -210,6 +212,8 @@ namespace Spectometer
                 ee[i] = landa * (float)Math.Pow(Math.E, bd1) - 1;
                 B[i]= ((float ) Btop)/(float) ee[i] ;
                 Irr[i] = B[i] *( (data[i] - drak[i] )/( refrence[i] - drak[i]));
+                if (float.IsNaN(Irr[i]) || float.IsInfinity(Irr[i]))
+                    Irr[i] = 0;
 
             }
           
@@ -218,11 +222,11 @@ namespace Spectometer
 
         public float [] Transmittance (float [] data,float []drak,float[] refrence)
         {
-            float[] tra = new float[numPixel];
+            float[] tra = new float[DeviceType.NumberOfIndex];
            
-            for (int i=0;i<numPixel; i++)
+            for (int i=0;i < DeviceType.NumberOfIndex; i++)
             {
-                tra[i] = ((data  [i] - drak[i]) / (refrence  [i] - drak[i]))*100;
+                tra[i] = (data  [i] - drak[i]) / (refrence  [i] - drak[i])*100;
                 if (Double.IsNaN(tra[0])|| Double.IsInfinity(tra[0]))
                     {
                     tra[0] = 0;
@@ -237,11 +241,11 @@ namespace Spectometer
         }
         public float[] Reflectance(float[] data, float[] drak, float[] refrence)
         {
-            float[] tra = new float[numPixel];
+            float[] tra = new float[DeviceType.NumberOfIndex];
 
-            for (int i = 0; i < numPixel; i++)
+            for (int i = 0; i < DeviceType.NumberOfIndex; i++)
             {
-                tra[i] = ((data[i] - drak[i]) / (refrence[i] - drak[i])) * 100;
+                tra[i] = (data[i] - drak[i]) / (refrence[i] - drak[i]) * 100;
                 if (Double.IsNaN(tra[0]) || Double.IsInfinity(tra[0]))
                 {
                     tra[0] = 0;
@@ -284,13 +288,13 @@ namespace Spectometer
         }
         public float[] Absorbance(float[] data, float[] drak, float[] refrence)
         {
-            float[] abs = new float[numPixel];
+            float[] abs = new float[DeviceType.NumberOfIndex];
             float[] k = Transmittance(data, drak, refrence);
 
 
-            for (int i = 0; i < numPixel; i++)
+            for (int i = 0; i < DeviceType.NumberOfIndex; i++)
             {
-                abs[i] = Convert.ToSingle(Math.Log10 (((refrence[i] - drak[i]) / (data[i] - drak[i]))));
+                abs[i] = Convert.ToSingle(Math.Log10 ((refrence[i] - drak[i]) / (data[i] - drak[i])));
                 if (Double.IsNaN(abs[0]) || Double.IsInfinity(abs[0]))
                 {
                     abs[0] = 0;
@@ -331,11 +335,11 @@ namespace Spectometer
         }
         public float [] Refractive (float [] data,float [] Refrence,float [] Dark)
         {
-            float[] tra = new float[numPixel];
+            float[] tra = new float[DeviceType.NumberOfIndex];
 
-            for (int i = 0; i < numPixel; i++)
+            for (int i = 0; i < DeviceType.NumberOfIndex; i++)
             {
-                tra[i] = ((data[i] - Dark[i]) / (Refrence[i] - Dark[i])) * Convert.ToSingle( Math.Cos(  i/4));
+                tra[i] = (data[i] - Dark[i]) / (Refrence[i] - Dark[i]) * Convert.ToSingle( Math.Cos(  i/4));
                 if (Double.IsNaN(tra[0]) || Double.IsInfinity(tra[0]))
                 {
                     tra[0] = 0;
@@ -376,7 +380,7 @@ namespace Spectometer
                 }
                 int f = k+ (Smoothing / 2);
 
-                numSmoothing[f ] = (temp / Smoothing);
+                numSmoothing[f ] = temp / Smoothing;
                 
               
             }

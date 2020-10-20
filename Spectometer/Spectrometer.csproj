@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>E:\Setup\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,22 +24,29 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ProductName>Spectrometer</ProductName>
+    <PublisherName>Amingalvani.kamran%40gmail.com</PublisherName>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WIN32</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
     <UseVSHostingProcess>true</UseVSHostingProcess>
+    <DocumentationFile>bin\Debug\Spectometer.XML</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,15 +59,36 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>chemistry.png.ico</ApplicationIcon>
+    <ApplicationIcon>logo 2561.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>75C00C1AC20E655B7CB7B55EC86BC16D9399C83E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Spectometer_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <TargetZone>Custom</TargetZone>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EnScixLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Colourful">
+      <HintPath>C:\Users\Develop Center\Documents\Visual Studio 2015\Projects\colorspace\colorspace\bin\Debug\Colourful.dll</HintPath>
+    </Reference>
+    <Reference Include="EnScixLibrary, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\EnScixLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="FTD2XX_NET">
-      <HintPath>C:\Users\Develop Center\Downloads\DigitalDataLogger-master\DigitalDataLogger-master\libs\FTD2XX_NET.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -75,6 +103,10 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.MSChartExtension, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Windows.Forms.DataVisualization.MSChartExtension.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -85,20 +117,76 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business.cs" />
     <Compile Include="CalibrationCurve.cs" />
     <Compile Include="ChartData.cs" />
+    <Compile Include="CieData.cs" />
+    <Compile Include="ColorMeasurment.cs" />
+    <Compile Include="DllInterface.cs" />
+    <Compile Include="Forms\DeviceCounter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeviceCounter.Designer.cs">
+      <DependentUpon>DeviceCounter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FBandGap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FBandGap.Designer.cs">
+      <DependentUpon>FBandGap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FBaseLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FBaseLine.Designer.cs">
+      <DependentUpon>FBaseLine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FChart.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FChart.Designer.cs">
       <DependentUpon>FChart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FChartStep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FChartStep.Designer.cs">
+      <DependentUpon>FChartStep.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FColorM.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FColorM.Designer.cs">
       <DependentUpon>FColorM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FCalibration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FCalibration.Designer.cs">
+      <DependentUpon>FCalibration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FExport.Designer.cs">
+      <DependentUpon>FExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FLamp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FLamp.Designer.cs">
+      <DependentUpon>FLamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FMath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FMath.Designer.cs">
+      <DependentUpon>FMath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FSetting.Designer.cs">
+      <DependentUpon>FSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FRefractive.cs">
       <SubType>Form</SubType>
@@ -112,7 +200,30 @@
     <Compile Include="Forms\FSingleWaveLenght.Designer.cs">
       <DependentUpon>FSingleWaveLenght.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RefractiveIndex .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RefractiveIndex .Designer.cs">
+      <DependentUpon>RefractiveIndex .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LinearPeaks.cs" />
+    <Compile Include="SplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SPoint.cs" />
+    <Compile Include="Testcolor.cs" />
+    <Compile Include="UserControl\CheckBoxComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControl\CheckBoxComboBox.Designer.cs">
+      <DependentUpon>CheckBoxComboBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\ColorDropDown.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -179,13 +290,6 @@
       <DependentUpon>F_Base.cs</DependentUpon>
     </Compile>
     <Compile Include="Hardware.cs" />
-    <Compile Include="HardwareFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HardwareFrm.Designer.cs">
-      <DependentUpon>HardwareFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Interface.cs" />
     <Compile Include="NanoDropFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,26 +313,48 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimeSpectrumFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TimeSpectrumFrm.Designer.cs">
-      <DependentUpon>TimeSpectrumFrm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="UserControl\DataGridViewCheckBoxComboBoxColumn.cs" />
     <Compile Include="UserControl\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControl\FlatButton.Designer.cs">
       <DependentUpon>FlatButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\SplitButton.cs">
+    <Compile Include="UserControl\GripBounds.cs" />
+    <Compile Include="UserControl\NativeMethods.cs" />
+    <Compile Include="UserControl\Popup.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControl\Popup.Designer.cs">
+      <DependentUpon>Popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\PopupComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControl\PopupComboBox.Designer.cs">
+      <DependentUpon>PopupComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\SelectionWrappers\ListSelectionWrapper.cs" />
+    <Compile Include="UserControl\SelectionWrappers\ObjectSelectionWrapper.cs" />
+    <Compile Include="WaveToRbg.cs" />
+    <None Include="Resources\UV-IR.png" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeviceCounter.resx">
+      <DependentUpon>DeviceCounter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FAddNewExperiment.resx">
       <DependentUpon>FAddNewExperiment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FBandGap.resx">
+      <DependentUpon>FBandGap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FBaseLine.resx">
+      <DependentUpon>FBaseLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FCalibration.resx">
+      <DependentUpon>FCalibration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FCalibrationCruve.resx">
       <DependentUpon>FCalibrationCruve.cs</DependentUpon>
@@ -236,17 +362,32 @@
     <EmbeddedResource Include="Forms\FChart.resx">
       <DependentUpon>FChart.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FChartStep.resx">
+      <DependentUpon>FChartStep.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FColorM.resx">
       <DependentUpon>FColorM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FDeviceInfo.resx">
       <DependentUpon>FDeviceInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FExport.resx">
+      <DependentUpon>FExport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FHardware.resx">
       <DependentUpon>FHardware.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FLamp.resx">
+      <DependentUpon>FLamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FMath.resx">
+      <DependentUpon>FMath.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FNanoDrop.resx">
       <DependentUpon>FNanoDrop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FSetting.resx">
+      <DependentUpon>FSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRefractive.resx">
       <DependentUpon>FRefractive.cs</DependentUpon>
@@ -263,8 +404,11 @@
     <EmbeddedResource Include="Forms\F_Base.resx">
       <DependentUpon>F_Base.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HardwareFrm.resx">
-      <DependentUpon>HardwareFrm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\RefractiveIndex .resx">
+      <DependentUpon>RefractiveIndex .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NanoDropFrm.resx">
       <DependentUpon>NanoDropFrm.cs</DependentUpon>
@@ -285,8 +429,8 @@
     <EmbeddedResource Include="SoftwareFrm.resx">
       <DependentUpon>SoftwareFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TimeSpectrumFrm.resx">
-      <DependentUpon>TimeSpectrumFrm.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\PopupComboBox.resx">
+      <DependentUpon>PopupComboBox.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -297,12 +441,60 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="RA_Camera_Core32.lib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RA_Camera_Core64.lib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Spectometer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="chemistry.png.ico" />
+    <Content Include="logo 2.png.ico" />
+    <Content Include="logo 2561.ico" />
+    <Content Include="logo-256.ico" />
+    <Content Include="logo_256.ico" />
+    <None Include="Resources\2.png" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\icon1.png" />
+    <None Include="Resources\icon 2.png" />
+    <None Include="Resources\icon2..jpg" />
+    <None Include="Resources\icon 1..jpg" />
+    <None Include="Resources\baseline.png" />
+    <None Include="Resources\images %283%29z.png" />
+    <None Include="Resources\logo RGBjpg.jpg" />
+    <None Include="Resources\soft ware 2.jpg" />
+    <None Include="Resources\logo.jpg" />
+    <None Include="Resources\Untitled-12jpg.jpg" />
+    <None Include="Resources\icon ff.png" />
+    <None Include="Resources\icon f.png" />
+    <None Include="Resources\icon 5..png" />
+    <None Include="Resources\Untitled-1.png" />
+    <None Include="Resources\icon1.jpg" />
+    <None Include="Resources\Untitled-1.jpg" />
+    <None Include="Resources\soft ware 113.jpg" />
+    <None Include="Resources\soft ware 2.2018.jpg" />
+    <None Include="Resources\software fi.jpg" />
+    <None Include="Resources\software fi.png" />
+    <None Include="Resources\software final.jpg" />
+    <None Include="Resources\calculator.png" />
+    <None Include="Resources\grcbxljdyagfqmjdxbmy1.png" />
+    <None Include="Resources\grcbxljdyagfqmjdxbmy.png" />
+    <None Include="Resources\sprctrum.png" />
+    <None Include="Resources\Un1.png" />
+    <None Include="Resources\logo 32.png" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\logo 2.png" />
+    <None Include="Resources\RGB...png" />
+    <None Include="Resources\t.png" />
+    <None Include="Resources\black.png" />
+    <None Include="Resources\spec8icon1.ico" />
+    <None Include="Resources\spec8icon.ico" />
+    <None Include="Resources\spec8.bmp" />
+    <None Include="Resources\math-add-icon.png" />
     <None Include="Resources\alert_icon.png" />
     <None Include="Resources\ok.bmp" />
     <None Include="Resources\expand.png" />

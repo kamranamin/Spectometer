@@ -24,24 +24,24 @@ namespace Spectometer.Forms
             try
             {
                 Single s;
-                foreach (TabPage tb in tabControl1.TabPages)
-                {
+                
 
-                    foreach (Control txt in tb.Controls)
+                    foreach (Control   txt in this.Controls )
                     {
                         if (txt is TextBox)
                         {
                             TextBox textBox = txt as TextBox;
                             if (string.IsNullOrEmpty(textBox.Text) || !Single.TryParse(textBox.Text, out s))
                             {
-                                tabControl1.SelectedTab = tb;
+                              
                                 textBox.Focus();
                                 MessageBox.Show(textBox.Name.Remove(0, 3) + "Not Valid");
                                 return;
                             }
                         }
-                    }
+                    
                 }
+               
                 softwarepro.AbsorbanceX1 = Convert.ToSingle(txtAbsorbanceX1.Text);
                 softwarepro.AbsorbanceX2 = Convert.ToSingle(txtAbsorbanceX2.Text);
                 softwarepro.AbsorbanceY1 = Convert.ToSingle(txtAbsorbanceY1.Text);
@@ -58,32 +58,25 @@ namespace Spectometer.Forms
                 softwarepro.TransmittanceX2 = Convert.ToSingle(txtTransmitanceX2.Text);
                 softwarepro.TransmittanceY1 = Convert.ToSingle(txtTransmitanceY1.Text);
                 softwarepro.TransmittanceY2 = Convert.ToSingle(txtTransmitanceY2.Text);
-                softwarepro.XmapC1 = Convert.ToSingle(txtXmapC1.Text);
-                softwarepro.XmapC2 = Convert.ToSingle(txtXmapC2.Text);
-                softwarepro.XmapC3 = Convert.ToSingle(txtXmapC3.Text);
-                softwarepro.XmapI = Convert.ToSingle(txtXmapI.Text);
-                softwarepro.YmapC1 = Convert.ToSingle(txtYmapC1.Text);
-                softwarepro.YmapC2 = Convert.ToSingle(txtYmapC2.Text);
-                softwarepro.YmapC3 = Convert.ToSingle(txtYmapC3.Text);
-                softwarepro.YmapC4 = Convert.ToSingle(txtYmapC4.Text);
-                softwarepro.YmapC5 = Convert.ToSingle(txtYmapC5.Text);
-                softwarepro.YmapC6 = Convert.ToSingle(txtYmapC6.Text);
-                softwarepro.YmapC7 = Convert.ToSingle(txtYmapC7.Text);
-                softwarepro.YmapC8 = Convert.ToSingle(txtYmapC8.Text);
+               
                 softwarepro.RamanX1 = Convert.ToSingle(txtRamanX1.Text);
                 softwarepro.RamanX2 = Convert.ToSingle(txtramanX2 .Text);
                 softwarepro.RamanY1 = Convert.ToSingle(txtRamanY1 .Text);
-                softwarepro.RamanY1 = Convert.ToSingle(txtRamanY2 .Text);
+                softwarepro.RamanY2 = Convert.ToSingle(txtRamanY2 .Text);
+                softwarepro.FluorescenceX1  = Convert.ToInt32(txtReflectanceX1.Text);
+                softwarepro.FluorescenceX2  = Convert.ToInt32(txtReflectanceX2.Text);
+                softwarepro.FluorescenceY1  = Convert.ToInt32(txtReflectanceY1.Text);
+                softwarepro.FluorescenceY2  = Convert.ToInt32(txtReflectanceY2.Text);
+                softwarepro.HideColorbar = chHideColorBar.Checked;
 
-                if (chkTangestanLamp.Checked)
-                    softwarepro.LampType = 0;
-                if (chkUVLamp.Checked)
-                    softwarepro.LampType = 1;
-                if (chkTangestanLamp.Checked && chkUVLamp.Checked)
-                    softwarepro.LampType = 2;
+               
+
+               
 
                 IFormatter formatter = new BinaryFormatter();
-                FileStream serializationStream = new FileStream("SoftwareSetup.dat", FileMode.Create, FileAccess.Write);
+                var filename = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "Spectrometer\\SoftwareSetup.dat");
+               // var filename = Path.Combine(System.Environment.CurrentDirectory, );
+                FileStream serializationStream = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite );
                 formatter.Serialize(serializationStream, softwarepro);
                 serializationStream.Close();
 
@@ -100,7 +93,10 @@ namespace Spectometer.Forms
             try
             {
                 IFormatter formatter = new BinaryFormatter();
-                FileStream serializationStream = new FileStream("SoftwareSetup.dat", FileMode.Open, FileAccess.Read);
+
+                var filename = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "Spectrometer\\SoftwareSetup.dat");
+
+                FileStream serializationStream = new FileStream(filename, FileMode.Open, FileAccess.Read);
                 softwarepro = formatter.Deserialize(serializationStream) as SofwaretProperties;
                 txtAbsorbanceX1.Text = softwarepro.AbsorbanceX1.ToString();
                 txtAbsorbanceX2.Text = softwarepro.AbsorbanceX2.ToString();
@@ -118,32 +114,18 @@ namespace Spectometer.Forms
                 txtTransmitanceX2.Text = softwarepro.TransmittanceX2.ToString();
                 txtTransmitanceY1.Text = softwarepro.TransmittanceY1.ToString();
                 txtTransmitanceY2.Text = softwarepro.TransmittanceY2.ToString();
-                txtXmapC1.Text = softwarepro.XmapC1.ToString();
-                txtXmapC2.Text = softwarepro.XmapC2.ToString();
-                txtXmapC3.Text = softwarepro.XmapC3.ToString();
-                txtXmapI.Text = softwarepro.XmapI.ToString();
-                txtYmapC1.Text = softwarepro.YmapC1.ToString();
-                txtYmapC2.Text = softwarepro.YmapC2.ToString();
-                txtYmapC3.Text = softwarepro.YmapC3.ToString();
-                txtYmapC4.Text = softwarepro.YmapC4.ToString();
-                txtYmapC5.Text = softwarepro.YmapC5.ToString();
-                txtYmapC6.Text = softwarepro.YmapC6.ToString();
-                txtYmapC7.Text = softwarepro.YmapC7.ToString();
-                txtYmapC8.Text = softwarepro.YmapC8.ToString();
-                txtYmapI.Text = softwarepro.YmapI.ToString();
+               
                 txtRamanX1.Text = softwarepro.RamanX1.ToString();
                 txtramanX2.Text = softwarepro.RamanX2.ToString();
                 txtRamanY1.Text = softwarepro.RamanY1.ToString();
                 txtRamanY2.Text = softwarepro.RamanY2 .ToString();
-                if (softwarepro.LampType == 0)
-                    chkTangestanLamp.Checked = true;
-                else if (softwarepro.LampType == 1)
-                    chkUVLamp.Checked = true;
-                else if (softwarepro.LampType == 2)
-                {
-                    chkUVLamp.Checked = true;
-                    chkTangestanLamp.Checked = false;
-                }
+                txtReflectanceX1.Text = softwarepro.FluorescenceX1 .ToString();
+                txtReflectanceX2.Text = softwarepro.FluorescenceX2 .ToString();
+                txtReflectanceY1.Text = softwarepro.FluorescenceY1 .ToString();
+                txtReflectanceY2.Text = softwarepro.FluorescenceY2.ToString();
+                chHideColorBar.Checked = softwarepro.HideColorbar;
+               
+              
                 serializationStream.Close();
 
 
@@ -158,6 +140,7 @@ namespace Spectometer.Forms
         {
             SaveSoftwareProperties();
             Issave = true;
+            this.Close();
 
         }
 

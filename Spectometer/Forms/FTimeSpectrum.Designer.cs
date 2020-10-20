@@ -31,6 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FTimeSpectrum));
             this.btnDisable = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,21 +70,31 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lbltime = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // _lbl_form_text
             // 
-            this._lbl_form_text.Size = new System.Drawing.Size(643, 38);
+            this._lbl_form_text.Size = new System.Drawing.Size(1228, 30);
             this._lbl_form_text.Text = "F_Base";
             // 
             // btnDisable
@@ -95,7 +107,7 @@
             this.btnDisable.ForeColor = System.Drawing.Color.White;
             this.btnDisable.Location = new System.Drawing.Point(423, 118);
             this.btnDisable.Name = "btnDisable";
-            this.btnDisable.Size = new System.Drawing.Size(79, 39);
+            this.btnDisable.Size = new System.Drawing.Size(103, 39);
             this.btnDisable.TabIndex = 16;
             this.btnDisable.Text = "Enable";
             this.btnDisable.UseVisualStyleBackColor = true;
@@ -250,7 +262,7 @@
             this.txtTimeInterval.Name = "txtTimeInterval";
             this.txtTimeInterval.Size = new System.Drawing.Size(79, 27);
             this.txtTimeInterval.TabIndex = 13;
-            this.txtTimeInterval.Text = "2";
+            this.txtTimeInterval.Text = "0";
             this.txtTimeInterval.TextChanged += new System.EventHandler(this.txtTimeInterval_TextChanged);
             // 
             // label4
@@ -269,6 +281,7 @@
             this.txtTimeDuration.Name = "txtTimeDuration";
             this.txtTimeDuration.Size = new System.Drawing.Size(79, 27);
             this.txtTimeDuration.TabIndex = 14;
+            this.txtTimeDuration.Text = "0";
             this.txtTimeDuration.TextChanged += new System.EventHandler(this.txtTimeDuration_TextChanged);
             // 
             // label10
@@ -375,13 +388,12 @@
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.Gray;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 40;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(794, 285);
+            this.dataGridView1.Size = new System.Drawing.Size(610, 250);
             this.dataGridView1.TabIndex = 24;
             // 
             // Column1
@@ -431,13 +443,12 @@
             // 
             // panel5
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.Controls.Add(this.dataGridView1);
-            this.panel5.Location = new System.Drawing.Point(12, 398);
+            this.panel5.Location = new System.Drawing.Point(737, 102);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(794, 285);
+            this.panel5.Size = new System.Drawing.Size(610, 250);
             this.panel5.TabIndex = 25;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
@@ -445,6 +456,8 @@
             // 
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel6.Controls.Add(this.lbltime);
             this.panel6.Controls.Add(this.button1);
             this.panel6.Controls.Add(this.txtW1);
             this.panel6.Controls.Add(this.btnDisable);
@@ -466,10 +479,21 @@
             this.panel6.Controls.Add(this.lblW1);
             this.panel6.Controls.Add(this.label3);
             this.panel6.Controls.Add(this.groupBox1);
-            this.panel6.Location = new System.Drawing.Point(22, 102);
+            this.panel6.Location = new System.Drawing.Point(16, 17);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(724, 275);
+            this.panel6.Size = new System.Drawing.Size(678, 230);
             this.panel6.TabIndex = 26;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            // 
+            // lbltime
+            // 
+            this.lbltime.AutoSize = true;
+            this.lbltime.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lbltime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lbltime.Location = new System.Drawing.Point(419, 184);
+            this.lbltime.Name = "lbltime";
+            this.lbltime.Size = new System.Drawing.Size(0, 22);
+            this.lbltime.TabIndex = 25;
             // 
             // button1
             // 
@@ -479,9 +503,9 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(525, 118);
+            this.button1.Location = new System.Drawing.Point(561, 118);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 39);
+            this.button1.Size = new System.Drawing.Size(103, 39);
             this.button1.TabIndex = 24;
             this.button1.Text = "Reset";
             this.button1.UseVisualStyleBackColor = true;
@@ -493,9 +517,9 @@
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(1, 39);
+            this.menuStrip1.Location = new System.Drawing.Point(1, 31);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(805, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1384, 40);
             this.menuStrip1.TabIndex = 27;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -523,12 +547,72 @@
             this.imageToolStripMenuItem.Text = "&Image";
             this.imageToolStripMenuItem.Click += new System.EventHandler(this.imageToolStripMenuItem_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.panel6);
+            this.groupBox2.Location = new System.Drawing.Point(12, 91);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(719, 261);
+            this.groupBox2.TabIndex = 28;
+            this.groupBox2.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.chart1);
+            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox3.Location = new System.Drawing.Point(12, 358);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1335, 337);
+            this.groupBox3.TabIndex = 29;
+            this.groupBox3.TabStop = false;
+            // 
+            // chart1
+            // 
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(6, 13);
+            this.chart1.Name = "chart1";
+            this.chart1.Size = new System.Drawing.Size(1323, 318);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            this.chart1.FormatNumber += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.FormatNumberEventArgs>(this.chart1_FormatNumber);
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
+            this.chart1.MouseLeave += new System.EventHandler(this.chart1_MouseLeave);
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.Controls.Add(this.progressBar1);
+            this.panel7.Location = new System.Drawing.Point(1009, 694);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(352, 32);
+            this.panel7.TabIndex = 30;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar1.Location = new System.Drawing.Point(0, 0);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(352, 32);
+            this.progressBar1.TabIndex = 0;
+            // 
             // FTimeSpectrum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.ClientSize = new System.Drawing.Size(807, 707);
+            this.ClientSize = new System.Drawing.Size(1386, 736);
+            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FTimeSpectrum";
@@ -536,8 +620,10 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FTimeSpectrum_FormClosing);
             this.Load += new System.EventHandler(this.FTimeSpectrum_Load);
             this.Controls.SetChildIndex(this.panel5, 0);
-            this.Controls.SetChildIndex(this.panel6, 0);
             this.Controls.SetChildIndex(this.menuStrip1, 0);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.groupBox3, 0);
+            this.Controls.SetChildIndex(this.panel7, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -546,6 +632,10 @@
             this.panel6.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -592,5 +682,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label lbltime;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

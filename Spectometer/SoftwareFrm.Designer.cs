@@ -120,7 +120,7 @@
             this.tabControl1.Location = new System.Drawing.Point(27, 31);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(477, 304);
+            this.tabControl1.Size = new System.Drawing.Size(527, 302);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -668,7 +668,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(469, 278);
+            this.tabPage7.Size = new System.Drawing.Size(519, 276);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Irradiance";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -676,8 +676,9 @@
             // txtIrradianceY2
             // 
             this.txtIrradianceY2.Location = new System.Drawing.Point(83, 135);
+            this.txtIrradianceY2.Multiline = true;
             this.txtIrradianceY2.Name = "txtIrradianceY2";
-            this.txtIrradianceY2.Size = new System.Drawing.Size(100, 20);
+            this.txtIrradianceY2.Size = new System.Drawing.Size(195, 94);
             this.txtIrradianceY2.TabIndex = 39;
             // 
             // label25

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FNanoDrop));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtSSFN = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtDiluationFilter = new System.Windows.Forms.TextBox();
@@ -51,8 +53,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtA23 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.panel11.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -60,7 +60,7 @@
             // 
             // _lbl_form_text
             // 
-            this._lbl_form_text.Size = new System.Drawing.Size(538, 38);
+            this._lbl_form_text.Size = new System.Drawing.Size(544, 30);
             this._lbl_form_text.Text = "F_Base";
             // 
             // groupBox2
@@ -72,12 +72,34 @@
             this.groupBox2.Controls.Add(this.txtDiluationFilter);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.ForeColor = System.Drawing.Color.Silver;
-            this.groupBox2.Location = new System.Drawing.Point(355, 53);
+            this.groupBox2.Location = new System.Drawing.Point(355, 56);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(293, 226);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Setup";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(30, 92);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 20);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "SSF :";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.White;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Protein",
+            "Nucleic"});
+            this.comboBox1.Location = new System.Drawing.Point(152, 89);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 28);
+            this.comboBox1.TabIndex = 2;
             // 
             // txtSSFN
             // 
@@ -101,6 +123,7 @@
             this.txtDiluationFilter.Name = "txtDiluationFilter";
             this.txtDiluationFilter.Size = new System.Drawing.Size(100, 27);
             this.txtDiluationFilter.TabIndex = 1;
+            this.txtDiluationFilter.TextChanged += new System.EventHandler(this.txtDiluationFilter_TextChanged);
             // 
             // label9
             // 
@@ -137,12 +160,13 @@
             this.btnclose.FlatAppearance.BorderSize = 0;
             this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnclose.ForeColor = System.Drawing.Color.White;
-            this.btnclose.Location = new System.Drawing.Point(189, 368);
+            this.btnclose.Location = new System.Drawing.Point(355, 372);
             this.btnclose.Name = "btnclose";
             this.btnclose.Size = new System.Drawing.Size(112, 37);
             this.btnclose.TabIndex = 23;
             this.btnclose.Text = "Close";
             this.btnclose.UseVisualStyleBackColor = false;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
             // 
             // btnCalculate
             // 
@@ -151,7 +175,7 @@
             this.btnCalculate.FlatAppearance.BorderSize = 0;
             this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCalculate.ForeColor = System.Drawing.Color.White;
-            this.btnCalculate.Location = new System.Drawing.Point(69, 368);
+            this.btnCalculate.Location = new System.Drawing.Point(235, 372);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(114, 37);
             this.btnCalculate.TabIndex = 22;
@@ -179,7 +203,7 @@
             this.groupBox1.Size = new System.Drawing.Size(273, 298);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Absobance";
+            this.groupBox1.Text = "Absorbance";
             // 
             // txtA2628
             // 
@@ -283,30 +307,9 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "A230 nm :";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Protein",
-            "Nucleic"});
-            this.comboBox1.Location = new System.Drawing.Point(152, 89);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 28);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(30, 92);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 20);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "SSF :";
-            // 
             // FNanoDrop
             // 
+            this.AcceptButton = this.btnCalculate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.ClientSize = new System.Drawing.Size(702, 445);
             this.Controls.Add(this.groupBox2);
@@ -316,7 +319,7 @@
             this.Controls.Add(this.btnCalculate);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FNanoDrop";
-            this.Text = "Nano drop";
+            this.Text = "NanoDrop";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FNanoDrop_FormClosing);
             this.Load += new System.EventHandler(this.FNanoDrop_Load);
             this.Controls.SetChildIndex(this.btnCalculate, 0);

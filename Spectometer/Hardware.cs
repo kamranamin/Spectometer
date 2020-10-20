@@ -8,6 +8,6 @@ namespace Spectometer
     [Serializable ]
     class Hardware
     {
-        public byte[] HardwareData = new byte[0x10];
+       
     }
 }

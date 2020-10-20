@@ -23,7 +23,8 @@ namespace Spectometer
         private float _IrradianceX2 = 0f;
         private float _IrradianceY1 = 0f;
         private float _IrradianceY2 = 0f;
-        private int _LampType = 0;
+        private bool _tangestan = false;
+        private bool _Dutrium = false;
         private float _ScopeX1 = 0f;
         private float _ScopeX2 = 0f;
         private float _ScopeY1 = 0f;
@@ -45,10 +46,53 @@ namespace Spectometer
         private float _RamanX2 = 0f;
         private float _RamanY1 = 0f;
         private float _RamanY2 = 0f;
-
+        private int _BaseLine = 0;
+        private int _FluorescenceX1 = 0;
+        private int _FluorescenceX2 = 0;
+        private int _FluorescenceY1 = 0;
+        private int _FluorescenceY2 = 0;
+        private bool  _enablebaseline = false;
+        private bool _nm;
+        private bool _cm;
+        private bool _hideColorBar;
+        public bool EnableBaseLine { get { return _enablebaseline; } set { _enablebaseline = value; } }
+        public int FluorescenceX1 { get { return _FluorescenceX1; }set { _FluorescenceX1 = value; } }
+        public int FluorescenceX2 { get { return _FluorescenceX2; } set { _FluorescenceX2 = value; } }
+        public int FluorescenceY1 { get { return _FluorescenceY1; } set { _FluorescenceY1 = value; } }
+        public int FluorescenceY2 { get { return _FluorescenceY2; } set { _FluorescenceY2 = value; } }
+        public bool Tngestan { get { return _tangestan; }set { _tangestan = value; } }
+        public bool Dutrium { get { return _Dutrium; }set { _Dutrium = value; } }
+      
+        public bool HideColorbar
+        {
+            get
+            {
+                return _hideColorBar;
+            }
+            set
+            {
+                _hideColorBar = value;
+            }
+        }
+          public bool XvalCM { get { return _cm; }set { _cm = value; }}
+        public bool XvalNM
+        {
+            get
+            {
+                return _nm;
+            }
+            set
+            {
+                _nm = value;
+            }
+        }
         public float RamanX1
         {
             get { return _RamanX1; }set { _RamanX1 = value; }
+        }
+        public int BaseLine
+        {
+            get { return _BaseLine; }set { _BaseLine = value; }
         }
         public float RamanX2
         {
@@ -58,12 +102,12 @@ namespace Spectometer
         public float RamanY1
         {
             get { return _RamanY1; }
-            set { _RamanY2 = value; }
+            set { _RamanY1 = value; }
         }
         public float RamanY2
         {
             get { return _RamanY2; }
-            set { _RamanY1 = value; }
+            set { _RamanY2 = value; }
         }
         public float AbsorbanceX1
         {
@@ -394,17 +438,7 @@ namespace Spectometer
             }
         }
 
-        public int LampType
-        {
-            get
-            {
-                return _LampType;
-            }
-            set
-            {
-                _LampType = value;
-            }
-        }
+      
 
       
 

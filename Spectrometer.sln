@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectometer", "Spectometer\Spectometer.csproj", "{85043178-219F-4159-B527-1384E7061ABE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectrometer", "Spectometer\Spectrometer.csproj", "{85043178-219F-4159-B527-1384E7061ABE}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SpectrometerSetup", "SpectrometerSetup\SpectrometerSetup.vdproj", "{13119576-0426-4D79-8E10-2FDAECD6A09B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,14 @@ Global
 		{85043178-219F-4159-B527-1384E7061ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85043178-219F-4159-B527-1384E7061ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85043178-219F-4159-B527-1384E7061ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13119576-0426-4D79-8E10-2FDAECD6A09B}.Debug|Any CPU.ActiveCfg = Debug
+		{13119576-0426-4D79-8E10-2FDAECD6A09B}.Debug|Any CPU.Build.0 = Debug
+		{13119576-0426-4D79-8E10-2FDAECD6A09B}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F94861BA-3E3E-49E9-AE8E-CC10275C6E30}
 	EndGlobalSection
 EndGlobal

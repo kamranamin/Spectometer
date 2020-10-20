@@ -16,6 +16,7 @@ namespace Spectometer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+       //   Application.Run(new Forms.SplashScreen ());
             Application.Run(new Form1());
         }
     }

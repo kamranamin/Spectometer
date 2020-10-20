@@ -313,7 +313,8 @@ namespace BlackBeltCoder
 			}
 		}
 
-		// Highlight color under mouse
+		/// Highlight color under mouse
+
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
 			int i = PointToIndex(Cursor.Position);
@@ -322,7 +323,7 @@ namespace BlackBeltCoder
 			base.OnMouseMove(e);
 		}
 
-		// Choose color under mouse
+		/// Choose color under mouse
 		protected override void OnMouseClick(MouseEventArgs e)
 		{
 			base.OnMouseClick(e);
@@ -331,7 +332,7 @@ namespace BlackBeltCoder
 				RaiseClickEvent(ColorItems[index]);
 		}
 
-		// Process keystrokes
+		///Process keystrokes
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
 			int index = _selected;
@@ -392,18 +393,19 @@ namespace BlackBeltCoder
 				default:
 					return base.ProcessCmdKey(ref msg, keyData);
 			}
-			// Update selection if it's changed
+			/// Update selection if it's changed
 			SetSelected(index, true);
 			return true;
 		}
 
-		// Paint palette
+		/// Paint palette
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			Rectangle rect = new Rectangle();
 
 			for (int i = 0; i < ColorItems.Count; i++)
 			{
+                
 				// Get rectangle for this item
 				IndexToRectangle(i, ref rect);
 
@@ -586,9 +588,14 @@ namespace BlackBeltCoder
 		#endregion
 
 	}
-
+    /// <summary>
+    /// 
+    /// </summary>
 	public class ColorPickerEventArgs : EventArgs
 	{
+        /// <summary>
+        /// 
+        /// </summary>
 		public Color Value;
 	}
 }

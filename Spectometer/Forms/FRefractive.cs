@@ -12,22 +12,16 @@ namespace Spectometer.Forms
 {
     public partial class FRefractive : F_Base
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public FRefractive()
         {
             InitializeComponent();
         }
-        float Landa1, Landa2, NoF, RefeactiveIndex, Angel, Conversion, T, X;
+        float Landa1, Landa2, NoF, RefeactiveIndex, Angel, Conversion, T;
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-            try
-            {
-                X = Convert.ToSingle(txtX .Text);
-            }
-            catch { txtX .Text = "0"; }
-
-        }
+      
 
         private void txtConversion_TextChanged(object sender, EventArgs e)
         {
@@ -36,6 +30,21 @@ namespace Spectometer.Forms
                 Conversion  = Convert.ToSingle(txtConversion  .Text);
             }
             catch { txtConversion .Text = "0"; }
+        }
+
+        private void FRefractive_Load(object sender, EventArgs e)
+        {
+            txtConversion.Text = "0.001";
+            txtAngel.Text = "7";
+        }
+
+        private void txtN_TextChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                NoF = Convert.ToSingle(txtN.Text);
+            }
+            catch { txtN.Text = "0"; }
         }
 
         private void txtAngel_TextChanged(object sender, EventArgs e)
@@ -58,11 +67,11 @@ namespace Spectometer.Forms
 
         private void txtN_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                NoF  = Convert.ToSingle(txtN .Text);
-            }
-            catch { txtN .Text = "0"; }
+            //try
+            //{
+            //    NoF  = Convert.ToSingle(txtN .Text);
+            //}
+            //catch { txtN .Text = "0"; }
         }
 
         private void txtLanda2_TextChanged(object sender, EventArgs e)
@@ -85,14 +94,16 @@ namespace Spectometer.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-             float Ttop = ((Landa1 * X * Landa2) * Conversion)  ;
-             float Tdown = 2 * (Landa1 - Landa2) *Convert.ToSingle ( Math.Pow ( Math.Pow(NoF, 2) - ((1 / 2) * (1 - Math.Cos(2 * Angel))),(1/2)));
-            T = Ttop / Tdown;
-            float Ntop =Convert.ToSingle ( Math.Pow ( (NoF * (Landa1 * X * Landa2) * Conversion)/ ( 2 * (Landa1 - Landa2)*T ),2));
-            float Ndown =Convert.ToSingle( (1 / 2) * (1 - Math.Cos(2 * Angel)));
-            RefeactiveIndex = Convert.ToSingle( Math.Pow((Ntop + Ndown), (1 / 2)));
-            lbln.Text = RefeactiveIndex.ToString();
-            lblt.Text = T.ToString();
+             float Ttop = ((Landa1 *  Landa2) * Conversion)*NoF  ;
+            double  Tdown =   2 * ((Landa1 - Landa2) * (Math.Sqrt(Math.Pow(RefeactiveIndex, 2) - Math.Pow(Math.Sin((Angel*Math.PI)/180 ),2 ))));
+           //  float Tdown = 2 * (Landa1 - Landa2) *Convert.ToSingle ( Math.Pow ( Math.Pow(RefeactiveIndex, 2) - ((1 / 2) * (1 - Math.Cos(2 * Angel))),(1/2)));
+            T =  Ttop /(float ) Tdown;
+           // float Ntop =Convert.ToSingle ( Math.Pow ( (NoF * (Landa1 *  Landa2) * Conversion)/ ( 2 * (Landa1 - Landa2)*T ),2));
+           // float Ndown =Convert.ToSingle(  ( Math.Pow ( Math.Sin (Angel),2)));
+          //  RefeactiveIndex = Convert.ToSingle( Math.Pow((Ntop + Ndown), (1 / 2)));
+           // lbln.Text ="T:"+ T.ToString();
+            lblt.Text = "Thickness:"+ T.ToString()+"micron";
+
 
         }
     }

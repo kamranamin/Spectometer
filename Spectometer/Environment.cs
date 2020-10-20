@@ -14,6 +14,7 @@ namespace Spectometer
         private UInt32   _integrationTime = 0;
         private ushort _lampBrightness = 0;
         private ushort _smoothing = 0;
+        private int _baseLineD = 0;
         public ushort  Average
         {
             get
@@ -24,6 +25,11 @@ namespace Spectometer
             {
                 _average = value;
             }
+        }
+        public int BaseLineD
+        {
+            get { return _baseLineD; }
+            set { _baseLineD = value;  }
         }
         public float  RE1
         {

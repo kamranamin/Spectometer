@@ -71,12 +71,7 @@ namespace Spectometer
                 softwarepro.YmapC7 = Convert.ToSingle(txtYmapC7.Text);
                 softwarepro.YmapC8 = Convert.ToSingle(txtYmapC8.Text);
                
-                if(chkTangestanLamp.Checked )
-               softwarepro.LampType   = 0;
-                if (chkUVLamp.Checked)
-                    softwarepro.LampType = 1;
-                if (chkTangestanLamp.Checked && chkUVLamp.Checked)
-                    softwarepro.LampType = 2;
+              
 
                 IFormatter formatter = new BinaryFormatter();
                 FileStream serializationStream = new FileStream("SoftwareSetup.dat", FileMode.Create, FileAccess.Write);
@@ -127,15 +122,7 @@ namespace Spectometer
                 txtYmapC7.Text = softwarepro.YmapC7.ToString();
                 txtYmapC8.Text = softwarepro.YmapC8.ToString();
                 txtYmapI .Text = softwarepro.YmapI .ToString();
-                if (softwarepro.LampType == 0)
-                    chkTangestanLamp.Checked = true;
-                else if (softwarepro.LampType == 1)
-                    chkUVLamp.Checked = true;
-                else if (softwarepro.LampType==2)
-                {
-                    chkUVLamp.Checked = true;
-                    chkTangestanLamp.Checked = false;
-                }
+                
                 serializationStream.Close();
                
 

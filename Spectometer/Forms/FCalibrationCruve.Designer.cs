@@ -31,6 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCalibrationCruve));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,6 +68,8 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.lblAbsrbance = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -76,11 +80,13 @@
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // _lbl_form_text
             // 
-            this._lbl_form_text.Size = new System.Drawing.Size(677, 38);
+            this._lbl_form_text.Size = new System.Drawing.Size(1297, 30);
             this._lbl_form_text.Text = "F_Base";
             // 
             // menuStrip1
@@ -91,9 +97,9 @@
             this.resetToolStripMenuItem,
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(1, 39);
+            this.menuStrip1.Location = new System.Drawing.Point(1, 31);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(839, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1453, 40);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -125,10 +131,10 @@
             // 
             this.panel7.Controls.Add(this.dataGridView1);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(404, 79);
+            this.panel7.Location = new System.Drawing.Point(1049, 71);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(5);
-            this.panel7.Size = new System.Drawing.Size(436, 376);
+            this.panel7.Size = new System.Drawing.Size(405, 714);
             this.panel7.TabIndex = 9;
             // 
             // dataGridView1
@@ -168,7 +174,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 40;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(426, 366);
+            this.dataGridView1.Size = new System.Drawing.Size(395, 704);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -211,7 +217,7 @@
             this.btnEnable.Name = "btnEnable";
             this.btnEnable.Size = new System.Drawing.Size(233, 38);
             this.btnEnable.TabIndex = 5;
-            this.btnEnable.Text = "Enable Curve";
+            this.btnEnable.Text = "Enable Calibration Curve";
             this.btnEnable.UseVisualStyleBackColor = false;
             this.btnEnable.Click += new System.EventHandler(this.btnEnable_Click);
             // 
@@ -279,18 +285,18 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label1.Location = new System.Drawing.Point(17, 116);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.Size = new System.Drawing.Size(98, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Wave Lenght :";
+            this.label1.Text = "Wavelength :";
             // 
             // _pnl_status_out
             // 
             this._pnl_status_out.Controls.Add(this._pnl_status);
             this._pnl_status_out.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._pnl_status_out.Location = new System.Drawing.Point(1, 455);
+            this._pnl_status_out.Location = new System.Drawing.Point(1, 785);
             this._pnl_status_out.Name = "_pnl_status_out";
             this._pnl_status_out.Padding = new System.Windows.Forms.Padding(1);
-            this._pnl_status_out.Size = new System.Drawing.Size(839, 33);
+            this._pnl_status_out.Size = new System.Drawing.Size(1453, 33);
             this._pnl_status_out.TabIndex = 20;
             // 
             // _pnl_status
@@ -303,7 +309,7 @@
             this._pnl_status.Location = new System.Drawing.Point(1, 0);
             this._pnl_status.Name = "_pnl_status";
             this._pnl_status.Padding = new System.Windows.Forms.Padding(3);
-            this._pnl_status.Size = new System.Drawing.Size(837, 32);
+            this._pnl_status.Size = new System.Drawing.Size(1451, 32);
             this._pnl_status.TabIndex = 21;
             // 
             // panel9
@@ -315,7 +321,7 @@
             this.panel9.Location = new System.Drawing.Point(129, 3);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(3);
-            this.panel9.Size = new System.Drawing.Size(136, 26);
+            this.panel9.Size = new System.Drawing.Size(296, 26);
             this.panel9.TabIndex = 16;
             // 
             // lblNan
@@ -365,7 +371,7 @@
             this.lblNan1.AutoSize = true;
             this.lblNan1.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblNan1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblNan1.Location = new System.Drawing.Point(47, 3);
+            this.lblNan1.Location = new System.Drawing.Point(39, 3);
             this.lblNan1.Name = "lblNan1";
             this.lblNan1.Size = new System.Drawing.Size(41, 20);
             this.lblNan1.TabIndex = 1;
@@ -378,9 +384,10 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label6.Location = new System.Drawing.Point(3, 3);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 20);
+            this.label6.Size = new System.Drawing.Size(36, 20);
             this.label6.TabIndex = 0;
-            this.label6.Text = "R2 = ";
+            this.label6.Text = "R = ";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // groupBox1
             // 
@@ -388,9 +395,9 @@
             this.groupBox1.Controls.Add(this.panel5);
             this.groupBox1.Controls.Add(this.panel6);
             this.groupBox1.ForeColor = System.Drawing.Color.Silver;
-            this.groupBox1.Location = new System.Drawing.Point(31, 241);
+            this.groupBox1.Location = new System.Drawing.Point(398, 100);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(329, 177);
+            this.groupBox1.Size = new System.Drawing.Size(392, 118);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sample";
@@ -402,11 +409,11 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(96, 133);
+            this.button1.Location = new System.Drawing.Point(260, 43);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(91, 27);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Add";
+            this.button1.Text = "Calculate ";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -415,7 +422,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel5.Controls.Add(this.lblConceration);
             this.panel5.Controls.Add(this.label7);
-            this.panel5.Location = new System.Drawing.Point(96, 81);
+            this.panel5.Location = new System.Drawing.Point(18, 71);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(206, 39);
             this.panel5.TabIndex = 5;
@@ -434,16 +441,16 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 7);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 20);
+            this.label7.Size = new System.Drawing.Size(114, 20);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Concentration";
+            this.label7.Text = "Concentration :";
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel6.Controls.Add(this.lblAbsrbance);
             this.panel6.Controls.Add(this.label9);
-            this.panel6.Location = new System.Drawing.Point(96, 36);
+            this.panel6.Location = new System.Drawing.Point(18, 26);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(206, 39);
             this.panel6.TabIndex = 4;
@@ -466,11 +473,38 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Absorbance :";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.chart1);
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox2.Location = new System.Drawing.Point(30, 246);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(953, 517);
+            this.groupBox2.TabIndex = 22;
+            this.groupBox2.TabStop = false;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(3, 23);
+            this.chart1.Name = "chart1";
+            this.chart1.Size = new System.Drawing.Size(947, 491);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
             // FCalibrationCruve
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.ClientSize = new System.Drawing.Size(841, 489);
+            this.ClientSize = new System.Drawing.Size(1455, 819);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.textBox2);
@@ -500,6 +534,7 @@
             this.Controls.SetChildIndex(this.textBox2, 0);
             this.Controls.SetChildIndex(this.btnAdd, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -515,6 +550,8 @@
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -527,7 +564,6 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnEnable;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtC1;
@@ -552,7 +588,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lblAbsrbance;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;

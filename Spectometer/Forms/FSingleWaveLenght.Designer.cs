@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FSingleWaveLenght));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCalc = new System.Windows.Forms.Button();
             this.lblW3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtW3 = new System.Windows.Forms.TextBox();
@@ -41,17 +43,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtW1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCalc = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // _lbl_form_text
             // 
-            this._lbl_form_text.Size = new System.Drawing.Size(362, 38);
-            this._lbl_form_text.Text = "F_Base";
+            this._lbl_form_text.Size = new System.Drawing.Size(290, 30);
+            this._lbl_form_text.Text = "Single Wavelength Monitoring";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCalc);
             this.groupBox1.Controls.Add(this.lblW3);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtW3);
@@ -64,11 +66,27 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtW1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(53, 70);
+            this.groupBox1.Location = new System.Drawing.Point(30, 62);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(391, 255);
+            this.groupBox1.Size = new System.Drawing.Size(387, 272);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnCalc
+            // 
+            this.btnCalc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btnCalc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btnCalc.FlatAppearance.BorderSize = 0;
+            this.btnCalc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalc.ForeColor = System.Drawing.Color.White;
+            this.btnCalc.Location = new System.Drawing.Point(279, 217);
+            this.btnCalc.Name = "btnCalc";
+            this.btnCalc.Size = new System.Drawing.Size(80, 36);
+            this.btnCalc.TabIndex = 7;
+            this.btnCalc.Text = "Calculate";
+            this.btnCalc.UseVisualStyleBackColor = false;
+            this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
             // lblW3
             // 
@@ -96,6 +114,7 @@
             this.txtW3.Name = "txtW3";
             this.txtW3.Size = new System.Drawing.Size(91, 27);
             this.txtW3.TabIndex = 11;
+            this.txtW3.TextChanged += new System.EventHandler(this.txtW3_TextChanged);
             // 
             // label8
             // 
@@ -103,9 +122,9 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label8.Location = new System.Drawing.Point(15, 169);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 20);
+            this.label8.Size = new System.Drawing.Size(110, 20);
             this.label8.TabIndex = 10;
-            this.label8.Text = "Wave Lenght 3 :";
+            this.label8.Text = "Wavelength 3 :";
             // 
             // lblW2
             // 
@@ -133,6 +152,7 @@
             this.txtW2.Name = "txtW2";
             this.txtW2.Size = new System.Drawing.Size(91, 27);
             this.txtW2.TabIndex = 7;
+            this.txtW2.TextChanged += new System.EventHandler(this.txtW2_TextChanged);
             // 
             // label5
             // 
@@ -140,9 +160,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label5.Location = new System.Drawing.Point(15, 103);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 20);
+            this.label5.Size = new System.Drawing.Size(110, 20);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Wave Lenght 2 :";
+            this.label5.Text = "Wavelength 2 :";
             // 
             // lblW1
             // 
@@ -170,6 +190,7 @@
             this.txtW1.Name = "txtW1";
             this.txtW1.Size = new System.Drawing.Size(91, 27);
             this.txtW1.TabIndex = 3;
+            this.txtW1.TextChanged += new System.EventHandler(this.txtW1_TextChanged);
             // 
             // label1
             // 
@@ -177,37 +198,23 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label1.Location = new System.Drawing.Point(15, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 20);
+            this.label1.Size = new System.Drawing.Size(108, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Wave Lenght 1 :";
-            // 
-            // btnCalc
-            // 
-            this.btnCalc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.btnCalc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.btnCalc.FlatAppearance.BorderSize = 0;
-            this.btnCalc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalc.ForeColor = System.Drawing.Color.White;
-            this.btnCalc.Location = new System.Drawing.Point(187, 348);
-            this.btnCalc.Name = "btnCalc";
-            this.btnCalc.Size = new System.Drawing.Size(128, 56);
-            this.btnCalc.TabIndex = 7;
-            this.btnCalc.Text = "Calculate";
-            this.btnCalc.UseVisualStyleBackColor = false;
-            this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
+            this.label1.Text = "Wavelength 1 :";
             // 
             // FSingleWaveLenght
             // 
+            this.AcceptButton = this.btnCalc;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 458);
-            this.Controls.Add(this.btnCalc);
+            this.ClientSize = new System.Drawing.Size(448, 374);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FSingleWaveLenght";
-            this.Text = "FSingleWaveLenght";
+            this.Text = "Single Wavelength Monitoring";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FSingleWaveLenght_FormClosing);
+            this.Load += new System.EventHandler(this.FSingleWaveLenght_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
-            this.Controls.SetChildIndex(this.btnCalc, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

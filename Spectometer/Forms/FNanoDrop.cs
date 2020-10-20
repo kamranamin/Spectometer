@@ -15,10 +15,21 @@ namespace Spectometer.Forms
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             double  result;
-            txtA23.Text = a230.ToString("F2");
-            txtA26.Text = a260.ToString("F2");
-            txtA28.Text = a280.ToString("F2");
-            txtA32.Text = a320.ToString("F2");
+
+            if (txtDiluationFilter.Text == "")
+            {
+                MessageBox.Show("Please insert Diluation Filter ");
+                return;
+            }
+            if(txtSSFN.Text=="")
+            {
+                MessageBox.Show("Please insert value ");
+                return;
+            }
+            txtA23.Text = a230.ToString("N4");
+            txtA26.Text = a260.ToString("N4");
+            txtA28.Text = a280.ToString("N4");
+            txtA32.Text = a320.ToString("N4");
             txtA2623.Text = (a260 / a230).ToString("F2");
             txtA2628.Text = (a260 / a280).ToString("F2");
             //Protein
@@ -38,6 +49,16 @@ namespace Spectometer.Forms
         private void FNanoDrop_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 1;
+        }
+
+        private void btnclose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtDiluationFilter_TextChanged(object sender, EventArgs e)
+        {
+          
         }
 
         private void FNanoDrop_FormClosing(object sender, FormClosingEventArgs e)

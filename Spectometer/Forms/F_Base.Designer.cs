@@ -90,7 +90,7 @@
             this._pnl_form_tools.Dock = System.Windows.Forms.DockStyle.Top;
             this._pnl_form_tools.Location = new System.Drawing.Point(1, 1);
             this._pnl_form_tools.Name = "_pnl_form_tools";
-            this._pnl_form_tools.Size = new System.Drawing.Size(475, 38);
+            this._pnl_form_tools.Size = new System.Drawing.Size(475, 30);
             this._pnl_form_tools.TabIndex = 5;
             this._pnl_form_tools.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlUp_MouseDown);
             this._pnl_form_tools.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlUp_MouseMove);
@@ -98,11 +98,12 @@
             // 
             // _lbl_form_text
             // 
+            this._lbl_form_text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(39)))), ((int)(((byte)(176)))));
             this._lbl_form_text.Dock = System.Windows.Forms.DockStyle.Fill;
             this._lbl_form_text.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this._lbl_form_text.Location = new System.Drawing.Point(48, 0);
+            this._lbl_form_text.Location = new System.Drawing.Point(42, 0);
             this._lbl_form_text.Name = "_lbl_form_text";
-            this._lbl_form_text.Size = new System.Drawing.Size(313, 38);
+            this._lbl_form_text.Size = new System.Drawing.Size(319, 30);
             this._lbl_form_text.TabIndex = 4;
             this._lbl_form_text.Text = "Text";
             this._lbl_form_text.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -112,11 +113,13 @@
             // 
             // _pb_form_icon
             // 
+            this._pb_form_icon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(39)))), ((int)(((byte)(176)))));
             this._pb_form_icon.Dock = System.Windows.Forms.DockStyle.Left;
-            this._pb_form_icon.Image = ((System.Drawing.Image)(resources.GetObject("_pb_form_icon.Image")));
+            this._pb_form_icon.Image = global::Spectometer.Properties.Resources.logo_32;
+            this._pb_form_icon.InitialImage = global::Spectometer.Properties.Resources.logo_32;
             this._pb_form_icon.Location = new System.Drawing.Point(0, 0);
             this._pb_form_icon.Name = "_pb_form_icon";
-            this._pb_form_icon.Size = new System.Drawing.Size(48, 38);
+            this._pb_form_icon.Size = new System.Drawing.Size(42, 30);
             this._pb_form_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this._pb_form_icon.TabIndex = 3;
             this._pb_form_icon.TabStop = false;
@@ -126,6 +129,7 @@
             // 
             // _btn_min
             // 
+            this._btn_min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(39)))), ((int)(((byte)(176)))));
             this._btn_min.Dock = System.Windows.Forms.DockStyle.Right;
             this._btn_min.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this._btn_min.FlatAppearance.BorderSize = 0;
@@ -136,15 +140,16 @@
             this._btn_min.Image = global::Spectometer.Properties.Resources.Minus;
             this._btn_min.Location = new System.Drawing.Point(361, 0);
             this._btn_min.Name = "_btn_min";
-            this._btn_min.Size = new System.Drawing.Size(38, 38);
+            this._btn_min.Size = new System.Drawing.Size(38, 30);
             this._btn_min.TabIndex = 2;
-            this._btn_min.UseVisualStyleBackColor = true;
+            this._btn_min.UseVisualStyleBackColor = false;
             this._btn_min.Click += new System.EventHandler(this._btn_min_Click);
             this._btn_min.MouseLeave += new System.EventHandler(this._btn_min_MouseLeave);
             this._btn_min.MouseMove += new System.Windows.Forms.MouseEventHandler(this._btn_min_MouseMove);
             // 
             // _btn_max_min
             // 
+            this._btn_max_min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(39)))), ((int)(((byte)(176)))));
             this._btn_max_min.Dock = System.Windows.Forms.DockStyle.Right;
             this._btn_max_min.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this._btn_max_min.FlatAppearance.BorderSize = 0;
@@ -155,15 +160,16 @@
             this._btn_max_min.Image = global::Spectometer.Properties.Resources.Tiles;
             this._btn_max_min.Location = new System.Drawing.Point(399, 0);
             this._btn_max_min.Name = "_btn_max_min";
-            this._btn_max_min.Size = new System.Drawing.Size(38, 38);
+            this._btn_max_min.Size = new System.Drawing.Size(38, 30);
             this._btn_max_min.TabIndex = 1;
-            this._btn_max_min.UseVisualStyleBackColor = true;
+            this._btn_max_min.UseVisualStyleBackColor = false;
             this._btn_max_min.Click += new System.EventHandler(this._btn_max_min_Click);
             this._btn_max_min.MouseLeave += new System.EventHandler(this._btn_max_min_MouseLeave);
             this._btn_max_min.MouseMove += new System.Windows.Forms.MouseEventHandler(this._btn_max_min_MouseMove);
             // 
             // _btn_close
             // 
+            this._btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(39)))), ((int)(((byte)(176)))));
             this._btn_close.Dock = System.Windows.Forms.DockStyle.Right;
             this._btn_close.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this._btn_close.FlatAppearance.BorderSize = 0;
@@ -174,9 +180,9 @@
             this._btn_close.Image = ((System.Drawing.Image)(resources.GetObject("_btn_close.Image")));
             this._btn_close.Location = new System.Drawing.Point(437, 0);
             this._btn_close.Name = "_btn_close";
-            this._btn_close.Size = new System.Drawing.Size(38, 38);
+            this._btn_close.Size = new System.Drawing.Size(38, 30);
             this._btn_close.TabIndex = 0;
-            this._btn_close.UseVisualStyleBackColor = true;
+            this._btn_close.UseVisualStyleBackColor = false;
             this._btn_close.Click += new System.EventHandler(this._btn_close_Click);
             this._btn_close.MouseLeave += new System.EventHandler(this._btn_close_MouseLeave);
             this._btn_close.MouseMove += new System.Windows.Forms.MouseEventHandler(this._btn_close_MouseMove);
@@ -194,6 +200,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "F_Base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "F_Base";

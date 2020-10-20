@@ -9,7 +9,7 @@ namespace Spectometer
     [Serializable ]
     class ChartData
     {
-       // public List<DataSeries> DataSerisList = new List<DataSeries>();
+        public List<double > DataSerisList = new List<double >();
         public int SeriesTypes = 0;
     }
 }

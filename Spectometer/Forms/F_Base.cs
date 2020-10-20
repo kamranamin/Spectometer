@@ -58,7 +58,7 @@ namespace Spectometer.Forms
 
         private void F_Base_Load(object sender, EventArgs e)
         {
-            _pb_form_icon.Image = new Bitmap(Icon.ToBitmap(), 24, 24);
+            _pb_form_icon.Image = Spectometer.Properties.Resources.logo_32 ;
             _lbl_form_text.Text = Text;
         }
 

@@ -5,7 +5,8 @@
     [Serializable]
     internal class Packet
     {
-        public float [] packet = new float [0x826];
+        public int NumPixel;
+        public float[] packet;
     }
 }
 

@@ -17,12 +17,18 @@ namespace Spectometer.Forms
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void FAddNewExperiment_Load(object sender, EventArgs e)
+        {
+            txtExperimentName.Focus();
         }
     }
 }

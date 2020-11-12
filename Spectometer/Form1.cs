@@ -347,12 +347,10 @@ namespace Spectometer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //   var ar= (SeriesChartType[]) Enum.GetValues(typeof(SeriesChartType)).;
-
-
-            
-            cmbChartType.DataSource = ((SeriesChartType[])Enum.GetValues(typeof(SeriesChartType))).OrderBy(p => p.ToString()).ToArray(); ;
-            //LoadSofwareProperties();
+           
+           
+            cmbChartType.DataSource = ((SeriesChartType[])Enum.GetValues(typeof(SeriesChartType))).OrderBy(p => p.ToString()).ToArray() ;
+            cmbChartType.Items.Remove("Pie");           //LoadSofwareProperties();
             //LoadEnvironment();
             numricalAverage.Value = 10M;
             TimeCalc.Tick += TimeCalc_Tick;
@@ -547,7 +545,7 @@ namespace Spectometer
             else if (Mode == SpectometrMode.Transmittance)
             {
 
-                timeSpectrumFrm.mode = "% T  ";
+             timeSpectrumFrm.mode = "% T  ";
                 timeSpectrumFrm.format = "N2";
             }
             else if (Mode == SpectometrMode.Reflectance)
@@ -890,6 +888,7 @@ namespace Spectometer
             else
             {
                 int i = ComportInterfacecs.OpenComport(strArray[0]);
+                
                 label9.Text = "Device  connected";
                 btnStart.Enabled = true;
 
@@ -907,22 +906,42 @@ namespace Spectometer
 
                 ComportInterfacecs.StatusComport();
                 IsConected = true;
-                connectToDeviceToolStripMenuItem.Enabled = false;
+              //  connectToDeviceToolStripMenuItem.Enabled = false;
+                
                
             }
 
         }
 
+
+        SerialPort serialPort;
+      
+
         private void SerialPortService_PortsChanged(object sender, PortsChangedArgs e)
         {
-            isRun = false;
-            btnStart.Image = Properties.Resources.Media_Play2;
-            btnStart.Text = "Start";
-            ComportInterfacecs.StopReadingImageSensor();
-            ComportInterfacecs.DiscardBufferPort();
-            ComportInterfacecs.StopRead = true;
-            chTimeSeries.Checked = false;
+         
+            if (e.EventType== EventType.Removal)
+            {
+             
+                if (InvokeRequired)
+                {
 
+                    this.Invoke(new MethodInvoker(delegate {
+                        isRun = false;
+                        ComportInterfacecs.StopRead = true;
+
+                        btnStart.Image = Properties.Resources.Media_Play2;
+                        btnStart.Text = "Start";
+
+                       
+                        chTimeSeries.Checked = false;
+                        connectToDeviceToolStripMenuItem.Enabled = true;
+
+                    }));
+
+                   
+                }
+            }
             //  MessageBox.Show(e.EventType.ToString());
         }
 
@@ -1185,6 +1204,7 @@ namespace Spectometer
               
 
                 MainData = ((ComportDataReceiveEventArgs)arg).GetReceivedData();
+                
                 base.Invoke(new EventHandler(ShowData));
 
             }
@@ -2744,7 +2764,7 @@ namespace Spectometer
             label8.Text = Mode.ToString();
             HideColorBar();
         }
-
+        
         private void btnIrradiance_Click(object sender, EventArgs e)
         {
             if (!DarkRefreceInvalid)

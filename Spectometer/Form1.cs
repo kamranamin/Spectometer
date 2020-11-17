@@ -670,6 +670,11 @@ namespace Spectometer
                 {
                     this.ExperimentName = text;
                     this.chart1.Series.Add(this.ExperimentName);
+                    COlorSelect++;
+                    if (COlorSelect == 12)
+                        COlorSelect = 0;
+                    chart1.Series[ExperimentName].Color = selectColor(COlorSelect);
+
                 }
                 else
                 {
@@ -686,6 +691,7 @@ namespace Spectometer
                 this.chart1.Legends["Legend1"].Title = txtSeriesTiltle.Text;
                 chart1.Series[ExperimentName].ChartType = (SeriesChartType)cmbChartType.SelectedItem;
                 chart1.Series[ExperimentName].BorderWidth = trackBar1.Value;
+                
 
                 cmbSeriesName.Items.Add(ExperimentName);
 
@@ -1007,6 +1013,7 @@ namespace Spectometer
                 this.chart1.ChartAreas["ChartArea1"].AxisY.TitleFont = new Font("Times New Roman", 12, FontStyle.Bold);
                 this.chart1.ChartAreas["ChartArea1"].AxisX.Title = "Wavelength (nm)";
                 this.chart1.ChartAreas["ChartArea1"].AxisY.Title = "  Intensity (count)     ";
+                
 
 
                 label8.Text = Mode.ToString();
@@ -1094,13 +1101,7 @@ namespace Spectometer
 
                     }
 
-                    //logo.X = chart1.ChartAreas[0].InnerPlotPosition.X;
-                    //logo.Y = chart1.ChartAreas[0].InnerPlotPosition.Y;
-                    //logo.Height = 4;
-                    //double W = chart1.ChartAreas[0].InnerPlotPosition.Right - chart1.ChartAreas[0].InnerPlotPosition.Width;
-                    //logo.Width = chart1.ChartAreas[0].InnerPlotPosition.Width - W;
-                    //logo.Image = new NamedImage("UV-IR", Properties.Resources.UV_IR).Name;
-                    //chart1.Annotations.Add(logo);
+                   
                 }
                 else
                 {
@@ -4847,6 +4848,10 @@ namespace Spectometer
                 {
                     this.ExperimentName = text;
                     this.chart1.Series.Add(this.ExperimentName);
+                    COlorSelect++;
+                    if (COlorSelect == 12)
+                        COlorSelect = 0;
+                    chart1.Series[ExperimentName].Color = selectColor(COlorSelect);
                 }
                 else
                 {

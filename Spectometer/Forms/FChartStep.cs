@@ -20,7 +20,7 @@ namespace Spectometer.Forms
             InitializeComponent();
         }
         public string Mode;
-        public bool IsSave=false ;
+        public bool IsSave = false;
         private void FChartStep_Load(object sender, EventArgs e)
         {
 

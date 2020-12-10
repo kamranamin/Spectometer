@@ -1209,7 +1209,18 @@ namespace Spectometer
                 base.Invoke(new EventHandler(ShowData));
 
             }
-            catch (Exception ex){ MessageBox.Show(ex.Message); }
+            catch (System.IO.IOException exp)
+            {
+                return;
+            }
+            catch (System.InvalidOperationException error)
+            {
+                return;
+            }
+            catch (Exception ex)
+            { return; }
+          
+
 
         }
 
@@ -1735,7 +1746,16 @@ namespace Spectometer
 
 
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch(System.IO.IOException exp)
+            {
+                return;
+            }
+            catch(System.InvalidOperationException error)
+            {
+                return;
+            }
+            catch (Exception ex) 
+            { return; }
 
         }
         /// <summary>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -29,7 +30,7 @@ namespace Spectometer.Forms
             groupBox3.Text = Mode;
             IFormatter formatter = new BinaryFormatter();
             var filename = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "Spectrometer\\SoftwareSetup.dat");
-            FileStream serializationStream = new FileStream(filename, FileMode.Open, FileAccess.Read);
+            FileStream serializationStream = new FileStream(filename, FileMode.Open, FileAccess.Read,FileShare.ReadWrite);
             softwarepro = formatter.Deserialize(serializationStream) as SofwaretProperties;
             switch (Mode)
             {
@@ -86,6 +87,8 @@ namespace Spectometer.Forms
             }
             rdCm.Checked = softwarepro.XvalCM;
             rdNm.Checked = softwarepro.XvalNM;
+            serializationStream.Close();
+            serializationStream.Dispose();
 
         }
         SofwaretProperties softwarepro = new SofwaretProperties();
@@ -95,7 +98,7 @@ namespace Spectometer.Forms
             IFormatter formatter = new BinaryFormatter();
 
             var filename = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "Spectrometer\\SoftwareSetup.dat");
-            FileStream serializationStream = new FileStream(filename, FileMode.Create, FileAccess.Write,FileShare.Write);
+            FileStream serializationStream = new FileStream(filename, FileMode.Open, FileAccess.Write,FileShare.ReadWrite,4096,FileOptions.Asynchronous);
             formatter.Serialize(serializationStream, softwarepro);
             serializationStream.Close();
            
@@ -164,6 +167,7 @@ namespace Spectometer.Forms
                 {
                     softwarepro.XvalNM = rdNm.Checked;
                     softwarepro.XvalCM = rdCm.Checked;
+                    Thread.Sleep(100);
                     SaveSetting();
                 }
                 this.Close();

@@ -25,6 +25,7 @@ using Colourful.Conversion;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using RA_Camera_Core;
+using Spectometer.UserControl;
 
 namespace Spectometer
 {
@@ -259,6 +260,8 @@ namespace Spectometer
                 _nanoLed = SoftwarePr.NanoLed;
 
                 serializationStream.Close();
+                serializationStream.Dispose();
+            
 
 
             }
@@ -349,9 +352,26 @@ namespace Spectometer
         {
            
            
-            cmbChartType.DataSource = ((SeriesChartType[])Enum.GetValues(typeof(SeriesChartType))).OrderBy(p => p.ToString()).ToArray() ;
-            cmbChartType.Items.Remove("Pie");           //LoadSofwareProperties();
-            //LoadEnvironment();
+           // cmbChartType.DataSource = ((SeriesChartType[])Enum.GetValues(typeof(SeriesChartType))).OrderBy(p => p.ToString()).ToArray() ;
+            var words = cmbChartType.DataSource as List<SeriesChartType>;
+            List<SeriesChartType> chartTypes = new List<SeriesChartType>();
+            chartTypes.Add(SeriesChartType.Line);
+            chartTypes.Add(SeriesChartType.FastLine);
+            chartTypes.Add(SeriesChartType.Area);
+     
+            chartTypes.Add(SeriesChartType.Spline);
+            chartTypes.Add(SeriesChartType.SplineArea);
+            chartTypes.Add(SeriesChartType.Point);
+            chartTypes.Add(SeriesChartType.FastPoint);
+            chartTypes.Add(SeriesChartType.Bubble);
+
+
+
+
+            cmbChartType.DataSource = chartTypes;
+
+                     //LoadSofwareProperties();
+                     //LoadEnvironment();
             numricalAverage.Value = 10M;
             TimeCalc.Tick += TimeCalc_Tick;
             timeSpec.Tick += TimeSpec_Tick;
@@ -875,8 +895,10 @@ namespace Spectometer
             return true;
         }
         bool IsConected = false;
+     
         private void Conect()
         {
+          //  ComportInterfacecs = new EnScixLibrary.EnScix();
             string[] strArray2 = new string[4];
             strArray2[0] = "Error";
             string[] strArray = strArray2;
@@ -893,9 +915,15 @@ namespace Spectometer
             }
             else
             {
+
                 int i = ComportInterfacecs.OpenComport(strArray[0]);
-                
-                label9.Text = "Device  connected";
+                if (i==1)
+                {
+                    label9.Text = "Device not connected  ,close the program and conncet USB port to computer";
+                    return;
+                }
+               
+                label9.Text = "Device  connected"+i.ToString()+"  Com port :"+strArray[0];
                 btnStart.Enabled = true;
 
 
@@ -912,9 +940,16 @@ namespace Spectometer
 
                 ComportInterfacecs.StatusComport();
                 IsConected = true;
-              //  connectToDeviceToolStripMenuItem.Enabled = false;
-                
-               
+                ComportInterfacecs.TungstenLightSourceControl(true);
+                ComportInterfacecs.ShutterSourceControl(false);
+                ComportInterfacecs.NanoLED5LightSourceControl(false);
+                ComportInterfacecs.NanoLED6LightSourceControl(false);
+                ComportInterfacecs.NanoLED1LightSourceControl(false);
+                ComportInterfacecs.NanoAllLightSourceControl(false);
+                btnlamp.Image = Properties.Resources.rec__1_;
+                tangestanIs = false;               //  connectToDeviceToolStripMenuItem.Enabled = false;
+
+
             }
 
         }
@@ -1928,10 +1963,10 @@ namespace Spectometer
         {
 
             this.ChipTemperatureVal[0] = this.SettingData[2];
-            deviceInfo.temp.Text = "Temp:" + ChipTemperatureVal[0].ToString() + "\u2103";
+           // deviceInfo.temp.Text = "Temp:" + ChipTemperatureVal[0].ToString() + "\u2103";
             Thread.Sleep(10);
         }
-
+        string initDate ;
         private void DisplaySerialNumer(object sender, EventArgs e)
         {
 
@@ -1951,6 +1986,7 @@ namespace Spectometer
             this.deviceInfo.F2Date.Text = this.deviceInfo.F2Date.Text + "/";
             this.deviceInfo.F2Date.Text = this.deviceInfo.F2Date.Text + Convert.ToChar(this.ReadSerialnumber[6]);
             this.deviceInfo.F2Date.Text = this.deviceInfo.F2Date.Text + Convert.ToChar(this.ReadSerialnumber[7]);
+            frm.lblDate.Text = deviceInfo.F2Date.Text;
             this.deviceInfo.VerInfo.Text = "";
             this.deviceInfo.VerInfo.Text = this.deviceInfo.VerInfo.Text + Convert.ToChar(this.ReadSerialnumber[8]);
             this.deviceInfo.VerInfo.Text = this.deviceInfo.VerInfo.Text + Convert.ToChar(this.ReadSerialnumber[9]);
@@ -1969,7 +2005,7 @@ namespace Spectometer
             this.deviceInfo.Serial.Text = this.deviceInfo.Serial.Text + Convert.ToChar(this.ReadSerialnumber[21]);
             this.deviceInfo.Serial.Text = this.deviceInfo.Serial.Text + Convert.ToChar(this.ReadSerialnumber[22]);
             this.deviceInfo.Serial.Text = this.deviceInfo.Serial.Text + Convert.ToChar(this.ReadSerialnumber[23]);
-            this.deviceInfo.temp.Text = "";
+           // this.deviceInfo.temp.Text = "";
             //this.deviceInfo.temp.Text = this.deviceInfo.temp.Text + Convert.ToChar(this.ReadSerialnumber[24]);
             //this.deviceInfo.temp.Text = this.deviceInfo.temp.Text + Convert.ToChar(this.ReadSerialnumber[25]);
             //this.deviceInfo.temp.Text = this.deviceInfo.temp.Text + Convert.ToChar(this.ReadSerialnumber[26]);
@@ -2393,29 +2429,44 @@ namespace Spectometer
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            isRun = false;
-            tmrRendering.Enabled = false;
-            tmrGetData.Enabled = false;
-            btnStart.Image = Properties.Resources.Media_Play2;
-            btnStart.Text = "Start";
-
-            //DllInterface.LineScanCamera_StopCameraCapture(lineScanCameraIndex);
-
-            
-            if (PortConnectionStatus)
+            try
             {
-                ComportInterfacecs.TungstenLightSourceControl(true);
-                ComportInterfacecs.ShutterSourceControl(false);
-                ComportInterfacecs.NanoLED5LightSourceControl(false);
-                ComportInterfacecs.NanoLED6LightSourceControl(false);
-                ComportInterfacecs.NanoLED1LightSourceControl(false);
-                ComportInterfacecs.NanoAllLightSourceControl(false);
+                isRun = false;
+                tmrRendering.Enabled = false;
+                tmrGetData.Enabled = false;
+                btnStart.Image = Properties.Resources.Media_Play2;
+                btnStart.Text = "Start";
+
+                //DllInterface.LineScanCamera_StopCameraCapture(lineScanCameraIndex);
+                string[] strArray2 = new string[4];
+                strArray2[0] = "Error";
+                string[] strArray = strArray2;
 
 
-                //  ComportInterfacecs.TungstenLightSourceControl(true);
+                strArray = this.ComportInterfacecs.FindConnectedDevices();
+                if (strArray[0] != "Error")
+                {
+                    ComportInterfacecs.TungstenLightSourceControl(true);
+                    ComportInterfacecs.ShutterSourceControl(false);
+                    ComportInterfacecs.NanoLED5LightSourceControl(false);
+                    ComportInterfacecs.NanoLED6LightSourceControl(false);
+                    ComportInterfacecs.NanoLED1LightSourceControl(false);
+                    ComportInterfacecs.NanoAllLightSourceControl(false);
 
-                ComportInterfacecs.DiscardBufferPort();
+
+                    //  ComportInterfacecs.TungstenLightSourceControl(true);
+
+                    ComportInterfacecs.DiscardBufferPort();
+
+
+                }
+
+                if (PortConnectionStatus)
+                {
+
+                }
             }
+            catch { }
             
         }
 
@@ -5998,6 +6049,67 @@ namespace Spectometer
 
             Point p = new Point(e.ClipRectangle.Width + 10, e.ClipRectangle.Height / 2);
             TextRenderer.DrawText(e.Graphics, "Shutter", btn.Font, p, btn.ForeColor, flags);
+        }
+        FrmAbout frm = new FrmAbout();
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isRun = false;
+            btnStart.Image = Properties.Resources.Media_Play2;
+            btnStart.Text = "Start";
+            ComportInterfacecs.StopReadingImageSensor();
+            ComportInterfacecs.DiscardBufferPort();
+            ComportInterfacecs.StopRead = true;
+
+            frm.ShowDialog();
+        }
+        List<DataPoint> prePoints = new List<DataPoint>();
+        private void findPeackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PeckFIlterFrm filterFrm = new PeckFIlterFrm();
+            if (filterFrm.ShowDialog() == DialogResult.OK)
+            {
+                if (prePoints.Count > 0)
+                {
+                    foreach (DataPoint data in prePoints)
+                        chart1.Series[ExperimentName].Points.Remove(data);
+                }
+                var a1 = chart1.Series[ExperimentName];
+
+
+                var dt = chart1.Series[ExperimentName].Points.Select(x => x.YValues[0]).ToArray();
+                double[,] peak = FindPeaks.findPeaks(dt, filterFrm.NumFilter);
+
+                for (int i = 0; i < (peak.Length / 2); i++)
+                {
+                    if (peak[0, i] > filterFrm.NumFilter)
+                    {
+
+                        int num = (int)peak[1, i];
+                        DataPoint a = chart1.Series[ExperimentName].Points[num];
+                        prePoints.Add(a);
+                        a.MarkerColor = Color.SeaGreen;
+                        a.MarkerSize = 10;
+                        a.MarkerStyle = MarkerStyle.Circle;
+                        a.Label = a.XValue.ToString("N2");
+                        a.LabelAngle = 90;
+                        
+                    }
+
+                }
+            }
+
+        }
+
+        private void textToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TxtToChartUserControl txt = new TxtToChartUserControl();
+            chart1.Controls.Add(txt);
+            txt.AllowDrop = true;
+
+
+
+
+            txt.Location = new Point(chart1.ClientSize.Width - 500, 200);
         }
 
         private void numricalLampBrightnes_KeyUp(object sender, KeyEventArgs e)

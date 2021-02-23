@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Spectometer.Forms
 {
-    public partial class FSoftware : Spectometer.Forms.F_Base
+    public partial class FSoftware : F_Base
     {
         public bool Issave = false;
         public FSoftware()
@@ -23,25 +23,24 @@ namespace Spectometer.Forms
         {
             try
             {
-                Single s;
-                
 
-                    foreach (Control   txt in this.Controls )
+
+                foreach (Control txt in this.Controls)
+                {
+                    if (txt is TextBox)
                     {
-                        if (txt is TextBox)
+                        TextBox textBox = txt as TextBox;
+                        if (string.IsNullOrEmpty(textBox.Text) || !Single.TryParse(textBox.Text, out float s))
                         {
-                            TextBox textBox = txt as TextBox;
-                            if (string.IsNullOrEmpty(textBox.Text) || !Single.TryParse(textBox.Text, out s))
-                            {
-                              
-                                textBox.Focus();
-                                MessageBox.Show(textBox.Name.Remove(0, 3) + "Not Valid");
-                                return;
-                            }
+
+                            textBox.Focus();
+                            MessageBox.Show(textBox.Name.Remove(0, 3) + "Not Valid");
+                            return;
                         }
-                    
+                    }
+
                 }
-               
+
                 softwarepro.AbsorbanceX1 = Convert.ToSingle(txtAbsorbanceX1.Text);
                 softwarepro.AbsorbanceX2 = Convert.ToSingle(txtAbsorbanceX2.Text);
                 softwarepro.AbsorbanceY1 = Convert.ToSingle(txtAbsorbanceY1.Text);

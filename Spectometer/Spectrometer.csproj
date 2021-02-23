@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Spectometer</RootNamespace>
     <AssemblyName>Spectometer</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -88,7 +88,7 @@
     </Reference>
     <Reference Include="EnScixLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Users\Spectrom\Downloads\EnScixLibrary.dll</HintPath>
+      <HintPath>bin\Debug\EnScixLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -127,6 +127,7 @@
     <Compile Include="ComPortRemoval\SerialPortService.cs" />
     <Compile Include="DeviceType.cs" />
     <Compile Include="DllInterface.cs" />
+    <Compile Include="FindPeaks.cs" />
     <Compile Include="Forms\DeviceCounter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +188,12 @@
     <Compile Include="Forms\FMath.Designer.cs">
       <DependentUpon>FMath.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +211,12 @@
     </Compile>
     <Compile Include="Forms\FSingleWaveLenght.Designer.cs">
       <DependentUpon>FSingleWaveLenght.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PeckFIlterFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PeckFIlterFrm.Designer.cs">
+      <DependentUpon>PeckFIlterFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RefractiveIndex .cs">
       <SubType>Form</SubType>
@@ -341,7 +354,16 @@
     </Compile>
     <Compile Include="UserControl\SelectionWrappers\ListSelectionWrapper.cs" />
     <Compile Include="UserControl\SelectionWrappers\ObjectSelectionWrapper.cs" />
+    <Compile Include="UserControl\TxtToChartUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\TxtToChartUserControl.Designer.cs">
+      <DependentUpon>TxtToChartUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="WaveToRbg.cs" />
+    <EmbeddedResource Include="UserControl\TxtToChartUserControl.resx">
+      <DependentUpon>TxtToChartUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
@@ -394,6 +416,9 @@
     <EmbeddedResource Include="Forms\FNanoDrop.resx">
       <DependentUpon>FNanoDrop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FSetting.resx">
       <DependentUpon>FSetting.cs</DependentUpon>
     </EmbeddedResource>
@@ -411,6 +436,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\F_Base.resx">
       <DependentUpon>F_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PeckFIlterFrm.resx">
+      <DependentUpon>PeckFIlterFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RefractiveIndex .resx">
       <DependentUpon>RefractiveIndex .cs</DependentUpon>

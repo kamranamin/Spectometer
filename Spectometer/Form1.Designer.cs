@@ -29,37 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this._pnl_up_border = new System.Windows.Forms.Panel();
             this._pnl_down_border = new System.Windows.Forms.Panel();
             this._pnl_right_border = new System.Windows.Forms.Panel();
             this._pnl_left_border = new System.Windows.Forms.Panel();
             this._pnl_form_tools = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this._pb_form_icon = new System.Windows.Forms.PictureBox();
-            this._btn_min = new System.Windows.Forms.Button();
-            this._btn_max_min = new System.Windows.Forms.Button();
-            this._btn_close = new System.Windows.Forms.Button();
             this.lblTem = new System.Windows.Forms.Label();
             this._pnl_menu = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.btnFurmula = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.btnCopyToClip = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this._pnl_split7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.numricalLampBrightnes = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this._pnl_split6 = new System.Windows.Forms.Panel();
-            this.btnlamp = new System.Windows.Forms.Button();
-            this.btnShutter = new System.Windows.Forms.Button();
             this._pnl_toolbox2 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.numrSmosthing = new System.Windows.Forms.NumericUpDown();
@@ -79,9 +69,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this._pnl_toolbox1 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btncolor = new System.Windows.Forms.Button();
             this._pnl_options = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.Ramanbtn = new System.Windows.Forms.Button();
@@ -91,18 +78,8 @@
             this.btnAbsorbance = new System.Windows.Forms.Button();
             this.btnScope = new System.Windows.Forms.Button();
             this._pnl_spilit3 = new System.Windows.Forms.Panel();
-            this.btnYgide = new System.Windows.Forms.Button();
-            this.btnFit = new System.Windows.Forms.Button();
             this._pnl_spilit2 = new System.Windows.Forms.Panel();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnZoomXY = new System.Windows.Forms.Button();
-            this.btnZomY = new System.Windows.Forms.Button();
-            this.btnZoomX = new System.Windows.Forms.Button();
             this._pnl_split = new System.Windows.Forms.Panel();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this._btn_opn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.strartNewExpirmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -197,9 +174,7 @@
             this.txtDouration = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this._pnl_right_windows_header = new System.Windows.Forms.Panel();
-            this._btn_un_pin = new System.Windows.Forms.Button();
             this._pnl_windows_pin = new System.Windows.Forms.Panel();
-            this.button21 = new System.Windows.Forms.Button();
             this._pnl_status = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label9 = new System.Windows.Forms.Label();
@@ -214,10 +189,36 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tmrGetData = new System.Windows.Forms.Timer(this.components);
             this.tmrRendering = new System.Windows.Forms.Timer(this.components);
+            this.findPeackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorPicker1 = new Spectometer.ColorPicker();
+            this._btn_un_pin = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.btnFurmula = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.btnCopyToClip = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.btnlamp = new System.Windows.Forms.Button();
+            this.btnShutter = new System.Windows.Forms.Button();
             this.btnStart = new Spectometer.UserControl.SplitButton();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btncolor = new System.Windows.Forms.Button();
+            this.btnYgide = new System.Windows.Forms.Button();
+            this.btnFit = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnZoomXY = new System.Windows.Forms.Button();
+            this.btnZomY = new System.Windows.Forms.Button();
+            this.btnZoomX = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this._btn_opn = new System.Windows.Forms.Button();
+            this._pb_form_icon = new System.Windows.Forms.PictureBox();
+            this._btn_min = new System.Windows.Forms.Button();
+            this._btn_max_min = new System.Windows.Forms.Button();
+            this._btn_close = new System.Windows.Forms.Button();
+            this.textToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._pnl_form_tools.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._pb_form_icon)).BeginInit();
             this._pnl_menu.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel17.SuspendLayout();
@@ -256,6 +257,7 @@
             this._pnl_main.SuspendLayout();
             this._pnl_board.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._pb_form_icon)).BeginInit();
             this.SuspendLayout();
             // 
             // _pnl_up_border
@@ -320,76 +322,6 @@
             this.label1.Text = "Spectrometer";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // _pb_form_icon
-            // 
-            this._pb_form_icon.Dock = System.Windows.Forms.DockStyle.Left;
-            this._pb_form_icon.Image = global::Spectometer.Properties.Resources.logo_32;
-            this._pb_form_icon.InitialImage = global::Spectometer.Properties.Resources.logo_32;
-            this._pb_form_icon.Location = new System.Drawing.Point(0, 0);
-            this._pb_form_icon.Name = "_pb_form_icon";
-            this._pb_form_icon.Size = new System.Drawing.Size(33, 30);
-            this._pb_form_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this._pb_form_icon.TabIndex = 3;
-            this._pb_form_icon.TabStop = false;
-            this._pb_form_icon.Click += new System.EventHandler(this._pb_form_icon_Click);
-            // 
-            // _btn_min
-            // 
-            this._btn_min.Dock = System.Windows.Forms.DockStyle.Right;
-            this._btn_min.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_min.FlatAppearance.BorderSize = 0;
-            this._btn_min.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_min.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btn_min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_min.Image = global::Spectometer.Properties.Resources.Minus;
-            this._btn_min.Location = new System.Drawing.Point(1040, 0);
-            this._btn_min.Name = "_btn_min";
-            this._btn_min.Size = new System.Drawing.Size(38, 30);
-            this._btn_min.TabIndex = 2;
-            this._btn_min.UseVisualStyleBackColor = true;
-            this._btn_min.Click += new System.EventHandler(this._btn_min_Click);
-            this._btn_min.MouseLeave += new System.EventHandler(this._btn_min_MouseLeave);
-            this._btn_min.MouseMove += new System.Windows.Forms.MouseEventHandler(this._btn_min_MouseMove);
-            // 
-            // _btn_max_min
-            // 
-            this._btn_max_min.Dock = System.Windows.Forms.DockStyle.Right;
-            this._btn_max_min.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_max_min.FlatAppearance.BorderSize = 0;
-            this._btn_max_min.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_max_min.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_max_min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btn_max_min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_max_min.Image = global::Spectometer.Properties.Resources.Tiles;
-            this._btn_max_min.Location = new System.Drawing.Point(1078, 0);
-            this._btn_max_min.Name = "_btn_max_min";
-            this._btn_max_min.Size = new System.Drawing.Size(38, 30);
-            this._btn_max_min.TabIndex = 1;
-            this._btn_max_min.UseVisualStyleBackColor = true;
-            this._btn_max_min.Click += new System.EventHandler(this._btn_max_min_Click);
-            this._btn_max_min.MouseLeave += new System.EventHandler(this._btn_max_min_MouseLeave);
-            this._btn_max_min.MouseMove += new System.Windows.Forms.MouseEventHandler(this._brn_max_min_MouseMove);
-            // 
-            // _btn_close
-            // 
-            this._btn_close.Dock = System.Windows.Forms.DockStyle.Right;
-            this._btn_close.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_close.FlatAppearance.BorderSize = 0;
-            this._btn_close.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btn_close.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_close.Image = ((System.Drawing.Image)(resources.GetObject("_btn_close.Image")));
-            this._btn_close.Location = new System.Drawing.Point(1116, 0);
-            this._btn_close.Name = "_btn_close";
-            this._btn_close.Size = new System.Drawing.Size(38, 30);
-            this._btn_close.TabIndex = 0;
-            this._btn_close.UseVisualStyleBackColor = true;
-            this._btn_close.Click += new System.EventHandler(this._btn_close_Click);
-            this._btn_close.MouseLeave += new System.EventHandler(this._btn_close_MouseLeave);
-            this._btn_close.MouseMove += new System.Windows.Forms.MouseEventHandler(this._btn_close_MouseMove);
-            // 
             // lblTem
             // 
             this.lblTem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -431,22 +363,6 @@
             this.panel5.Size = new System.Drawing.Size(1152, 32);
             this.panel5.TabIndex = 9;
             // 
-            // btnFurmula
-            // 
-            this.btnFurmula.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnFurmula.FlatAppearance.BorderSize = 0;
-            this.btnFurmula.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnFurmula.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFurmula.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnFurmula.Image = global::Spectometer.Properties.Resources._2;
-            this.btnFurmula.Location = new System.Drawing.Point(492, 4);
-            this.btnFurmula.Name = "btnFurmula";
-            this.btnFurmula.Size = new System.Drawing.Size(32, 26);
-            this.btnFurmula.TabIndex = 13;
-            this.btnFurmula.UseVisualStyleBackColor = true;
-            this.btnFurmula.Click += new System.EventHandler(this.btnFurmula_Click);
-            this.btnFurmula.MouseHover += new System.EventHandler(this.btnFurmula_MouseHover);
-            // 
             // panel17
             // 
             this.panel17.Controls.Add(this.button5);
@@ -454,22 +370,6 @@
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(28, 28);
             this.panel17.TabIndex = 29;
-            // 
-            // button5
-            // 
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button5.Image = global::Spectometer.Properties.Resources._1;
-            this.button5.Location = new System.Drawing.Point(-4, 1);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(32, 26);
-            this.button5.TabIndex = 12;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
-            this.button5.MouseHover += new System.EventHandler(this.button5_MouseHover_1);
             // 
             // panel15
             // 
@@ -487,38 +387,6 @@
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(37, 23);
             this.panel16.TabIndex = 10;
-            // 
-            // btnCopyToClip
-            // 
-            this.btnCopyToClip.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnCopyToClip.FlatAppearance.BorderSize = 0;
-            this.btnCopyToClip.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnCopyToClip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCopyToClip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnCopyToClip.Image = global::Spectometer.Properties.Resources.images__3_z;
-            this.btnCopyToClip.Location = new System.Drawing.Point(-2, 3);
-            this.btnCopyToClip.Name = "btnCopyToClip";
-            this.btnCopyToClip.Size = new System.Drawing.Size(32, 26);
-            this.btnCopyToClip.TabIndex = 11;
-            this.btnCopyToClip.UseVisualStyleBackColor = true;
-            this.btnCopyToClip.Click += new System.EventHandler(this.btnCopyToClip_Click);
-            this.btnCopyToClip.MouseHover += new System.EventHandler(this.btnCopyToClip_MouseHover);
-            // 
-            // button6
-            // 
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(0, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(32, 26);
-            this.button6.TabIndex = 9;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            this.button6.MouseHover += new System.EventHandler(this.button6_MouseHover);
             // 
             // _pnl_split7
             // 
@@ -581,48 +449,6 @@
             this._pnl_split6.Name = "_pnl_split6";
             this._pnl_split6.Size = new System.Drawing.Size(1, 32);
             this._pnl_split6.TabIndex = 19;
-            // 
-            // btnlamp
-            // 
-            this.btnlamp.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnlamp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnlamp.FlatAppearance.BorderSize = 0;
-            this.btnlamp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnlamp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlamp.ForeColor = System.Drawing.Color.White;
-            this.btnlamp.Image = ((System.Drawing.Image)(resources.GetObject("btnlamp.Image")));
-            this.btnlamp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnlamp.Location = new System.Drawing.Point(96, 0);
-            this.btnlamp.Name = "btnlamp";
-            this.btnlamp.Size = new System.Drawing.Size(82, 32);
-            this.btnlamp.TabIndex = 5;
-            this.btnlamp.Text = "lamp";
-            this.btnlamp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnlamp.UseVisualStyleBackColor = true;
-            this.btnlamp.EnabledChanged += new System.EventHandler(this.btnlamp_EnabledChanged);
-            this.btnlamp.Click += new System.EventHandler(this.btnlamp_Click);
-            this.btnlamp.Paint += new System.Windows.Forms.PaintEventHandler(this.btnlamp_Paint);
-            // 
-            // btnShutter
-            // 
-            this.btnShutter.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnShutter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnShutter.FlatAppearance.BorderSize = 0;
-            this.btnShutter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnShutter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShutter.ForeColor = System.Drawing.Color.White;
-            this.btnShutter.Image = global::Spectometer.Properties.Resources.rec;
-            this.btnShutter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnShutter.Location = new System.Drawing.Point(0, 0);
-            this.btnShutter.Name = "btnShutter";
-            this.btnShutter.Size = new System.Drawing.Size(96, 32);
-            this.btnShutter.TabIndex = 4;
-            this.btnShutter.Text = "Shutter";
-            this.btnShutter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnShutter.UseVisualStyleBackColor = true;
-            this.btnShutter.EnabledChanged += new System.EventHandler(this.btnShutter_EnabledChanged);
-            this.btnShutter.Click += new System.EventHandler(this.btnShutter_Click);
-            this.btnShutter.Paint += new System.Windows.Forms.PaintEventHandler(this.btnShutter_Paint);
             // 
             // _pnl_toolbox2
             // 
@@ -899,57 +725,6 @@
             this.panel14.Size = new System.Drawing.Size(109, 26);
             this.panel14.TabIndex = 17;
             // 
-            // button4
-            // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button4.Image = global::Spectometer.Properties.Resources.icon_ff;
-            this.button4.Location = new System.Drawing.Point(64, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(32, 26);
-            this.button4.TabIndex = 22;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            this.button4.MouseHover += new System.EventHandler(this.button4_MouseHover);
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button2.Image = global::Spectometer.Properties.Resources.icon_5_;
-            this.button2.Location = new System.Drawing.Point(32, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(32, 26);
-            this.button2.TabIndex = 21;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            this.button2.MouseHover += new System.EventHandler(this.button2_MouseHover_1);
-            // 
-            // btncolor
-            // 
-            this.btncolor.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btncolor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btncolor.FlatAppearance.BorderSize = 0;
-            this.btncolor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btncolor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncolor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btncolor.Image = global::Spectometer.Properties.Resources.sprctrum;
-            this.btncolor.Location = new System.Drawing.Point(0, 0);
-            this.btncolor.Name = "btncolor";
-            this.btncolor.Size = new System.Drawing.Size(32, 26);
-            this.btncolor.TabIndex = 20;
-            this.btncolor.UseVisualStyleBackColor = true;
-            this.btncolor.Click += new System.EventHandler(this.btncolor_Click_1);
-            this.btncolor.MouseHover += new System.EventHandler(this.btncolor_MouseHover_1);
-            // 
             // _pnl_options
             // 
             this._pnl_options.Controls.Add(this.button3);
@@ -1087,40 +862,6 @@
             this._pnl_spilit3.Size = new System.Drawing.Size(1, 32);
             this._pnl_spilit3.TabIndex = 15;
             // 
-            // btnYgide
-            // 
-            this.btnYgide.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnYgide.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnYgide.FlatAppearance.BorderSize = 0;
-            this.btnYgide.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnYgide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYgide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnYgide.Image = global::Spectometer.Properties.Resources.RGB__;
-            this.btnYgide.Location = new System.Drawing.Point(295, 0);
-            this.btnYgide.Name = "btnYgide";
-            this.btnYgide.Size = new System.Drawing.Size(32, 32);
-            this.btnYgide.TabIndex = 14;
-            this.btnYgide.UseVisualStyleBackColor = true;
-            this.btnYgide.Click += new System.EventHandler(this.btnYgide_Click);
-            this.btnYgide.MouseHover += new System.EventHandler(this.btnYgide_MouseHover);
-            // 
-            // btnFit
-            // 
-            this.btnFit.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnFit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnFit.FlatAppearance.BorderSize = 0;
-            this.btnFit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnFit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnFit.Image = ((System.Drawing.Image)(resources.GetObject("btnFit.Image")));
-            this.btnFit.Location = new System.Drawing.Point(263, 0);
-            this.btnFit.Name = "btnFit";
-            this.btnFit.Size = new System.Drawing.Size(32, 32);
-            this.btnFit.TabIndex = 13;
-            this.btnFit.UseVisualStyleBackColor = true;
-            this.btnFit.Click += new System.EventHandler(this.btnFit_Click);
-            this.btnFit.MouseHover += new System.EventHandler(this.btnFit_MouseHover);
-            // 
             // _pnl_spilit2
             // 
             this._pnl_spilit2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1130,74 +871,6 @@
             this._pnl_spilit2.Size = new System.Drawing.Size(1, 32);
             this._pnl_spilit2.TabIndex = 12;
             // 
-            // btnReset
-            // 
-            this.btnReset.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnReset.FlatAppearance.BorderSize = 0;
-            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
-            this.btnReset.Location = new System.Drawing.Point(230, 0);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(32, 32);
-            this.btnReset.TabIndex = 11;
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            this.btnReset.MouseHover += new System.EventHandler(this.btnReset_MouseHover);
-            // 
-            // btnZoomXY
-            // 
-            this.btnZoomXY.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnZoomXY.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnZoomXY.FlatAppearance.BorderSize = 0;
-            this.btnZoomXY.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnZoomXY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoomXY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnZoomXY.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomXY.Image")));
-            this.btnZoomXY.Location = new System.Drawing.Point(198, 0);
-            this.btnZoomXY.Name = "btnZoomXY";
-            this.btnZoomXY.Size = new System.Drawing.Size(32, 32);
-            this.btnZoomXY.TabIndex = 10;
-            this.btnZoomXY.UseVisualStyleBackColor = true;
-            this.btnZoomXY.Click += new System.EventHandler(this.btnZoomXY_Click);
-            this.btnZoomXY.MouseHover += new System.EventHandler(this.btnZoomXY_MouseHover);
-            // 
-            // btnZomY
-            // 
-            this.btnZomY.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnZomY.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnZomY.FlatAppearance.BorderSize = 0;
-            this.btnZomY.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnZomY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZomY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnZomY.Image = ((System.Drawing.Image)(resources.GetObject("btnZomY.Image")));
-            this.btnZomY.Location = new System.Drawing.Point(166, 0);
-            this.btnZomY.Name = "btnZomY";
-            this.btnZomY.Size = new System.Drawing.Size(32, 32);
-            this.btnZomY.TabIndex = 9;
-            this.btnZomY.UseVisualStyleBackColor = true;
-            this.btnZomY.Click += new System.EventHandler(this.btnZomY_Click);
-            this.btnZomY.MouseHover += new System.EventHandler(this.btnZomY_MouseHover);
-            // 
-            // btnZoomX
-            // 
-            this.btnZoomX.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnZoomX.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnZoomX.FlatAppearance.BorderSize = 0;
-            this.btnZoomX.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnZoomX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoomX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnZoomX.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomX.Image")));
-            this.btnZoomX.Location = new System.Drawing.Point(129, 0);
-            this.btnZoomX.Name = "btnZoomX";
-            this.btnZoomX.Size = new System.Drawing.Size(37, 32);
-            this.btnZoomX.TabIndex = 8;
-            this.btnZoomX.UseVisualStyleBackColor = true;
-            this.btnZoomX.Click += new System.EventHandler(this.btnZoomX_Click);
-            this.btnZoomX.MouseHover += new System.EventHandler(this.btnZoomX_MouseHover);
-            // 
             // _pnl_split
             // 
             this._pnl_split.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1206,74 +879,6 @@
             this._pnl_split.Name = "_pnl_split";
             this._pnl_split.Size = new System.Drawing.Size(1, 32);
             this._pnl_split.TabIndex = 7;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnPrint.FlatAppearance.BorderSize = 0;
-            this.btnPrint.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(96, 0);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(32, 32);
-            this.btnPrint.TabIndex = 6;
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
-            this.btnPrint.MouseHover += new System.EventHandler(this.btnPrint_MouseHover);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(64, 0);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(32, 32);
-            this.btnSave.TabIndex = 5;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            this.btnSave.MouseHover += new System.EventHandler(this.btnSave_MouseHover);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(32, 0);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(32, 32);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            this.btnDelete.MouseHover += new System.EventHandler(this.btnDelete_MouseHover);
-            // 
-            // _btn_opn
-            // 
-            this._btn_opn.Dock = System.Windows.Forms.DockStyle.Left;
-            this._btn_opn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_opn.FlatAppearance.BorderSize = 0;
-            this._btn_opn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_opn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btn_opn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_opn.Image = global::Spectometer.Properties.Resources.math_add_icon;
-            this._btn_opn.Location = new System.Drawing.Point(0, 0);
-            this._btn_opn.Name = "_btn_opn";
-            this._btn_opn.Size = new System.Drawing.Size(32, 32);
-            this._btn_opn.TabIndex = 3;
-            this._btn_opn.UseVisualStyleBackColor = true;
-            this._btn_opn.Click += new System.EventHandler(this._btn_opn_Click);
-            this._btn_opn.MouseHover += new System.EventHandler(this._btn_opn_MouseHover);
             // 
             // menuStrip1
             // 
@@ -1481,7 +1086,7 @@
             this.calibrationToolStripMenuItem,
             this.lampToolStripMenuItem});
             this.softWareToolStripMenuItem.Name = "softWareToolStripMenuItem";
-            this.softWareToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.softWareToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.softWareToolStripMenuItem.Text = "&Software Setting";
             this.softWareToolStripMenuItem.Click += new System.EventHandler(this.softWareToolStripMenuItem_Click);
             // 
@@ -1510,7 +1115,7 @@
             // 
             this.hardwareToolStripMenuItem.Enabled = false;
             this.hardwareToolStripMenuItem.Name = "hardwareToolStripMenuItem";
-            this.hardwareToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hardwareToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.hardwareToolStripMenuItem.Text = "&Hardware";
             this.hardwareToolStripMenuItem.Visible = false;
             this.hardwareToolStripMenuItem.Click += new System.EventHandler(this.hardwareToolStripMenuItem_Click);
@@ -1518,21 +1123,21 @@
             // deviceInformationToolStripMenuItem
             // 
             this.deviceInformationToolStripMenuItem.Name = "deviceInformationToolStripMenuItem";
-            this.deviceInformationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deviceInformationToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.deviceInformationToolStripMenuItem.Text = "&Device Information";
             this.deviceInformationToolStripMenuItem.Click += new System.EventHandler(this.deviceInformationToolStripMenuItem_Click);
             // 
             // deviceCounterToolStripMenuItem
             // 
             this.deviceCounterToolStripMenuItem.Name = "deviceCounterToolStripMenuItem";
-            this.deviceCounterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deviceCounterToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.deviceCounterToolStripMenuItem.Text = "&Device Counter";
             this.deviceCounterToolStripMenuItem.Click += new System.EventHandler(this.deviceCounterToolStripMenuItem_Click);
             // 
             // connectToDeviceToolStripMenuItem
             // 
             this.connectToDeviceToolStripMenuItem.Name = "connectToDeviceToolStripMenuItem";
-            this.connectToDeviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.connectToDeviceToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.connectToDeviceToolStripMenuItem.Text = "Connect To Device";
             this.connectToDeviceToolStripMenuItem.Click += new System.EventHandler(this.connectToDeviceToolStripMenuItem_Click);
             // 
@@ -1613,7 +1218,9 @@
             this.toolStripSeparator4,
             this.signalWaveLenghtToolStripMenuItem,
             this.toolStripSeparator5,
-            this.formulaSpectToolStripMenuItem});
+            this.formulaSpectToolStripMenuItem,
+            this.findPeackToolStripMenuItem,
+            this.textToolStripMenuItem});
             this.applicationToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             this.applicationToolStripMenuItem.Size = new System.Drawing.Size(80, 30);
@@ -1629,7 +1236,7 @@
             this.bandGapToolStripMenuItem1,
             this.plasmaMonitoringToolStripMenuItem});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "&Measurement";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
@@ -1679,21 +1286,21 @@
             // timeSpectrumToolStripMenuItem
             // 
             this.timeSpectrumToolStripMenuItem.Name = "timeSpectrumToolStripMenuItem";
-            this.timeSpectrumToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.timeSpectrumToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.timeSpectrumToolStripMenuItem.Text = "&Time Spectrum";
             this.timeSpectrumToolStripMenuItem.Click += new System.EventHandler(this.timeSpectrumToolStripMenuItem_Click);
             // 
             // calibrationCurveToolStripMenuItem
             // 
             this.calibrationCurveToolStripMenuItem.Name = "calibrationCurveToolStripMenuItem";
-            this.calibrationCurveToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.calibrationCurveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.calibrationCurveToolStripMenuItem.Text = "&Calibration Curve";
             this.calibrationCurveToolStripMenuItem.Click += new System.EventHandler(this.calibrationCurveToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // derivationsToolStripMenuItem
             // 
@@ -1703,7 +1310,7 @@
             this.ndDerivationsToolStripMenuItem4,
             this.ndDerivationsToolStripMenuItem5});
             this.derivationsToolStripMenuItem.Name = "derivationsToolStripMenuItem";
-            this.derivationsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.derivationsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.derivationsToolStripMenuItem.Text = "&Derivations";
             // 
             // ndDerivationsToolStripMenuItem2
@@ -1737,24 +1344,24 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // signalWaveLenghtToolStripMenuItem
             // 
             this.signalWaveLenghtToolStripMenuItem.Name = "signalWaveLenghtToolStripMenuItem";
-            this.signalWaveLenghtToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.signalWaveLenghtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.signalWaveLenghtToolStripMenuItem.Text = "&Single Wavelength";
             this.signalWaveLenghtToolStripMenuItem.Click += new System.EventHandler(this.signalWaveLenghtToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // formulaSpectToolStripMenuItem
             // 
             this.formulaSpectToolStripMenuItem.Name = "formulaSpectToolStripMenuItem";
-            this.formulaSpectToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.formulaSpectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.formulaSpectToolStripMenuItem.Text = "&Formula Spectrum";
             this.formulaSpectToolStripMenuItem.Click += new System.EventHandler(this.formulaSpectToolStripMenuItem_Click);
             // 
@@ -1798,6 +1405,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.aboutToolStripMenuItem.Text = "&About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // _pnl_right_window
             // 
@@ -2139,22 +1747,6 @@
             this._pnl_right_windows_header.Size = new System.Drawing.Size(224, 32);
             this._pnl_right_windows_header.TabIndex = 0;
             // 
-            // _btn_un_pin
-            // 
-            this._btn_un_pin.Dock = System.Windows.Forms.DockStyle.Left;
-            this._btn_un_pin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_un_pin.FlatAppearance.BorderSize = 0;
-            this._btn_un_pin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_un_pin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btn_un_pin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this._btn_un_pin.Image = ((System.Drawing.Image)(resources.GetObject("_btn_un_pin.Image")));
-            this._btn_un_pin.Location = new System.Drawing.Point(0, 0);
-            this._btn_un_pin.Name = "_btn_un_pin";
-            this._btn_un_pin.Size = new System.Drawing.Size(32, 32);
-            this._btn_un_pin.TabIndex = 4;
-            this._btn_un_pin.UseVisualStyleBackColor = true;
-            this._btn_un_pin.Click += new System.EventHandler(this._btn_un_pin_Click);
-            // 
             // _pnl_windows_pin
             // 
             this._pnl_windows_pin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
@@ -2166,25 +1758,6 @@
             this._pnl_windows_pin.Size = new System.Drawing.Size(24, 548);
             this._pnl_windows_pin.TabIndex = 1;
             this._pnl_windows_pin.Visible = false;
-            // 
-            // button21
-            // 
-            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
-            this.button21.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button21.FlatAppearance.BorderSize = 0;
-            this.button21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.ForeColor = System.Drawing.Color.White;
-            this.button21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button21.Location = new System.Drawing.Point(4, 60);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(20, 89);
-            this.button21.TabIndex = 4;
-            this.button21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button21.UseVisualStyleBackColor = false;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // _pnl_status
             // 
@@ -2315,6 +1888,13 @@
             // 
             this.tmrRendering.Tick += new System.EventHandler(this.tmrRendering_Tick);
             // 
+            // findPeackToolStripMenuItem
+            // 
+            this.findPeackToolStripMenuItem.Name = "findPeackToolStripMenuItem";
+            this.findPeackToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.findPeackToolStripMenuItem.Text = "&Find Peak";
+            this.findPeackToolStripMenuItem.Click += new System.EventHandler(this.findPeackToolStripMenuItem_Click);
+            // 
             // colorPicker1
             // 
             this.colorPicker1.Location = new System.Drawing.Point(65, 7);
@@ -2324,6 +1904,147 @@
             this.colorPicker1.Text = "colorPicker1";
             this.colorPicker1.Value = System.Drawing.Color.Blue;
             this.colorPicker1.Click += new Spectometer.ColorPicker.ColorPaletteEventHandler(this.colorPicker1_Click);
+            // 
+            // _btn_un_pin
+            // 
+            this._btn_un_pin.Dock = System.Windows.Forms.DockStyle.Left;
+            this._btn_un_pin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_un_pin.FlatAppearance.BorderSize = 0;
+            this._btn_un_pin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_un_pin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btn_un_pin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_un_pin.Image = ((System.Drawing.Image)(resources.GetObject("_btn_un_pin.Image")));
+            this._btn_un_pin.Location = new System.Drawing.Point(0, 0);
+            this._btn_un_pin.Name = "_btn_un_pin";
+            this._btn_un_pin.Size = new System.Drawing.Size(32, 32);
+            this._btn_un_pin.TabIndex = 4;
+            this._btn_un_pin.UseVisualStyleBackColor = true;
+            this._btn_un_pin.Click += new System.EventHandler(this._btn_un_pin_Click);
+            // 
+            // button21
+            // 
+            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
+            this.button21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button21.FlatAppearance.BorderSize = 0;
+            this.button21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button21.ForeColor = System.Drawing.Color.White;
+            this.button21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button21.Location = new System.Drawing.Point(4, 60);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(20, 89);
+            this.button21.TabIndex = 4;
+            this.button21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
+            // btnFurmula
+            // 
+            this.btnFurmula.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnFurmula.FlatAppearance.BorderSize = 0;
+            this.btnFurmula.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnFurmula.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFurmula.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnFurmula.Image = global::Spectometer.Properties.Resources._2;
+            this.btnFurmula.Location = new System.Drawing.Point(492, 4);
+            this.btnFurmula.Name = "btnFurmula";
+            this.btnFurmula.Size = new System.Drawing.Size(32, 26);
+            this.btnFurmula.TabIndex = 13;
+            this.btnFurmula.UseVisualStyleBackColor = true;
+            this.btnFurmula.Click += new System.EventHandler(this.btnFurmula_Click);
+            this.btnFurmula.MouseHover += new System.EventHandler(this.btnFurmula_MouseHover);
+            // 
+            // button5
+            // 
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button5.Image = global::Spectometer.Properties.Resources._1;
+            this.button5.Location = new System.Drawing.Point(-4, 1);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(32, 26);
+            this.button5.TabIndex = 12;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            this.button5.MouseHover += new System.EventHandler(this.button5_MouseHover_1);
+            // 
+            // btnCopyToClip
+            // 
+            this.btnCopyToClip.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnCopyToClip.FlatAppearance.BorderSize = 0;
+            this.btnCopyToClip.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnCopyToClip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopyToClip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnCopyToClip.Image = global::Spectometer.Properties.Resources.images__3_z;
+            this.btnCopyToClip.Location = new System.Drawing.Point(-2, 3);
+            this.btnCopyToClip.Name = "btnCopyToClip";
+            this.btnCopyToClip.Size = new System.Drawing.Size(32, 26);
+            this.btnCopyToClip.TabIndex = 11;
+            this.btnCopyToClip.UseVisualStyleBackColor = true;
+            this.btnCopyToClip.Click += new System.EventHandler(this.btnCopyToClip_Click);
+            this.btnCopyToClip.MouseHover += new System.EventHandler(this.btnCopyToClip_MouseHover);
+            // 
+            // button6
+            // 
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.Location = new System.Drawing.Point(0, 0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(32, 26);
+            this.button6.TabIndex = 9;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.MouseHover += new System.EventHandler(this.button6_MouseHover);
+            // 
+            // btnlamp
+            // 
+            this.btnlamp.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnlamp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnlamp.FlatAppearance.BorderSize = 0;
+            this.btnlamp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnlamp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnlamp.ForeColor = System.Drawing.Color.White;
+            this.btnlamp.Image = ((System.Drawing.Image)(resources.GetObject("btnlamp.Image")));
+            this.btnlamp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnlamp.Location = new System.Drawing.Point(96, 0);
+            this.btnlamp.Name = "btnlamp";
+            this.btnlamp.Size = new System.Drawing.Size(82, 32);
+            this.btnlamp.TabIndex = 5;
+            this.btnlamp.Text = "lamp";
+            this.btnlamp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnlamp.UseVisualStyleBackColor = true;
+            this.btnlamp.EnabledChanged += new System.EventHandler(this.btnlamp_EnabledChanged);
+            this.btnlamp.Click += new System.EventHandler(this.btnlamp_Click);
+            this.btnlamp.Paint += new System.Windows.Forms.PaintEventHandler(this.btnlamp_Paint);
+            // 
+            // btnShutter
+            // 
+            this.btnShutter.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnShutter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnShutter.FlatAppearance.BorderSize = 0;
+            this.btnShutter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnShutter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShutter.ForeColor = System.Drawing.Color.White;
+            this.btnShutter.Image = global::Spectometer.Properties.Resources.rec;
+            this.btnShutter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnShutter.Location = new System.Drawing.Point(0, 0);
+            this.btnShutter.Name = "btnShutter";
+            this.btnShutter.Size = new System.Drawing.Size(96, 32);
+            this.btnShutter.TabIndex = 4;
+            this.btnShutter.Text = "Shutter";
+            this.btnShutter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnShutter.UseVisualStyleBackColor = true;
+            this.btnShutter.EnabledChanged += new System.EventHandler(this.btnShutter_EnabledChanged);
+            this.btnShutter.Click += new System.EventHandler(this.btnShutter_Click);
+            this.btnShutter.Paint += new System.Windows.Forms.PaintEventHandler(this.btnShutter_Paint);
             // 
             // btnStart
             // 
@@ -2349,6 +2070,304 @@
             this.btnStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStart.UseVisualStyleBackColor = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // button4
+            // 
+            this.button4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button4.Image = global::Spectometer.Properties.Resources.icon_ff;
+            this.button4.Location = new System.Drawing.Point(64, 0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(32, 26);
+            this.button4.TabIndex = 22;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.MouseHover += new System.EventHandler(this.button4_MouseHover);
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button2.Image = global::Spectometer.Properties.Resources.icon_5_;
+            this.button2.Location = new System.Drawing.Point(32, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(32, 26);
+            this.button2.TabIndex = 21;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.MouseHover += new System.EventHandler(this.button2_MouseHover_1);
+            // 
+            // btncolor
+            // 
+            this.btncolor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btncolor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btncolor.FlatAppearance.BorderSize = 0;
+            this.btncolor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btncolor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncolor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btncolor.Image = global::Spectometer.Properties.Resources.sprctrum;
+            this.btncolor.Location = new System.Drawing.Point(0, 0);
+            this.btncolor.Name = "btncolor";
+            this.btncolor.Size = new System.Drawing.Size(32, 26);
+            this.btncolor.TabIndex = 20;
+            this.btncolor.UseVisualStyleBackColor = true;
+            this.btncolor.Click += new System.EventHandler(this.btncolor_Click_1);
+            this.btncolor.MouseHover += new System.EventHandler(this.btncolor_MouseHover_1);
+            // 
+            // btnYgide
+            // 
+            this.btnYgide.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnYgide.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnYgide.FlatAppearance.BorderSize = 0;
+            this.btnYgide.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnYgide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYgide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnYgide.Image = global::Spectometer.Properties.Resources.RGB__;
+            this.btnYgide.Location = new System.Drawing.Point(295, 0);
+            this.btnYgide.Name = "btnYgide";
+            this.btnYgide.Size = new System.Drawing.Size(32, 32);
+            this.btnYgide.TabIndex = 14;
+            this.btnYgide.UseVisualStyleBackColor = true;
+            this.btnYgide.Click += new System.EventHandler(this.btnYgide_Click);
+            this.btnYgide.MouseHover += new System.EventHandler(this.btnYgide_MouseHover);
+            // 
+            // btnFit
+            // 
+            this.btnFit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnFit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnFit.FlatAppearance.BorderSize = 0;
+            this.btnFit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnFit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnFit.Image = ((System.Drawing.Image)(resources.GetObject("btnFit.Image")));
+            this.btnFit.Location = new System.Drawing.Point(263, 0);
+            this.btnFit.Name = "btnFit";
+            this.btnFit.Size = new System.Drawing.Size(32, 32);
+            this.btnFit.TabIndex = 13;
+            this.btnFit.UseVisualStyleBackColor = true;
+            this.btnFit.Click += new System.EventHandler(this.btnFit_Click);
+            this.btnFit.MouseHover += new System.EventHandler(this.btnFit_MouseHover);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
+            this.btnReset.Location = new System.Drawing.Point(230, 0);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(32, 32);
+            this.btnReset.TabIndex = 11;
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnReset.MouseHover += new System.EventHandler(this.btnReset_MouseHover);
+            // 
+            // btnZoomXY
+            // 
+            this.btnZoomXY.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnZoomXY.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnZoomXY.FlatAppearance.BorderSize = 0;
+            this.btnZoomXY.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnZoomXY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZoomXY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnZoomXY.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomXY.Image")));
+            this.btnZoomXY.Location = new System.Drawing.Point(198, 0);
+            this.btnZoomXY.Name = "btnZoomXY";
+            this.btnZoomXY.Size = new System.Drawing.Size(32, 32);
+            this.btnZoomXY.TabIndex = 10;
+            this.btnZoomXY.UseVisualStyleBackColor = true;
+            this.btnZoomXY.Click += new System.EventHandler(this.btnZoomXY_Click);
+            this.btnZoomXY.MouseHover += new System.EventHandler(this.btnZoomXY_MouseHover);
+            // 
+            // btnZomY
+            // 
+            this.btnZomY.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnZomY.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnZomY.FlatAppearance.BorderSize = 0;
+            this.btnZomY.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnZomY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZomY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnZomY.Image = ((System.Drawing.Image)(resources.GetObject("btnZomY.Image")));
+            this.btnZomY.Location = new System.Drawing.Point(166, 0);
+            this.btnZomY.Name = "btnZomY";
+            this.btnZomY.Size = new System.Drawing.Size(32, 32);
+            this.btnZomY.TabIndex = 9;
+            this.btnZomY.UseVisualStyleBackColor = true;
+            this.btnZomY.Click += new System.EventHandler(this.btnZomY_Click);
+            this.btnZomY.MouseHover += new System.EventHandler(this.btnZomY_MouseHover);
+            // 
+            // btnZoomX
+            // 
+            this.btnZoomX.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnZoomX.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnZoomX.FlatAppearance.BorderSize = 0;
+            this.btnZoomX.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnZoomX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZoomX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnZoomX.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomX.Image")));
+            this.btnZoomX.Location = new System.Drawing.Point(129, 0);
+            this.btnZoomX.Name = "btnZoomX";
+            this.btnZoomX.Size = new System.Drawing.Size(37, 32);
+            this.btnZoomX.TabIndex = 8;
+            this.btnZoomX.UseVisualStyleBackColor = true;
+            this.btnZoomX.Click += new System.EventHandler(this.btnZoomX_Click);
+            this.btnZoomX.MouseHover += new System.EventHandler(this.btnZoomX_MouseHover);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.Location = new System.Drawing.Point(96, 0);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(32, 32);
+            this.btnPrint.TabIndex = 6;
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            this.btnPrint.MouseHover += new System.EventHandler(this.btnPrint_MouseHover);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(64, 0);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(32, 32);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.btnSave.MouseHover += new System.EventHandler(this.btnSave_MouseHover);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.Location = new System.Drawing.Point(32, 0);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(32, 32);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.MouseHover += new System.EventHandler(this.btnDelete_MouseHover);
+            // 
+            // _btn_opn
+            // 
+            this._btn_opn.Dock = System.Windows.Forms.DockStyle.Left;
+            this._btn_opn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_opn.FlatAppearance.BorderSize = 0;
+            this._btn_opn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_opn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btn_opn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_opn.Image = global::Spectometer.Properties.Resources.math_add_icon;
+            this._btn_opn.Location = new System.Drawing.Point(0, 0);
+            this._btn_opn.Name = "_btn_opn";
+            this._btn_opn.Size = new System.Drawing.Size(32, 32);
+            this._btn_opn.TabIndex = 3;
+            this._btn_opn.UseVisualStyleBackColor = true;
+            this._btn_opn.Click += new System.EventHandler(this._btn_opn_Click);
+            this._btn_opn.MouseHover += new System.EventHandler(this._btn_opn_MouseHover);
+            // 
+            // _pb_form_icon
+            // 
+            this._pb_form_icon.Dock = System.Windows.Forms.DockStyle.Left;
+            this._pb_form_icon.Image = global::Spectometer.Properties.Resources.logo_32;
+            this._pb_form_icon.InitialImage = global::Spectometer.Properties.Resources.logo_32;
+            this._pb_form_icon.Location = new System.Drawing.Point(0, 0);
+            this._pb_form_icon.Name = "_pb_form_icon";
+            this._pb_form_icon.Size = new System.Drawing.Size(33, 30);
+            this._pb_form_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._pb_form_icon.TabIndex = 3;
+            this._pb_form_icon.TabStop = false;
+            this._pb_form_icon.Click += new System.EventHandler(this._pb_form_icon_Click);
+            // 
+            // _btn_min
+            // 
+            this._btn_min.Dock = System.Windows.Forms.DockStyle.Right;
+            this._btn_min.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_min.FlatAppearance.BorderSize = 0;
+            this._btn_min.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_min.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btn_min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_min.Image = global::Spectometer.Properties.Resources.Minus;
+            this._btn_min.Location = new System.Drawing.Point(1040, 0);
+            this._btn_min.Name = "_btn_min";
+            this._btn_min.Size = new System.Drawing.Size(38, 30);
+            this._btn_min.TabIndex = 2;
+            this._btn_min.UseVisualStyleBackColor = true;
+            this._btn_min.Click += new System.EventHandler(this._btn_min_Click);
+            this._btn_min.MouseLeave += new System.EventHandler(this._btn_min_MouseLeave);
+            this._btn_min.MouseMove += new System.Windows.Forms.MouseEventHandler(this._btn_min_MouseMove);
+            // 
+            // _btn_max_min
+            // 
+            this._btn_max_min.Dock = System.Windows.Forms.DockStyle.Right;
+            this._btn_max_min.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_max_min.FlatAppearance.BorderSize = 0;
+            this._btn_max_min.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_max_min.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_max_min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btn_max_min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_max_min.Image = global::Spectometer.Properties.Resources.Tiles;
+            this._btn_max_min.Location = new System.Drawing.Point(1078, 0);
+            this._btn_max_min.Name = "_btn_max_min";
+            this._btn_max_min.Size = new System.Drawing.Size(38, 30);
+            this._btn_max_min.TabIndex = 1;
+            this._btn_max_min.UseVisualStyleBackColor = true;
+            this._btn_max_min.Click += new System.EventHandler(this._btn_max_min_Click);
+            this._btn_max_min.MouseLeave += new System.EventHandler(this._btn_max_min_MouseLeave);
+            this._btn_max_min.MouseMove += new System.Windows.Forms.MouseEventHandler(this._brn_max_min_MouseMove);
+            // 
+            // _btn_close
+            // 
+            this._btn_close.Dock = System.Windows.Forms.DockStyle.Right;
+            this._btn_close.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_close.FlatAppearance.BorderSize = 0;
+            this._btn_close.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btn_close.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this._btn_close.Image = ((System.Drawing.Image)(resources.GetObject("_btn_close.Image")));
+            this._btn_close.Location = new System.Drawing.Point(1116, 0);
+            this._btn_close.Name = "_btn_close";
+            this._btn_close.Size = new System.Drawing.Size(38, 30);
+            this._btn_close.TabIndex = 0;
+            this._btn_close.UseVisualStyleBackColor = true;
+            this._btn_close.Click += new System.EventHandler(this._btn_close_Click);
+            this._btn_close.MouseLeave += new System.EventHandler(this._btn_close_MouseLeave);
+            this._btn_close.MouseMove += new System.Windows.Forms.MouseEventHandler(this._btn_close_MouseMove);
+            // 
+            // textToolStripMenuItem
+            // 
+            this.textToolStripMenuItem.Name = "textToolStripMenuItem";
+            this.textToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textToolStripMenuItem.Text = "Text";
+            this.textToolStripMenuItem.Click += new System.EventHandler(this.textToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -2377,7 +2396,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this._pnl_form_tools.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._pb_form_icon)).EndInit();
             this._pnl_menu.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
@@ -2425,6 +2443,7 @@
             this._pnl_main.ResumeLayout(false);
             this._pnl_board.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._pb_form_icon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2614,6 +2633,8 @@
         private System.Windows.Forms.Timer tmrGetData;
         private System.Windows.Forms.Timer tmrRendering;
         private System.Windows.Forms.ToolStripMenuItem connectToDeviceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem findPeackToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem textToolStripMenuItem;
     }
 }
 

@@ -18,7 +18,7 @@ namespace Spectometer
 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            BackColor = Color.FromArgb(33, 33, 33);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
        
@@ -50,19 +50,7 @@ namespace Spectometer
             else
                 SetDesktopLocation(startPosX, startPosY);
         
-        //i += 10;
-
-
-        //this.timer1.Interval = 100;
-        //if (base.Opacity >= 0.1)
-        //{
-        //    base.Opacity -= 0.1;
-        //}
-        //else
-        //{
-        //    this.timer1.Enabled = false;
-        //    base.Dispose();
-        //}
+      
     }
         protected override void OnLoad(EventArgs e)
         {

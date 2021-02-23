@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FDeviceInfo));
-            this.temp = new System.Windows.Forms.Label();
-            this.Reserved = new System.Windows.Forms.Label();
             this.Serial = new System.Windows.Forms.Label();
             this.SerNumber = new System.Windows.Forms.Label();
             this.VerInfo = new System.Windows.Forms.Label();
@@ -38,7 +36,6 @@
             this.F2Date = new System.Windows.Forms.Label();
             this.ManuDate = new System.Windows.Forms.Label();
             this.Information = new System.Windows.Forms.GroupBox();
-            this.txtRes = new System.Windows.Forms.MaskedTextBox();
             this.txtSeialnumber = new System.Windows.Forms.MaskedTextBox();
             this.txtVer = new System.Windows.Forms.MaskedTextBox();
             this.maskTxtDate = new System.Windows.Forms.MaskedTextBox();
@@ -57,25 +54,6 @@
             // 
             this._lbl_form_text.Size = new System.Drawing.Size(679, 30);
             this._lbl_form_text.Text = "F_Base";
-            // 
-            // temp
-            // 
-            this.temp.AutoSize = true;
-            this.temp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.temp.Location = new System.Drawing.Point(192, 130);
-            this.temp.Name = "temp";
-            this.temp.Size = new System.Drawing.Size(0, 20);
-            this.temp.TabIndex = 16;
-            // 
-            // Reserved
-            // 
-            this.Reserved.AutoSize = true;
-            this.Reserved.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Reserved.Location = new System.Drawing.Point(34, 130);
-            this.Reserved.Name = "Reserved";
-            this.Reserved.Size = new System.Drawing.Size(152, 20);
-            this.Reserved.TabIndex = 15;
-            this.Reserved.Text = "Temprature               :";
             // 
             // Serial
             // 
@@ -139,15 +117,12 @@
             // 
             // Information
             // 
-            this.Information.Controls.Add(this.txtRes);
             this.Information.Controls.Add(this.txtSeialnumber);
             this.Information.Controls.Add(this.txtVer);
             this.Information.Controls.Add(this.maskTxtDate);
             this.Information.Controls.Add(this.button1);
             this.Information.Controls.Add(this.ManuDate);
-            this.Information.Controls.Add(this.temp);
             this.Information.Controls.Add(this.F2Date);
-            this.Information.Controls.Add(this.Reserved);
             this.Information.Controls.Add(this.Version);
             this.Information.Controls.Add(this.Serial);
             this.Information.Controls.Add(this.VerInfo);
@@ -159,14 +134,7 @@
             this.Information.TabIndex = 17;
             this.Information.TabStop = false;
             this.Information.Text = "Information";
-            // 
-            // txtRes
-            // 
-            this.txtRes.Location = new System.Drawing.Point(351, 128);
-            this.txtRes.Mask = "####";
-            this.txtRes.Name = "txtRes";
-            this.txtRes.Size = new System.Drawing.Size(87, 27);
-            this.txtRes.TabIndex = 32;
+            this.Information.Enter += new System.EventHandler(this.Information_Enter);
             // 
             // txtSeialnumber
             // 
@@ -214,7 +182,7 @@
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Location = new System.Drawing.Point(496, 57);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(292, 249);
+            this.groupBox1.Size = new System.Drawing.Size(292, 285);
             this.groupBox1.TabIndex = 61;
             this.groupBox1.TabStop = false;
             // 
@@ -225,9 +193,9 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(78, 179);
+            this.btnSave.Location = new System.Drawing.Point(174, 188);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 38);
+            this.btnSave.Size = new System.Drawing.Size(112, 38);
             this.btnSave.TabIndex = 58;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -290,9 +258,6 @@
         }
 
         #endregion
-
-        internal System.Windows.Forms.Label temp;
-        private System.Windows.Forms.Label Reserved;
         internal System.Windows.Forms.Label Serial;
         private System.Windows.Forms.Label SerNumber;
         internal System.Windows.Forms.Label Version;
@@ -302,7 +267,6 @@
         internal System.Windows.Forms.Label F2Date;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MaskedTextBox maskTxtDate;
-        private System.Windows.Forms.MaskedTextBox txtRes;
         private System.Windows.Forms.MaskedTextBox txtSeialnumber;
         private System.Windows.Forms.MaskedTextBox txtVer;
         private System.Windows.Forms.GroupBox groupBox1;

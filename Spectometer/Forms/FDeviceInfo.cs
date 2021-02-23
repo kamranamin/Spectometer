@@ -28,23 +28,26 @@ namespace Spectometer.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             string value = "";
-            maskTxtDate .TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            maskTxtDate.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             value = maskTxtDate.Text;
             maskTxtDate.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-          
+
             value += txtVer.Text;
-           
-            txtSeialnumber .TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+
+            txtSeialnumber.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             value += txtSeialnumber.Text;
             txtSeialnumber.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-            txtRes .TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            value += txtRes.Text;
-            txtRes.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            //  txtRes .TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            value += "0000";
+            // txtRes.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
 
 
             write = Encoding.ASCII.GetBytes(value);
             if (write.Length == 28)
+            {
                 en.SetDeviceDateVersionSerialNum(write);
+                MessageBox.Show("Hardware setting saved");
+            }
             else
                 MessageBox.Show("Error ");
         }
@@ -80,7 +83,7 @@ namespace Spectometer.Forms
         {
             this.KeyPreview = true;
             maskTxtDate.Visible = false;
-            txtRes.Visible  = false;
+          
             txtSeialnumber.Visible = false;
             txtVer.Visible = false;
             button1.Visible = false ;
@@ -108,7 +111,7 @@ namespace Spectometer.Forms
                 {
                     groupBox1.Visible = true;
                     maskTxtDate.Visible = true ;
-                    txtRes.Visible = true;
+                 
                     txtSeialnumber.Visible = true;
                     txtVer.Visible = true;
 
@@ -124,6 +127,11 @@ namespace Spectometer.Forms
 
             en.ADCProgramInitialValue(Convert.ToByte(txtGain.Text), Convert.ToInt16(txtOffset.Text));
             SaveGainOffset();
+        }
+
+        private void Information_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
